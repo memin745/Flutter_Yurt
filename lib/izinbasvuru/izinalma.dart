@@ -87,6 +87,12 @@ class _IzinAlmaPageState extends State<IzinAlmaPage> {
                     borderRadius: BorderRadius.circular(20)),
                 width: size.width * 0.30,
                 height: size.height * 0.05,
+                child:TextField(
+                    decoration: InputDecoration(
+                      border: InputBorder.none,
+                      hintText: 'Geliş Tarihi...',
+                    ),
+                  ),
               ),
             ]),
           ),
