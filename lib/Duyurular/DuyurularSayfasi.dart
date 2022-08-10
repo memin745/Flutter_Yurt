@@ -48,31 +48,31 @@ class _DuyurularSayfasiPageState extends State<DuyurularSayfasiPage> {
                 ),
                 Padding(
                 padding: const EdgeInsets.all(8),
-                child:Duyurular("Duyuru", context),
+                child:Duyurular("Duyuru 1", context),
                 ),
                 Padding(
                 padding: const EdgeInsets.all(8),
-                child:Duyurular("Duyuru", context),
+                child:Duyurular("Duyuru 2 ", context),
+                ), 
+                Padding(
+                padding: const EdgeInsets.all(8),
+                child:Duyurular("Duyuru 3", context),
                 ),
                 Padding(
                 padding: const EdgeInsets.all(8),
-                child:Duyurular("Duyuru", context),
+                child:Duyurular("Duyuru 4", context),
                 ),
                 Padding(
                 padding: const EdgeInsets.all(8),
-                child:Duyurular("Duyuru", context),
+                child:Duyurular("Duyuru 5", context),
                 ),
                 Padding(
                 padding: const EdgeInsets.all(8),
-                child:Duyurular("Duyuru", context),
+                child:Duyurular("Duyuru 6 ", context),
                 ),
                 Padding(
                 padding: const EdgeInsets.all(8),
-                child:Duyurular("Duyuru", context),
-                ),
-                Padding(
-                padding: const EdgeInsets.all(8),
-                child:Duyurular("Duyuru", context),
+                child:Duyurular("Duyuru 7", context),
                 ),
               ],
             )
@@ -95,7 +95,7 @@ Widget Duyurular(String title, context){Size size = MediaQuery.of(context).size;
             context,
             MaterialPageRoute(builder: (context) => DuyuruMetniPage()),
         ),
-              child: Text("Duyuru ",style:TextStyle(fontSize: 20),),
+              child: Text(title,style:TextStyle(fontSize: 20,color: Colors.black),),
               ),
             );
 }
