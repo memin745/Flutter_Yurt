@@ -46,88 +46,57 @@ class _ProfilKullaniciPageState extends State<ProfilKullaniciPage> {
                   size: 50,
               ),
             ),
-            Container(
-              margin: EdgeInsets.only(top: 25),
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(15),
-                color: Colors.blue,
-              
-              ),
-              width: size.width*0.50,
-              height: size.height *0.08,
-              padding: EdgeInsets.only(top: 25),
-              child:Text("İsim Soyisim",textAlign: TextAlign.center ,style: TextStyle(fontSize: 20, color: Colors.white),
-            ),
-            ),
-            Container(
-              margin: EdgeInsets.only(top: 25),
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(15),
-                color: Colors.blue,
-              
-              ),
-              width: size.width*0.50,
-              height: size.height *0.08,
-              padding: EdgeInsets.only(top: 25),
-              child:Text("Şehir",textAlign: TextAlign.center ,style: TextStyle(fontSize: 20, color: Colors.white),
-            ),
-            ),
-             Container(
-              margin: EdgeInsets.only(top: 25),
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(15),
-                color: Colors.blue,
-              
-              ),
-              width: size.width*0.50,
-              height: size.height *0.08,
-              padding: EdgeInsets.only(top: 25),
-              child:Text("Üniversite",textAlign: TextAlign.center ,style: TextStyle(fontSize: 20, color: Colors.white),
-            ),
-            ),
-             Container(
-              margin: EdgeInsets.only(top: 25),
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(15),
-                color: Colors.blue,
-              
-              ),
-              width: size.width*0.50,
-              height: size.height *0.08,
-              padding: EdgeInsets.only(top: 20),
-              child:Text("Bölüm",textAlign: TextAlign.center ,style: TextStyle(fontSize: 20, color: Colors.white),
-            ),
-            ),
-             Container(
-              margin: EdgeInsets.only(top: 20),
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(15),
-                color: Colors.blue,
-              
-              ),
-              width: size.width*0.50,
-              height: size.height *0.08,
-              padding: EdgeInsets.only(top: 20),
-              child:Text("Sınıf",textAlign: TextAlign.center ,style: TextStyle(fontSize: 20, color: Colors.white),
-            ),
-            ),
-             Container(
-              margin: EdgeInsets.only(top: 20),
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(15),
-                color: Colors.blue,
-              
-              ),
-              width: size.width*0.50,
-              height: size.height *0.08,
-              padding: EdgeInsets.only(top: 20),
-              child:Text("Oda Bilgileri",textAlign: TextAlign.center ,style: TextStyle(fontSize: 20, color: Colors.white),
-            ),
-            ),
-
+           Expanded(
+            child: ListView(
+              scrollDirection: Axis.vertical,
+              children: [
+                Padding(
+                padding: const EdgeInsets.all(8),
+                child:KullaniciProfil("İsim Soyisim", context),
+                ),
+                Padding(
+                padding: const EdgeInsets.all(8),
+                child:KullaniciProfil("Şehir", context),
+                ),
+                Padding(
+                padding: const EdgeInsets.all(8),
+                child:KullaniciProfil("Üniversite ", context),
+                ), 
+                Padding(
+                padding: const EdgeInsets.all(8),
+                child:KullaniciProfil("Bölüm", context),
+                ),
+                Padding(
+                padding: const EdgeInsets.all(8),
+                child:KullaniciProfil("Sınıf", context),
+                ),
+                Padding(
+                padding: const EdgeInsets.all(8),
+                child:KullaniciProfil("Oda Bilgileri", context),
+                ),
+                
+              ],
+            )
+          )
+            
           ],
         ),
       ),
     );
   }
+}
+Widget KullaniciProfil(String title,context){ Size size = MediaQuery.of(context).size;
+  return Container(
+              margin: EdgeInsets.only(top: 25),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(15),
+                color: Colors.blue,
+              
+              ),
+              width: size.width*0.50,
+              height: size.height *0.08,
+              padding: EdgeInsets.only(top: 25),
+              child:Text(title ,textAlign: TextAlign.center ,style: TextStyle(fontSize: 20, color: Colors.white),
+           ),
+            );
 }
