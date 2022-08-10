@@ -71,24 +71,21 @@ class _HomePageState extends State<HomePage> {
                         style:
                             TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                       )),
-                  Container(
-                    decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(15),
-                    color: Colors.white,),
-                      margin: EdgeInsets.only(top: 10),
-                      width: 250,
-                      
-                      child:
-                          TextButton(onPressed: () {}, child: Text("Duyuru 1"))),
-                  Container(decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(15),
+                       Expanded(
+            child: ListView(
+              scrollDirection: Axis.vertical,
+              children: [
+                Duyuru("Duyuru 1"),
+                Duyuru("Duyuru 2"),
+                Duyuru("Duyuru 3"),
+                Duyuru("Duyuru 4"),
+                Duyuru("Duyuru 5"),
+                Duyuru("Duyuru 6"),
+                Duyuru("Duyuru 7"),
+              ],
+            ),
+                       ),
                   
-                      color: Colors.white,),
-                      margin: EdgeInsets.only(top: 10),
-                      width: 250,
-                      
-                      child:
-                          TextButton(onPressed: () {}, child: Text("Duyuru 2"))),
                 ],
               ),
             ),
@@ -137,6 +134,23 @@ class _HomePageState extends State<HomePage> {
           ],
         ),
       ),
+        
     );
   }
+}
+
+Widget Duyuru(String title){
+ return Padding(
+                padding: const EdgeInsets.all(8),
+                child:Container(
+                    decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(15),
+                    color: Colors.white,),
+                      margin: EdgeInsets.only(top: 10),
+                      width: 250,
+                      
+                      child:
+                          TextButton(onPressed: () {}, child: Text(title,style: TextStyle(fontSize: 18,color: Colors.black),))),
+                          
+                );
 }
