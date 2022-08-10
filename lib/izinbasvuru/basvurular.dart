@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_3/homepage.dart';
+import 'package:flutter_application_3/izinbasvuru/basvurularim.dart';
 import 'package:flutter_application_3/izinbasvuru/izinvebasvuru.dart';
 
 
@@ -105,7 +106,10 @@ return Container(
                 ),
                 width: 250,
                 height: size.height * 0.08,
-                child: TextButton(
+                child: TextButton(onPressed: () => Navigator.pushReplacement(
+            //Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => BasvurularimPage()),),
                     child: Text(
                   title,
                   style: TextStyle(fontSize: 20, color: Colors.black),
