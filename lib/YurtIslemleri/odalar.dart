@@ -43,11 +43,46 @@ class _OdalarPageState extends State<OdalarPage> {
           Container(
             padding: EdgeInsets.only(top: 40),
           ),
-          odalar("101 Numaralı Oda"),
-          odalar("102 Numaralı Oda"),
-          odalar("103 Numaralı Oda"),
-          odalar("104 Numaralı Oda"),
-          odalar("105 Numaralı Oda")
+          
+          Expanded(
+            child: ListView(
+              scrollDirection: Axis.vertical,
+              children: [
+                Padding(
+                padding: const EdgeInsets.all(8),
+                child:odalar("101 numaralı Oda"),
+                ),
+                Padding(
+                padding: const EdgeInsets.all(8),
+                child:odalar("102 numaralı Oda"),
+                ),
+                Padding(
+                padding: const EdgeInsets.all(8),
+                child:odalar("103 numaralı Oda"),
+                ),
+                Padding(
+                padding: const EdgeInsets.all(8),
+                child:odalar("104 numaralı Oda"),
+                ),
+                Padding(
+                padding: const EdgeInsets.all(8),
+                child:odalar("105 numaralı Oda"),
+                ),
+                Padding(
+                padding: const EdgeInsets.all(8),
+                child:odalar("106 numaralı Oda"),
+                ),
+                Padding(
+                padding: const EdgeInsets.all(8),
+                child:odalar("107 numaralı Oda"),
+                ),
+                Padding(
+                padding: const EdgeInsets.all(8),
+                child:odalar("108 numaralı Oda"),
+                ),
+              ],
+            )
+          )
         ]),
       ),
     );
