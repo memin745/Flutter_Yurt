@@ -62,7 +62,7 @@ class _HomePageState extends State<HomePage> {
                   borderRadius: BorderRadius.circular(15),
                   color: Colors.grey[300]),
               width: size.width * 0.85,
-              height: size.height * 0.23,
+              height: size.height * 0.27,
               child: Column(
                 children: [
                   Container(

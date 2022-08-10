@@ -79,22 +79,25 @@ class _KantinPageState extends State<KantinPage> {
                       "Fiyat Listesi",
                       style: TextStyle(fontSize: 20),
                     ))),
-            Container(
-                margin: EdgeInsets.only(top: 10),
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(15),
-                  color: Colors.white,
-                ),
-                width: 250,
-                height: size.height*0.08,
-                child: TextButton(
-                    onPressed: () => Navigator.pushReplacement(
-                          //Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => OdemelerPage()),
-                        ),
-                    child: Text("Ödeme Yap", style: TextStyle(fontSize: 20)))),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Container(
+                  margin: EdgeInsets.only(top: 10),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(15),
+                    color: Colors.white,
+                  ),
+                  width: 250,
+                  height: size.height*0.08,
+                  child: TextButton(
+                      onPressed: () => Navigator.pushReplacement(
+                            //Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => OdemelerPage()),
+                          ),
+                      child: Text("Ödeme Yap", style: TextStyle(fontSize: 20)))),
+            ),
             Container(
               margin: EdgeInsets.only(top: 10),
               decoration: BoxDecoration(
@@ -114,9 +117,34 @@ class _KantinPageState extends State<KantinPage> {
                       child: Text("Bakiye Yükle",
                           style: TextStyle(fontSize: 20)))),
             ),
+
+
           ],
         ),
       ),
     );
   }
+}Widget Kantin(BuildContext context, Page){
+  Size size = MediaQuery.of(context).size;
+  return Padding(
+    padding: const EdgeInsets.all(8.0),
+    child: Container(
+                margin: EdgeInsets.only(top: 10),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(15),
+                  color: Colors.white,
+                ),
+                width: 250,
+                height: size.height*0.08,
+                child: TextButton(
+                    child: TextButton(
+                        onPressed: () => Navigator.pushReplacement(
+                              //Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => Page()),
+                            ),
+                        child: Text("Bakiye Yükle",
+                            style: TextStyle(fontSize: 20))))),
+  );
 }
