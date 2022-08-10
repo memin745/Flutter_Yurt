@@ -1,5 +1,6 @@
 import 'package:carousel_pro/carousel_pro.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_application_3/Duyurular/DuyurularSayfasi.dart';
 import 'package:flutter_application_3/kantin/kantin.dart';
 import 'package:flutter_application_3/yemekhane/yememkhanesayfa.dart';
 
@@ -75,13 +76,13 @@ class _HomePageState extends State<HomePage> {
             child: ListView(
               scrollDirection: Axis.vertical,
               children: [
-                Duyuru("Duyuru 1"),
-                Duyuru("Duyuru 2"),
-                Duyuru("Duyuru 3"),
-                Duyuru("Duyuru 4"),
-                Duyuru("Duyuru 5"),
-                Duyuru("Duyuru 6"),
-                Duyuru("Duyuru 7"),
+                Duyurular("Duyuru 1",context),
+                Duyurular("Duyuru 2",context),
+                Duyurular("Duyuru 3",context),
+                Duyurular("Duyuru 4",context),
+                Duyurular("Duyuru 5",context),
+                Duyurular("Duyuru 6",context),
+                Duyurular("Duyuru 7",context),
               ],
             ),
                        ),
@@ -137,20 +138,4 @@ class _HomePageState extends State<HomePage> {
         
     );
   }
-}
-
-Widget Duyuru(String title){
- return Padding(
-                padding: const EdgeInsets.all(8),
-                child:Container(
-                    decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(15),
-                    color: Colors.white,),
-                      margin: EdgeInsets.only(top: 10),
-                      width: 250,
-                      
-                      child:
-                          TextButton(onPressed: () {}, child: Text(title,style: TextStyle(fontSize: 18,color: Colors.black),))),
-                          
-                );
 }
