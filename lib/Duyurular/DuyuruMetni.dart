@@ -8,6 +8,7 @@ class DuyuruMetniPage extends StatefulWidget {
 
   @override
   State<DuyuruMetniPage> createState() => _DuyuruMetniPageState();
+  
 }
 
 class _DuyuruMetniPageState extends State<DuyuruMetniPage> {
