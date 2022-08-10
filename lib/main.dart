@@ -96,6 +96,8 @@ class _MainLayoutState extends State<MainLayout> {
             setState(() {
               _currentIndex = index;
             });
+
+            
           },
           type: BottomNavigationBarType.fixed,
           selectedItemColor: Colors.redAccent,
