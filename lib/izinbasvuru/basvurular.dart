@@ -50,88 +50,65 @@ class _BavurularPageState extends State<BavurularPage> {
                 )
               ]),
             ),
-            Container(
-                margin: EdgeInsets.only(top: 25),
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(15),
-                  color: Colors.white,
+             Expanded(
+            child: ListView(
+              scrollDirection: Axis.vertical,
+              children: [
+                Padding(
+                padding: const EdgeInsets.all(8),
+                child:Basvurular("Basvuru",context),
                 ),
-                width: 250,
-                height: size.height * 0.08,
-                child: TextButton(
-                    child: Text(
-                  "",
-                  style: TextStyle(fontSize: 20, color: Colors.black),
-                ))),
-                Container(
-                margin: EdgeInsets.only(top: 25),
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(15),
-                  color: Colors.white,
+                Padding(
+                padding: const EdgeInsets.all(8),
+                child:Basvurular("Basvuru",context),
                 ),
-                width: 250,
-                height: size.height * 0.08,
-                child: TextButton(
-                    child: Text(
-                  "",
-                  style: TextStyle(fontSize: 20, color: Colors.black),
-                ))),
-                Container(
-                margin: EdgeInsets.only(top: 25),
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(15),
-                  color: Colors.white,
+                Padding(
+                padding: const EdgeInsets.all(8),
+                child:Basvurular("Basvuru",context),
                 ),
-                width: 250,
-                height: size.height * 0.08,
-                child: TextButton(
-                    child: Text(
-                  "",
-                  style: TextStyle(fontSize: 20, color: Colors.black),
-                ))),
-                Container(
-                margin: EdgeInsets.only(top: 25),
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(15),
-                  color: Colors.white,
+                Padding(
+                padding: const EdgeInsets.all(8),
+                child:Basvurular("Basvuru",context),
                 ),
-                width: 250,
-                height: size.height * 0.08,
-                child: TextButton(
-                    child: Text(
-                  "",
-                  style: TextStyle(fontSize: 20, color: Colors.black),
-                ))),
-                Container(
-                margin: EdgeInsets.only(top: 25),
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(15),
-                  color: Colors.white,
+                Padding(
+                padding: const EdgeInsets.all(8),
+                child:Basvurular("Basvuru",context),
                 ),
-                width: 250,
-                height: size.height * 0.08,
-                child: TextButton(
-                    child: Text(
-                  "",
-                  style: TextStyle(fontSize: 20, color: Colors.black),
-                ))),
-                Container(
-                margin: EdgeInsets.only(top: 25),
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(15),
-                  color: Colors.white,
+                Padding(
+                padding: const EdgeInsets.all(8),
+                child:Basvurular("Basvuru",context),
                 ),
-                width: 250,
-                height: size.height * 0.08,
-                child: TextButton(
-                    child: Text(
-                  "",
-                  style: TextStyle(fontSize: 20, color: Colors.black),
-                ))),
+                Padding(
+                padding: const EdgeInsets.all(8),
+                child:Basvurular("Basvuru",context),
+                ),
+                Padding(
+                padding: const EdgeInsets.all(8),
+                child:Basvurular("Basvuru",context),
+                ),
+              ],
+            )
+          )
 
           ],
         ),
       ),
     );
   }
+}
+Widget Basvurular(String title,context){Size size = MediaQuery.of(context).size;
+return Container(
+                margin: EdgeInsets.only(top: 25),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(15),
+                  color: Colors.white,
+                ),
+                width: 250,
+                height: size.height * 0.08,
+                child: TextButton(
+                    child: Text(
+                  title,
+                  style: TextStyle(fontSize: 20, color: Colors.black),
+                )));
+
 }

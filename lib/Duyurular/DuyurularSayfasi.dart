@@ -37,78 +37,65 @@ class _DuyurularSayfasiPageState extends State<DuyurularSayfasiPage> {
               padding: EdgeInsets.only(top: 15),
               child: Text("Duyurular",style: TextStyle(fontSize: 25,fontWeight: FontWeight.bold),),
             ),
-            Container(
-              
-            ),
-            Container(
-              margin: EdgeInsets.only(top: 15),
-              decoration: BoxDecoration(color: Colors.white,borderRadius: BorderRadius.circular(15)),
-              width: size.width * 0.70,
-              height: size.height * 0.10,
-              child: TextButton(onPressed: () => Navigator.pushReplacement(
-            //Navigator.push(
-            context,
-            MaterialPageRoute(builder: (context) => DuyuruMetniPage()),
-        ),
-              child: Text("Duyuru 1",style:TextStyle(fontSize: 20),),
-              ),
-            ),
-            Container(
-              margin: EdgeInsets.only(top: 15),
-              decoration: BoxDecoration(color: Colors.white,borderRadius: BorderRadius.circular(15)),
-              width: size.width * 0.70,
-              height: size.height * 0.10,
-              child: TextButton(onPressed: () => Navigator.pushReplacement(
-            //Navigator.push(
-            context,
-            MaterialPageRoute(builder: (context) => DuyuruMetniPage()),
-        ),
-              child: Text("Duyuru 2",style:TextStyle(fontSize: 20),),
-              ),
-            ),
-            Container(
-              margin: EdgeInsets.only(top: 15),
-              decoration: BoxDecoration(color: Colors.white,borderRadius: BorderRadius.circular(15)),
-              width: size.width * 0.70,
-              height: size.height * 0.10,
-              child: TextButton(onPressed: () => Navigator.pushReplacement(
-            //Navigator.push(
-            context,
-            MaterialPageRoute(builder: (context) => DuyuruMetniPage()),
-        ),
-              child: Text("Duyuru 3",style:TextStyle(fontSize: 20),),
-              ),
-            ),
-            Container(
-              margin: EdgeInsets.only(top: 15),
-              decoration: BoxDecoration(color: Colors.white,borderRadius: BorderRadius.circular(15)),
-              width: size.width * 0.70,
-              height: size.height * 0.10,
-              child: TextButton(onPressed: () => Navigator.pushReplacement(
-            //Navigator.push(
-            context,
-            MaterialPageRoute(builder: (context) => DuyuruMetniPage()),
-        ),
-              child: Text("Duyuru 4",style:TextStyle(fontSize: 20),),
-              ),
-            ),
-            Container(
-              margin: EdgeInsets.only(top: 15),
-              decoration: BoxDecoration(color: Colors.white,borderRadius: BorderRadius.circular(15)),
-              width: size.width * 0.70,
-              height: size.height * 0.10,
-              child: TextButton(onPressed: () => Navigator.pushReplacement(
-            //Navigator.push(
-            context,
-            MaterialPageRoute(builder: (context) => DuyuruMetniPage()),
-        ),
-              child: Text("Duyuru 5",style:TextStyle(fontSize: 20),),
-              ),
-            ),
+            
+            Expanded(
+            child: ListView(
+              scrollDirection: Axis.vertical,
+              children: [
+                Padding(
+                padding: const EdgeInsets.all(8),
+                child:Duyurular("Duyuru", context),
+                ),
+                Padding(
+                padding: const EdgeInsets.all(8),
+                child:Duyurular("Duyuru", context),
+                ),
+                Padding(
+                padding: const EdgeInsets.all(8),
+                child:Duyurular("Duyuru", context),
+                ),
+                Padding(
+                padding: const EdgeInsets.all(8),
+                child:Duyurular("Duyuru", context),
+                ),
+                Padding(
+                padding: const EdgeInsets.all(8),
+                child:Duyurular("Duyuru", context),
+                ),
+                Padding(
+                padding: const EdgeInsets.all(8),
+                child:Duyurular("Duyuru", context),
+                ),
+                Padding(
+                padding: const EdgeInsets.all(8),
+                child:Duyurular("Duyuru", context),
+                ),
+                Padding(
+                padding: const EdgeInsets.all(8),
+                child:Duyurular("Duyuru", context),
+                ),
+              ],
+            )
+          )
             
           ],
         ),
       ),
     );
   }
+}
+Widget Duyurular(String title, context){Size size = MediaQuery.of(context).size;
+   return Container(
+              margin: EdgeInsets.only(top: 15),
+              decoration: BoxDecoration(color: Colors.white,borderRadius: BorderRadius.circular(15)),
+              width: size.width * 0.70,
+              height: size.height * 0.10,
+              child: TextButton(onPressed: () => Navigator.pushReplacement(
+            //Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => DuyuruMetniPage()),
+        ),
+              child: Text("Duyuru ",style:TextStyle(fontSize: 20),),
+              ),
+            );
 }
