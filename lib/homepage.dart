@@ -81,17 +81,20 @@ class _HomePageState extends State<HomePage> {
                             TextStyle(fontSize: 20, fontWeight: FontWeight.bold,color: Colors.white,
                   ),)),
                        Expanded(
-            child: ListView(
-              scrollDirection: Axis.vertical,
-              children: [
-                Duyurular("Duyuru 1",context),
-                Duyurular("Duyuru 2",context),
-                Duyurular("Duyuru 3",context),
-                Duyurular("Duyuru 4",context),
-                Duyurular("Duyuru 5",context),
-                Duyurular("Duyuru 6",context),
-                Duyurular("Duyuru 7",context),
-              ],
+            child: Scrollbar(
+              isAlwaysShown: true,
+              child: ListView(
+                scrollDirection: Axis.vertical,
+                children: [
+                  Duyurular("Duyuru 1",context),
+                  Duyurular("Duyuru 2",context),
+                  Duyurular("Duyuru 3",context),
+                  Duyurular("Duyuru 4",context),
+                  Duyurular("Duyuru 5",context),
+                  Duyurular("Duyuru 6",context),
+                  Duyurular("Duyuru 7",context),
+                ],
+              ),
             ),
                        ),
                   

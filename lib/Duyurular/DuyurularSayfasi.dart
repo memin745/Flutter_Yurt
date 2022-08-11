@@ -50,42 +50,45 @@ class _DuyurularSayfasiPageState extends State<DuyurularSayfasiPage> {
             ),
             
             Expanded(
-            child: ListView(
-              scrollDirection: Axis.vertical,
-              children: [
-                Padding(
-                padding: const EdgeInsets.all(8),
-                child:Duyurular("Duyuru", context),
-                ),
-                Padding(
-                padding: const EdgeInsets.all(8),
-                child:Duyurular("Duyuru 1", context),
-                ),
-                Padding(
-                padding: const EdgeInsets.all(8),
-                child:Duyurular("Duyuru 2 ", context),
-                ), 
-                Padding(
-                padding: const EdgeInsets.all(8),
-                child:Duyurular("Duyuru 3", context),
-                ),
-                Padding(
-                padding: const EdgeInsets.all(8),
-                child:Duyurular("Duyuru 4", context),
-                ),
-                Padding(
-                padding: const EdgeInsets.all(8),
-                child:Duyurular("Duyuru 5", context),
-                ),
-                Padding(
-                padding: const EdgeInsets.all(8),
-                child:Duyurular("Duyuru 6 ", context),
-                ),
-                Padding(
-                padding: const EdgeInsets.all(8),
-                child:Duyurular("Duyuru 7", context),
-                ),
-              ],
+            child: Scrollbar(
+              isAlwaysShown: true,
+              child: ListView(
+                scrollDirection: Axis.vertical,
+                children: [
+                  Padding(
+                  padding: const EdgeInsets.all(8),
+                  child:Duyurular("Duyuru", context),
+                  ),
+                  Padding(
+                  padding: const EdgeInsets.all(8),
+                  child:Duyurular("Duyuru 1", context),
+                  ),
+                  Padding(
+                  padding: const EdgeInsets.all(8),
+                  child:Duyurular("Duyuru 2 ", context),
+                  ), 
+                  Padding(
+                  padding: const EdgeInsets.all(8),
+                  child:Duyurular("Duyuru 3", context),
+                  ),
+                  Padding(
+                  padding: const EdgeInsets.all(8),
+                  child:Duyurular("Duyuru 4", context),
+                  ),
+                  Padding(
+                  padding: const EdgeInsets.all(8),
+                  child:Duyurular("Duyuru 5", context),
+                  ),
+                  Padding(
+                  padding: const EdgeInsets.all(8),
+                  child:Duyurular("Duyuru 6 ", context),
+                  ),
+                  Padding(
+                  padding: const EdgeInsets.all(8),
+                  child:Duyurular("Duyuru 7", context),
+                  ),
+                ],
+              ),
             )
           )
             
