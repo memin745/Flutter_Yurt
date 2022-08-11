@@ -36,7 +36,11 @@ class _HomePageState extends State<HomePage> {
         leadingWidth: 200,
         title: Text("Şehit Furkan Doğan Yurdu"),
       ),
-      body: Container(padding: EdgeInsets.only(top: size.width*0.02),
+      body: Container(padding: EdgeInsets.only(top: size.width*0.02),decoration: BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage("assets/3.jpg"),
+            fit: BoxFit.cover,
+          ),),
         child: Column(
           children: [
             SizedBox(
@@ -60,7 +64,7 @@ class _HomePageState extends State<HomePage> {
               margin: EdgeInsets.only(top: size.width * 0.03),
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(15),
-                  color: Colors.grey[300]),
+                  color:Color(0xFFB5BEEB).withOpacity(0.05)),
               width: size.width * 0.85,
               height: size.height * 0.27,
               child: Column(
@@ -70,7 +74,7 @@ class _HomePageState extends State<HomePage> {
                       child: Text(
                         "Duyurular",
                         style:
-                            TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                            TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.white),
                       )),
                        Expanded(
             child: ListView(
@@ -94,7 +98,7 @@ class _HomePageState extends State<HomePage> {
               margin: EdgeInsets.only(top: 20),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(15),
-                color: Colors.grey[300],
+                color:Color(0xFFB5BEEB).withOpacity(0.01),
               ),
               width: size.width * 0.85,
               height: size.height * 0.20,
