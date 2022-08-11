@@ -92,7 +92,7 @@ Widget Temsilciler(String title,String title2, String title3,context) {
     width: size.width*0.80,
     height:size.height * 0.12,
     decoration: BoxDecoration(
-        color: Color(0xFFD9D9D9), borderRadius: BorderRadius.circular(69)),
+        color: Color(0xFFD9D9D9), borderRadius: BorderRadius.circular(15)),
     child: Row(children: [
       Container(
         width:size.width * 0.70,
@@ -101,8 +101,8 @@ Widget Temsilciler(String title,String title2, String title3,context) {
           color: Colors.blue,
           borderRadius: BorderRadius.only(
               topRight: Radius.circular(0),
-              topLeft: Radius.circular(69),
-              bottomLeft: Radius.circular(69),
+              topLeft: Radius.circular(15),
+              bottomLeft: Radius.circular(15),
               bottomRight: Radius.circular(0)),
         ),
         child: Column(children: [
@@ -133,10 +133,10 @@ Widget Temsilciler(String title,String title2, String title3,context) {
         decoration: BoxDecoration(
           color: Colors.red,
           borderRadius: BorderRadius.only(
-              topRight: Radius.circular(69),
+              topRight: Radius.circular(15),
               topLeft: Radius.circular(0),
               bottomLeft: Radius.circular(0),
-              bottomRight: Radius.circular(69)),
+              bottomRight: Radius.circular(15)),
         ),
         child: Icon(
             Icons.person,

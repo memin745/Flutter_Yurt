@@ -45,7 +45,7 @@ class _YurtIslemleriPageState extends State<YurtIslemleriPage> {
             ),
             Container(
               margin: EdgeInsets.only(top: 15),
-              decoration: BoxDecoration(color: Color(0xFFeeeee0),borderRadius: BorderRadius.circular(69)),
+              decoration: BoxDecoration(color: Color(0xFFeeeee0),borderRadius: BorderRadius.circular(15)),
               width: size.width * 0.81,
               height: size.height * 0.10,
               child: TextButton(onPressed: () => Navigator.pushReplacement(
@@ -57,7 +57,7 @@ class _YurtIslemleriPageState extends State<YurtIslemleriPage> {
             ),
             Container(
               margin: EdgeInsets.only(top: 15),
-              decoration: BoxDecoration(color: Color(0xFFeeeee0),borderRadius: BorderRadius.circular(69)),
+              decoration: BoxDecoration(color: Color(0xFFeeeee0),borderRadius: BorderRadius.circular(15)),
               width: size.width * 0.81,
               height: size.height * 0.10,
               child: TextButton(onPressed: () => Navigator.pushReplacement(
@@ -69,7 +69,7 @@ class _YurtIslemleriPageState extends State<YurtIslemleriPage> {
             ),
             Container(
               margin: EdgeInsets.only(top: 15),
-              decoration: BoxDecoration(color: Color(0xFFeeeee0),borderRadius: BorderRadius.circular(69)),
+              decoration: BoxDecoration(color: Color(0xFFeeeee0),borderRadius: BorderRadius.circular(15)),
               width: size.width * 0.81,
               height: size.height * 0.10,
               child: TextButton(onPressed: () => Navigator.pushReplacement(

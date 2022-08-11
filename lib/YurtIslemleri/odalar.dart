@@ -95,7 +95,7 @@ Widget odalar(String title) {
     width: 340,
     height: 90,
     decoration: BoxDecoration(
-        color: Color(0xFFeeeee0), borderRadius: BorderRadius.circular(69)),
+        color: Color(0xFFeeeee0), borderRadius: BorderRadius.circular(15)),
     child: Column(children: [
       Container(
         width: 340,

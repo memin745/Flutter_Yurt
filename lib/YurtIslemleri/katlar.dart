@@ -101,7 +101,7 @@ Widget Katlar(String title,context){
     children: [
       Container(
                   margin: EdgeInsets.only(top: 15),
-                  decoration: BoxDecoration(color: Color(0xFFeeeee0),borderRadius: BorderRadius.circular(69)),
+                  decoration: BoxDecoration(color: Color(0xFFeeeee0),borderRadius: BorderRadius.circular(15)),
                   width: 336,
                   height: 71,
                   child: TextButton(onPressed: () => Navigator.pushReplacement(
