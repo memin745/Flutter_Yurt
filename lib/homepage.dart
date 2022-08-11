@@ -83,7 +83,7 @@ class _HomePageState extends State<HomePage> {
                        Expanded(
             child: Scrollbar(
               showTrackOnHover: true,
-              isAlwaysShown: false,
+              isAlwaysShown: true,
               child: ListView(
                 scrollDirection: Axis.vertical,
                 children: [
