@@ -46,6 +46,7 @@ class _ProfilKullaniciPageState extends State<ProfilKullaniciPage> {
               child: Icon(
                   Icons.person,
                   size: 50,
+                  color: Color(0xFFeeeee0),
               ),
             ),
            Expanded(
@@ -92,13 +93,13 @@ Widget KullaniciProfil(String title,context){ Size size = MediaQuery.of(context)
               margin: EdgeInsets.only(top: 25),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(15),
-                color: Colors.blue,
+                color: Color(0xFFeeeee0),
               
               ),
               width: size.width*0.50,
               height: size.height *0.08,
               padding: EdgeInsets.only(top: 25),
-              child:Text(title ,textAlign: TextAlign.center ,style: TextStyle(fontSize: 20, color: Colors.white),
+              child:Text(title ,textAlign: TextAlign.center ,style: TextStyle(fontSize: 20, color: Colors.black),
            ),
             );
 }
