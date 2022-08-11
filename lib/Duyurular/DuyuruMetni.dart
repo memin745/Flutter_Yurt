@@ -18,7 +18,7 @@ class _DuyuruMetniPageState extends State<DuyuruMetniPage> {
     int _currentIndex = 0;
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.grey,
+        backgroundColor: Color(0xFF808080),
         title: Text("Şehit Furkan Doğan Yurdu"),
         automaticallyImplyLeading: false,
         leading: new IconButton(onPressed: () => Navigator.pushReplacement(
@@ -30,20 +30,20 @@ class _DuyuruMetniPageState extends State<DuyuruMetniPage> {
         ),
       ),
       body: Container(
-        margin: EdgeInsets.symmetric(
-            horizontal: size.width * 0.07, vertical: size.width * 0.06),
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(15),
-          color: Colors.grey,
-        ),
-        width: size.width * 0.85,
-        height: size.height * 0.80,
+          image: DecorationImage(
+            image: AssetImage("assets/3.jpg"),
+            fit: BoxFit.cover,
+          ),
+      ),
+        width: size.width * 1,
+        height: size.height * 1,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
             Container(
               padding: EdgeInsets.only(top: 15),
-              child: Text("Duyurular",style: TextStyle(fontSize: 25,fontWeight: FontWeight.bold),),
+              child: Text("Duyurular",style: TextStyle(fontSize: 25,fontWeight: FontWeight.bold,color: Colors.white),),
             ),
             Container(
             margin: EdgeInsets.only(top:size.height *0.02),
@@ -55,15 +55,23 @@ class _DuyuruMetniPageState extends State<DuyuruMetniPage> {
             width: size.width * 0.60,
             height: size.height *0.30,
           ),
-            Container(
-              margin: EdgeInsets.only(top: 15),
-              decoration: BoxDecoration(color: Colors.white,borderRadius: BorderRadius.circular(15)),
-              width: size.width * 0.70,
-              height: size.height * 0.20,
-              child: TextButton(onPressed: () {},
-              child: Text("Duyuru metni",style:TextStyle(fontSize: 20),),
+            
+              Container(
+                margin: EdgeInsets.only(top: 15),
+                decoration: BoxDecoration(color: Colors.white,borderRadius: BorderRadius.circular(15)),
+                width: size.width * 10,
+                height: size.height * 0.40,
+                child: ListView(
+                  scrollDirection: Axis.vertical,
+                  children: [
+                    Container(child: Text("Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",textAlign: TextAlign.center, style:TextStyle(fontSize: 20,fontWeight: FontWeight.w800),),)
+                  ],
+                ),
+              
+              
               ),
-            ),
+            
+            
           ],
         ),
         

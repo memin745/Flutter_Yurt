@@ -100,8 +100,8 @@ class _MainLayoutState extends State<MainLayout> {
             });
           },
           type: BottomNavigationBarType.fixed,
-          selectedItemColor: Colors.redAccent,
-          unselectedItemColor: Color(0xff383e42),
+          selectedItemColor: Color(0xffcd5b45),
+          unselectedItemColor: Color(0xFF000066),
           showSelectedLabels: false,
           showUnselectedLabels: false,
           items: const <BottomNavigationBarItem>[

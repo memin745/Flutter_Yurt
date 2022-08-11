@@ -16,8 +16,9 @@ class _DuyurularSayfasiPageState extends State<DuyurularSayfasiPage> {
     Size size = MediaQuery.of(context).size;
     int _currentIndex = 0;
     return Scaffold(
+      
       appBar: AppBar(
-        backgroundColor: Colors.grey,
+        backgroundColor: Color(0xFF808080),
         title: Text("Şehit Furkan Doğan Yurdu"),
          leading: new IconButton(
           icon: new Icon(Icons.arrow_back, color: Colors.white),
@@ -29,20 +30,23 @@ class _DuyurularSayfasiPageState extends State<DuyurularSayfasiPage> {
         ),
       ),
       body: Container(
-        margin: EdgeInsets.symmetric(
-            horizontal: size.width * 0.07, vertical: size.width * 0.06),
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(15),
-          color: Colors.grey,
-        ),
-        width: size.width * 0.85,
-        height: size.height * 0.80,
+          image: DecorationImage(
+            image: AssetImage("assets/3.jpg"),
+            fit: BoxFit.cover,
+          ),
+      ),
+       
+        
+        
+        width: MediaQuery.of(context).size.width,
+        height: size.height * 1,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
             Container(
               padding: EdgeInsets.only(top: 15),
-              child: Text("Duyurular",style: TextStyle(fontSize: 25,fontWeight: FontWeight.bold),),
+              child: Text("Duyurular",style: TextStyle(fontSize: 25,fontWeight: FontWeight.bold,color:Colors.white),),
             ),
             
             Expanded(
