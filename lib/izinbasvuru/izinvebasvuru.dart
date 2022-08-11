@@ -17,7 +17,7 @@ class _IzinveBasvuruPageState extends State<IzinveBasvuruPage> {
     int _currentIndex = 0;
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.grey,
+        backgroundColor: Color(0xFF808080),
         title: Text("Şehit Furkan Doğan Yurdu"),
       ),
       body: Container(

@@ -16,7 +16,7 @@ class _BasvurularimPageState extends State<BasvurularimPage> {
     int _currentIndex = 0;
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.grey,
+        backgroundColor: Color(0xFF808080),
         title: Text("Şehit Furkan Doğan Yurdu"),
         automaticallyImplyLeading: false,
         leading: new IconButton(onPressed: () => Navigator.pushReplacement(

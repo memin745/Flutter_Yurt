@@ -105,7 +105,7 @@ class _ProfilGirisPageState extends State<ProfilGirisPage> {
                         MaterialPageRoute(
                             builder: (context) => IzinIslemleriPage()),
                       ),
-                  child: Text("İzin İşlemleri",
+                  child: Text("İzin Geçmişi",
                       style: TextStyle(fontSize: 20, color: Colors.black)))),
           Container(
               margin: EdgeInsets.only(top: 20),

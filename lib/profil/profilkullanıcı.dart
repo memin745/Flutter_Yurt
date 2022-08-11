@@ -17,7 +17,7 @@ class _ProfilKullaniciPageState extends State<ProfilKullaniciPage> {
     return Scaffold(
       
       appBar: AppBar(
-        backgroundColor: Colors.grey,
+        backgroundColor: Color(0xFF808080),
         title: Text("Şehit Furkan Doğan Yurdu"),
         automaticallyImplyLeading: false,
         leading: new IconButton(

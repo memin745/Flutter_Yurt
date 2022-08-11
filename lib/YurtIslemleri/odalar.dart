@@ -18,7 +18,7 @@ class _OdalarPageState extends State<OdalarPage> {
     int _currentIndex = 0;
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.grey,
+        backgroundColor: Color(0xFF808080),
         title: Text("Şehit Furkan Doğan Yurdu"),
         automaticallyImplyLeading: false,
         leading: new IconButton(
