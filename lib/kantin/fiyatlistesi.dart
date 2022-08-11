@@ -43,7 +43,7 @@ class _FiyatListesiPageState extends State<FiyatListesiPage> {
                 margin: EdgeInsets.only(top: 25),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(15),
-                  color: Colors.white,
+                  color: Color(0xFFeeeee0),
                 ),
                 width: 250,
                 child: TextButton(

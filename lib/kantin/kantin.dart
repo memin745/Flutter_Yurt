@@ -64,7 +64,7 @@ class _KantinPageState extends State<KantinPage> {
                 margin: EdgeInsets.only(top: 25),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(15),
-                  color: Colors.white,
+                  color: Color(0xFFeeeee0),
                 ),
                 width: 250,
                 height: size.height*0.08,
@@ -85,7 +85,7 @@ class _KantinPageState extends State<KantinPage> {
                   margin: EdgeInsets.only(top: 10),
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(15),
-                    color: Colors.white,
+                    color: Color(0xFFeeeee0),
                   ),
                   width: 250,
                   height: size.height*0.08,
@@ -102,7 +102,7 @@ class _KantinPageState extends State<KantinPage> {
               margin: EdgeInsets.only(top: 10),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(15),
-                color: Colors.white,
+                color: Color(0xFFeeeee0),
               ),
               width: 250,
               height: size.height*0.08,
