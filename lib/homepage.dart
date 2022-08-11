@@ -69,7 +69,7 @@ class _HomePageState extends State<HomePage> {
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(15),
                   color: Colors.grey[300].withOpacity(0.01),),
-              width: size.width * 0.85,
+              width: size.width * 0.90,
               height: size.height * 0.31,
               child: Column(
                 children: [
@@ -82,6 +82,7 @@ class _HomePageState extends State<HomePage> {
                   ),)),
                        Expanded(
             child: Scrollbar(
+              showTrackOnHover: true,
               isAlwaysShown: true,
               child: ListView(
                 scrollDirection: Axis.vertical,
