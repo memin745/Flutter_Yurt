@@ -59,7 +59,7 @@ class _DuyuruMetniPageState extends State<DuyuruMetniPage> {
               Container(
                 margin: EdgeInsets.only(top: 15),
                 decoration: BoxDecoration(color: Colors.white,borderRadius: BorderRadius.circular(15)),
-                width: size.width * 10,
+                width: size.width * 08,
                 height: size.height * 0.40,
                 child: ListView(
                   scrollDirection: Axis.vertical,

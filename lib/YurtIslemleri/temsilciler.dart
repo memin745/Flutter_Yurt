@@ -92,13 +92,13 @@ Widget Temsilciler(String title,String title2, String title3,context) {
     width: size.width*0.80,
     height:size.height * 0.12,
     decoration: BoxDecoration(
-        color: Color(0xFFD9D9D9), borderRadius: BorderRadius.circular(69)),
+        color: Colors.white, borderRadius: BorderRadius.circular(69)),
     child: Row(children: [
       Container(
         width:size.width * 0.70,
         height: size.height *0.12,
         decoration: BoxDecoration(
-          color: Colors.blue,
+          color: Color(0xFFeeeee0),
           borderRadius: BorderRadius.only(
               topRight: Radius.circular(0),
               topLeft: Radius.circular(69),
@@ -131,7 +131,7 @@ Widget Temsilciler(String title,String title2, String title3,context) {
         width:size.width * 0.259,
         height: size.height *0.12,
         decoration: BoxDecoration(
-          color: Colors.red,
+          color: Color(0xFFff8787),
           borderRadius: BorderRadius.only(
               topRight: Radius.circular(69),
               topLeft: Radius.circular(0),

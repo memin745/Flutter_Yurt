@@ -100,7 +100,7 @@ Widget Duyurular(String title, context){Size size = MediaQuery.of(context).size;
               margin: EdgeInsets.only(top: 15),
               decoration: BoxDecoration(color: Color(0xFFeeeee0),borderRadius: BorderRadius.circular(15)),
               width: size.width * 0.70,
-              height: size.height * 0.10,
+              height: size.height * 0.078,
               child: TextButton(onPressed: () => Navigator.pushReplacement(
             //Navigator.push(
             context,
