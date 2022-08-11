@@ -57,35 +57,35 @@ class _BavurularPageState extends State<BavurularPage> {
               children: [
                 Padding(
                 padding: const EdgeInsets.all(8),
-                child:Basvurular("Basvuru",context),
+                child:Basvurular("Basvurularım",context),
                 ),
                 Padding(
                 padding: const EdgeInsets.all(8),
-                child:Basvurular("Basvuru",context),
+                child:Basvurular("Basvurularım",context),
                 ),
                 Padding(
                 padding: const EdgeInsets.all(8),
-                child:Basvurular("Basvuru",context),
+                child:Basvurular("Basvurularım",context),
                 ),
                 Padding(
                 padding: const EdgeInsets.all(8),
-                child:Basvurular("Basvuru",context),
+                child:Basvurular("Basvurularım",context),
                 ),
                 Padding(
                 padding: const EdgeInsets.all(8),
-                child:Basvurular("Basvuru",context),
+                child:Basvurular("Basvurularım",context),
                 ),
                 Padding(
                 padding: const EdgeInsets.all(8),
-                child:Basvurular("Basvuru",context),
+                child:Basvurular("Basvurularım",context),
                 ),
                 Padding(
                 padding: const EdgeInsets.all(8),
-                child:Basvurular("Basvuru",context),
+                child:Basvurular("Basvurularım",context),
                 ),
                 Padding(
                 padding: const EdgeInsets.all(8),
-                child:Basvurular("Basvuru",context),
+                child:Basvurular("Basvurularım",context),
                 ),
               ],
             )
@@ -102,7 +102,9 @@ return Container(
                 margin: EdgeInsets.only(top: 25),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(15),
-                 color: Colors.redAccent[100],
+                 color: Color(
+                    0xFFeeeee0,
+                  ),
                 ),
                 width: 250,
                 height: size.height * 0.08,
