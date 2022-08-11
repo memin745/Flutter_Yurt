@@ -97,7 +97,7 @@ class _IzinIslemleriPageState extends State<IzinIslemleriPage> {
 Widget IzinIslemleri(String title,context){ Size size = MediaQuery.of(context).size;
 return Container( 
               margin: EdgeInsets.only(top: 20),
-              decoration: BoxDecoration(borderRadius: BorderRadius.circular(15),color: Colors.white),
+              decoration: BoxDecoration(borderRadius: BorderRadius.circular(15),color: Color(0xFFeeeee0)),
               width: 200,
               height: 50,
               child: TextButton(
