@@ -94,7 +94,7 @@ class _DuyurularSayfasiPageState extends State<DuyurularSayfasiPage> {
 Widget Duyurular(String title, context){Size size = MediaQuery.of(context).size;
    return Container(
               margin: EdgeInsets.only(top: 15),
-              decoration: BoxDecoration(color: Colors.white,borderRadius: BorderRadius.circular(15)),
+              decoration: BoxDecoration(color: Colors.redAccent[100],borderRadius: BorderRadius.circular(15)),
               width: size.width * 0.70,
               height: size.height * 0.10,
               child: TextButton(onPressed: () => Navigator.pushReplacement(
