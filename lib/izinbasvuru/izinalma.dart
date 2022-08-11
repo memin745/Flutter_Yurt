@@ -44,21 +44,8 @@ class _IzinAlmaPageState extends State<IzinAlmaPage> {
             height: size.height * 0.07,
             child: Row(children: [
               IzinAlma("Gidiş Tarihi", context, 0),
-              Container(
-                margin: EdgeInsets.only(left: size.width * 0.08),
-                decoration: BoxDecoration(
-                    color: Color(0xFFeeeee0,),
-                    borderRadius: BorderRadius.circular(20)),
-                width: size.width * 0.30,
-                height: size.height * 0.05,
-              ),
-            ]),
-          ),
-          Container(
-            margin: EdgeInsets.only(top: 30),
-            child: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-              IzinAlma("Geliş Tarihi", context, 0),
-              Container(
+               Container(
+                padding:  EdgeInsets.only(left: size.width * 0.02),
                 margin: EdgeInsets.only(left: size.width * 0.08),
                 decoration: BoxDecoration(
                     color: Color(0xFFeeeee0,),
@@ -68,7 +55,28 @@ class _IzinAlmaPageState extends State<IzinAlmaPage> {
                 child:TextField(
                     decoration: InputDecoration(
                       border: InputBorder.none,
-                      hintText: 'Geliş Tarihi...',
+                      hintText: 'Gidiş Tarihi',
+                    ),
+                  ),
+              ),
+            ]),
+          ),
+          Container(
+            margin: EdgeInsets.only(top: 30),
+            child: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+              IzinAlma("Geliş Tarihi", context, 0),
+              Container(
+                padding:  EdgeInsets.only(left: size.width * 0.02),
+                margin: EdgeInsets.only(left: size.width * 0.08),
+                decoration: BoxDecoration(
+                    color: Color(0xFFeeeee0,),
+                    borderRadius: BorderRadius.circular(20)),
+                width: size.width * 0.30,
+                height: size.height * 0.05,
+                child:TextField(
+                    decoration: InputDecoration(
+                      border: InputBorder.none,
+                      hintText: 'Geliş Tarihi',
                     ),
                   ),
               ),
@@ -78,13 +86,20 @@ class _IzinAlmaPageState extends State<IzinAlmaPage> {
             margin: EdgeInsets.only(top: 30),
             child: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
               IzinAlma("Şehir", context,0),
-              Container(
+               Container(
+                padding:  EdgeInsets.only(left: size.width * 0.02),
                 margin: EdgeInsets.only(left: size.width * 0.08),
                 decoration: BoxDecoration(
                     color: Color(0xFFeeeee0,),
                     borderRadius: BorderRadius.circular(20)),
                 width: size.width * 0.30,
                 height: size.height * 0.05,
+                child:TextField(
+                    decoration: InputDecoration(
+                      border: InputBorder.none,
+                      hintText: 'Şehir',
+                    ),
+                  ),
               ),
             ]),
           ),
