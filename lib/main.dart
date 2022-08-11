@@ -92,7 +92,7 @@ class _MainLayoutState extends State<MainLayout> {
         shape: const CircularNotchedRectangle(),
         clipBehavior: Clip.antiAlias,
         child: BottomNavigationBar(
-          backgroundColor: Color(0xFF1c6071),
+          backgroundColor: Color(0xFFe0eeee),
           currentIndex: _currentIndex,
           onTap: (index) {
             setState(() {
@@ -101,7 +101,7 @@ class _MainLayoutState extends State<MainLayout> {
           },
           type: BottomNavigationBarType.fixed,
           selectedItemColor: Color(0xffcd5b45),
-          unselectedItemColor: Color(0xFF000066),
+          unselectedItemColor: Color(0xFF00688b),
           showSelectedLabels: false,
           showUnselectedLabels: false,
           items: const <BottomNavigationBarItem>[
