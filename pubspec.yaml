@@ -35,6 +35,7 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
   carousel_pro: ^1.0.0
+  syncfusion_flutter_datepicker: ^19.2.60
 
 
 dev_dependencies:

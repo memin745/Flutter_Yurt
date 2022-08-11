@@ -41,16 +41,17 @@ class _YurtFaaliyetleriPageState extends State<YurtFaaliyetleriPage> {
             Container(
               margin: EdgeInsets.only(top: 20),
               child: Text("Yurt Faaliyetleri",style: TextStyle(fontSize: 20),
-
+              
               ),
             ),
-            Expanded(
+            Expanded( 
             child: ListView(
               scrollDirection: Axis.vertical,
               children: [
                 Padding(
                 padding: const EdgeInsets.all(8),
                 child:YurtFaaliyetleri("Faaliyet",context),
+                
                 ),
                 Padding(
                 padding: const EdgeInsets.all(8),
@@ -93,6 +94,7 @@ class _YurtFaaliyetleriPageState extends State<YurtFaaliyetleriPage> {
 Widget YurtFaaliyetleri(String title , context){
   Size size = MediaQuery.of(context).size;
   return Container(
+    
               margin: EdgeInsets.only(top: 20),
               decoration: BoxDecoration(borderRadius: BorderRadius.circular(15),color: Colors.white),
               width: 200,
