@@ -44,90 +44,64 @@ class _YurtFaaliyetleriPageState extends State<YurtFaaliyetleriPage> {
 
               ),
             ),
-            Container( 
-              margin: EdgeInsets.only(top: 20),
-              decoration: BoxDecoration(borderRadius: BorderRadius.circular(15),color: Colors.white),
-              width: 200,
-              height: 50,
-              child: TextButton(
-              child: Text("His Teksil",style: TextStyle(fontSize: 20)
-              
-              ,
-              ), 
-              ), 
-              
-            ),
-            Container(
-              margin: EdgeInsets.only(top: 20),
-              decoration: BoxDecoration(borderRadius: BorderRadius.circular(15),color: Colors.white),
-              width: 200,
-              height: 50,
-              child: TextButton(onPressed: () => {}, 
-              child: Text("His Teksil",style: TextStyle(fontSize: 20)
-              ,
-              ),
-              ),
-            ),
-            Container(
-              margin: EdgeInsets.only(top: 20),
-              decoration: BoxDecoration(borderRadius: BorderRadius.circular(15),color: Colors.white),
-              width: 200,
-              height: 50,
-              child: TextButton(onPressed: () => {}, 
-              child: Text("His Teksil",style: TextStyle(fontSize: 20)
-              ,
-              ),
-              ),
-            ),
-            Container(
-              margin: EdgeInsets.only(top: 20),
-              decoration: BoxDecoration(borderRadius: BorderRadius.circular(15),color: Colors.white),
-              width: 200,
-              height: 50,
-              child: TextButton(onPressed: () => {}, 
-              child: Text("His Teksil",style: TextStyle(fontSize: 20)
-              ,
-              ),
-              ),
-            ),
-            Container(
-              margin: EdgeInsets.only(top: 20),
-              decoration: BoxDecoration(borderRadius: BorderRadius.circular(15),color: Colors.white),
-              width: 200,
-              height: 50,
-              child: TextButton(onPressed: () => {}, 
-              child: Text("His Teksil",style: TextStyle(fontSize: 20)
-              ,
-              ),
-              ),
-            ),Container(
-              margin: EdgeInsets.only(top: 20),
-              decoration: BoxDecoration(borderRadius: BorderRadius.circular(15),color: Colors.white),
-              width: 200,
-              height: 50,
-              child: TextButton(onPressed: () => {}, 
-              child: Text("His Teksil",style: TextStyle(fontSize: 20)
-              ,
-              ),
-              ),
-            ),
-            Container(
-              margin: EdgeInsets.only(top: 20),
-              decoration: BoxDecoration(borderRadius: BorderRadius.circular(15),color: Colors.white),
-              width: 200,
-              height: 50,
-              child: TextButton(onPressed: () => {}, 
-              child: Text("His Teksil",style: TextStyle(fontSize: 20)
-              ,
-              ),
-              ),
-            ),
-            
-          ]
+            Expanded(
+            child: ListView(
+              scrollDirection: Axis.vertical,
+              children: [
+                Padding(
+                padding: const EdgeInsets.all(8),
+                child:YurtFaaliyetleri("Faaliyet",context),
+                ),
+                Padding(
+                padding: const EdgeInsets.all(8),
+                child:YurtFaaliyetleri("Faaliyet",context),
+                ),
+                Padding(
+                padding: const EdgeInsets.all(8),
+                child:YurtFaaliyetleri("Faaliyet",context),
+                ),
+                Padding(
+                padding: const EdgeInsets.all(8),
+                child:YurtFaaliyetleri("Faaliyet",context),
+                ),
+                Padding(
+                padding: const EdgeInsets.all(8),
+                child:YurtFaaliyetleri("Faaliyet",context),
+                ),
+                Padding(
+                padding: const EdgeInsets.all(8),
+                child:YurtFaaliyetleri("Faaliyet",context),
+                ),
+                Padding(
+                padding: const EdgeInsets.all(8),
+                child:YurtFaaliyetleri("Faaliyet",context),
+                ),
+                Padding(
+                padding: const EdgeInsets.all(8),
+                child:YurtFaaliyetleri("Faaliyet",context),
+                ),
+              ],
+            )
+          )
+
+          ],
+        ),
       ),
-    ),
     );
   }
 }
-
+Widget YurtFaaliyetleri(String title , context){
+  Size size = MediaQuery.of(context).size;
+  return Container(
+              margin: EdgeInsets.only(top: 20),
+              decoration: BoxDecoration(borderRadius: BorderRadius.circular(15),color: Colors.white),
+              width: 200,
+              height: 50,
+              child: TextButton(onPressed: () => {}, 
+              child: Text(title,style: TextStyle(fontSize: 20)
+   ), 
+              ), 
+              
+            );
   
+}
