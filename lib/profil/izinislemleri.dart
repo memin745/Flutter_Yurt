@@ -30,19 +30,21 @@ class _IzinIslemleriPageState extends State<IzinIslemleriPage> {
         ),
       ),
       body: Container(
-        margin: EdgeInsets.symmetric(
-            horizontal: size.width * 0.07, vertical: size.width * 0.06),
         decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(15), color: Colors.grey[300]),
-        width: size.width * 0.85,
-        height: size.height * 80,
+          image: DecorationImage(
+            image: AssetImage("assets/3.jpg"),
+            fit: BoxFit.cover,
+          ),
+        ),
+        width: size.width * 1,
+        height: size.height * 1,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           
           children: [
             Container(
               margin: EdgeInsets.only(top: 20),
-              child: Text("İzin Geçmişi",style: TextStyle(fontSize: 20),
+              child: Text("İzin Geçmişi",style: TextStyle(fontSize: 20,color: Colors.white),
 
               ),
             ),
@@ -99,7 +101,7 @@ return Container(
               width: 200,
               height: 50,
               child: TextButton(
-              child: Text(title,style: TextStyle(fontSize: 20),
+              child: Text(title,style: TextStyle(fontSize: 20,color: Colors.black),
               ), 
               ), 
               

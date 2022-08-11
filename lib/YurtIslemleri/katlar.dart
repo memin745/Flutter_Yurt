@@ -29,30 +29,64 @@ class _KatlarPageState extends State<KatlarPage> {
         ),
       ),
       body: Container(
-        margin: EdgeInsets.symmetric(
-            horizontal: size.width * 0.07, vertical: size.width * 0.06),
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(15),
-          color: Colors.grey,
+          image: DecorationImage(
+            image: AssetImage("assets/3.jpg"),
+            fit: BoxFit.cover,
+          ),
         ),
-        width: size.width * 0.85,
-        height: size.height * 0.80,
+        width: size.width * 1,
+        height: size.height * 1,
         
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
             Container(
               padding: EdgeInsets.only(top: 40),
-              child: Text("Yurt İşlemleri",style: TextStyle(fontSize: 25,fontWeight: FontWeight.bold),),
+              child: Text("Yurt İşlemleri",style: TextStyle(fontSize: 25,fontWeight: FontWeight.bold,color: Colors.white),),
             ),
             Container(
               
             ),
-            Katlar("Kat 1",context),
-            Katlar("Kat 2",context),
-            Katlar("Kat 3",context),
-            Katlar("Kat 4",context),
-            Katlar("Kat 5",context),
+            Expanded(
+            child: ListView(
+              scrollDirection: Axis.vertical,
+              children: [
+                Padding(
+                padding: const EdgeInsets.all(8),
+                child:Katlar("1. Kat",context),
+                ),
+                Padding(
+                padding: const EdgeInsets.all(8),
+                child:Katlar("2. Kat",context),
+                ),
+                Padding(
+                padding: const EdgeInsets.all(8),
+                child:Katlar("3. Kat",context),
+                ),
+                Padding(
+                padding: const EdgeInsets.all(8),
+                child:Katlar("4. Kat",context),
+                ),
+                Padding(
+                padding: const EdgeInsets.all(8),
+                child:Katlar("5. Kat",context),
+                ),
+                Padding(
+                padding: const EdgeInsets.all(8),
+                child:Katlar("6. Kat",context),
+                ),
+                Padding(
+                padding: const EdgeInsets.all(8),
+                child:Katlar("7. Kat",context),
+                ),
+                Padding(
+                padding: const EdgeInsets.all(8),
+                child:Katlar("8. Kat",context),
+                ),
+              ],
+            )
+          )
           ]
         ),
         
@@ -75,7 +109,7 @@ Widget Katlar(String title,context){
             context,
             MaterialPageRoute(builder: (context) => OdalarPage()),
         ),
-                  child: Text(title,style:TextStyle(fontSize: 20),),
+                  child: Text(title,style:TextStyle(fontSize: 20,color: Colors.black),),
                   ),
                 ),
     ],

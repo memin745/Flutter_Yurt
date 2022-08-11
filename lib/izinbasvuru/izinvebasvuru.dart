@@ -3,7 +3,6 @@ import 'package:flutter_application_3/homepage.dart';
 import 'package:flutter_application_3/izinbasvuru/basvurular.dart';
 import 'package:flutter_application_3/izinbasvuru/izinalma.dart';
 
-
 class IzinveBasvuruPage extends StatefulWidget {
   const IzinveBasvuruPage({Key key}) : super(key: key);
 
@@ -17,21 +16,19 @@ class _IzinveBasvuruPageState extends State<IzinveBasvuruPage> {
     Size size = MediaQuery.of(context).size;
     int _currentIndex = 0;
     return Scaffold(
-      
       appBar: AppBar(
         backgroundColor: Colors.grey,
         title: Text("Şehit Furkan Doğan Yurdu"),
-        
       ),
       body: Container(
-        margin: EdgeInsets.symmetric(
-            horizontal: size.width * 0.07, vertical: size.width * 0.06),
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(15),
-          color: Colors.grey,
+          image: DecorationImage(
+            image: AssetImage("assets/3.jpg"),
+            fit: BoxFit.cover,
+          ),
         ),
-        width: size.width * 0.85,
-        height: size.height * 0.80,
+        width: size.width * 1,
+        height: size.height * 1,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
@@ -39,36 +36,45 @@ class _IzinveBasvuruPageState extends State<IzinveBasvuruPage> {
                 margin: EdgeInsets.only(top: 25),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(15),
-                  color: Colors.white,
+                  color: Color(
+                    0xFFeeeee0,
+                  ),
                 ),
                 width: 250,
                 height: size.height * 0.08,
-                child: TextButton(onPressed: () => Navigator.pushReplacement(
+                child: TextButton(
+                    onPressed: () => Navigator.pushReplacement(
                           //Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) =>BavurularPage()),
+                              builder: (context) => BavurularPage()),
                         ),
                     child: Text(
-                  "Başvurular",
-                  style: TextStyle(fontSize: 20),
-                ))),
+                      "Başvurular",
+                      style: TextStyle(
+                        fontSize: 20,
+                        color: Colors.black,
+                      ),
+                    ))),
             Container(
                 margin: EdgeInsets.only(top: 10),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(15),
-                  color: Colors.white,
+                  color: Color(
+                    0xFFeeeee0,
+                  ),
                 ),
                 width: 250,
                 height: size.height * 0.08,
-                child: TextButton(onPressed: () => Navigator.pushReplacement(
+                child: TextButton(
+                    onPressed: () => Navigator.pushReplacement(
                           //Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) =>IzinAlmaPage()),
+                              builder: (context) => IzinAlmaPage()),
                         ),
-                    child: Text("İzin İşlemleri", style: TextStyle(fontSize: 20)))),
-            
+                    child: Text("İzin İşlemleri",
+                        style: TextStyle(fontSize: 20, color: Colors.black)))),
           ],
         ),
       ),

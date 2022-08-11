@@ -49,14 +49,14 @@ class _KantinPageState extends State<KantinPage> {
         ),
       ),
       body: Container(
-        margin: EdgeInsets.symmetric(
-            horizontal: size.width * 0.07, vertical: size.width * 0.06),
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(15),
-          color: Colors.grey[300],
+       decoration: BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage("assets/3.jpg"),
+            fit: BoxFit.cover,
+          ),
         ),
-        width: size.width * 0.85,
-        height: size.height * 0.80,
+        width: size.width * 1,
+        height: size.height * 1,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
@@ -77,7 +77,7 @@ class _KantinPageState extends State<KantinPage> {
                         ),
                     child: Text(
                       "Fiyat Listesi",
-                      style: TextStyle(fontSize: 20),
+                      style: TextStyle(fontSize: 20,color: Colors.black),
                     ))),
             Padding(
               padding: const EdgeInsets.all(8.0),
@@ -96,7 +96,7 @@ class _KantinPageState extends State<KantinPage> {
                             MaterialPageRoute(
                                 builder: (context) => OdemelerPage()),
                           ),
-                      child: Text("Ödeme Yap", style: TextStyle(fontSize: 20)))),
+                      child: Text("Ödeme Yap", style: TextStyle(fontSize: 20,color: Colors.black)))),
             ),
             Container(
               margin: EdgeInsets.only(top: 10),
@@ -115,7 +115,7 @@ class _KantinPageState extends State<KantinPage> {
                                 builder: (context) => BakiyeYuklePage()),
                           ),
                       child: Text("Bakiye Yükle",
-                          style: TextStyle(fontSize: 20)))),
+                          style: TextStyle(fontSize: 20,color: Colors.black)),)),
             ),
 
 

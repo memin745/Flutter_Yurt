@@ -31,14 +31,14 @@ class _OdalarPageState extends State<OdalarPage> {
         ),
       ),
       body: Container(
-        margin: EdgeInsets.symmetric(
-            horizontal: size.width * 0.07, vertical: size.width * 0.06),
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(15),
-          color: Colors.grey,
+          image: DecorationImage(
+            image: AssetImage("assets/3.jpg"),
+            fit: BoxFit.cover,
+          ),
         ),
-        width: size.width * 0.85,
-        height: size.height * 0.80,
+        width: size.width * 1,
+        height: size.height * 1,
         child: Column(mainAxisAlignment: MainAxisAlignment.start, children: [
           Container(
             padding: EdgeInsets.only(top: 40),

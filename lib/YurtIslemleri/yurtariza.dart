@@ -31,17 +31,17 @@ class _YurtArizaPageState extends State<YurtArizaPage> {
         ),
       ),
       body: Container(
-        margin: EdgeInsets.symmetric(
-            horizontal: size.width * 0.07, vertical: size.width * 0.06),
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(15),
-          color: Colors.grey,
+          image: DecorationImage(
+            image: AssetImage("assets/3.jpg"),
+            fit: BoxFit.cover,
+          ),
         ),
-        width: size.width * 0.85,
-        height: size.height * 0.80,
+        width: size.width * 1,
+        height: size.height * 1,
         child: Column(children: [
-          SutunOlustur("Kat"),
-          SutunOlustur("Sorun"),
+          SutunOlustur("Kat",context,"Katı Yazın..."),
+          SutunOlustur("Sorun",context,"Sorunu Yazın..."),
           
           Container(
             margin: EdgeInsets.only(top: 50),
@@ -56,7 +56,8 @@ class _YurtArizaPageState extends State<YurtArizaPage> {
     );
   }
 }
-Widget SutunOlustur(String title){
+Widget SutunOlustur(String title,context,String hinttext){
+  Size size = MediaQuery.of(context).size;
 
   return Container(
              margin: EdgeInsets.only(top: 15),
@@ -64,18 +65,27 @@ Widget SutunOlustur(String title){
         height: 50,
         child: Row(children: [
           Container(
-             width: 100,
+             width: size.width*0.30,
         height: 50,
         decoration: BoxDecoration(color: Colors.white,borderRadius: BorderRadius.circular(69)),
         padding: EdgeInsets.only(top: 15),
         child: Text(title,textAlign: TextAlign.center,style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
           ),
           Container(
-            margin: EdgeInsets.only(left: 15),
-             width:200,
-        height: 50,
-        decoration: BoxDecoration(color: Colors.white,borderRadius: BorderRadius.circular(69)),
-          ),
+                margin: EdgeInsets.only(left: size.width * 0.10),
+                decoration: BoxDecoration(
+                    color: Color(0xFFeeeee0,),
+                    borderRadius: BorderRadius.circular(20)),
+                width: size.width * 0.40,
+                height: size.height * 0.05,
+                padding: EdgeInsets.only(left: size.width * 0.03),
+                child:TextField(
+                    decoration: InputDecoration(
+                      border: InputBorder.none,
+                      hintText: hinttext,
+                    ),
+                  ),
+              ),
           
         ]),
           );

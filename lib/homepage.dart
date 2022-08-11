@@ -71,7 +71,7 @@ class _HomePageState extends State<HomePage> {
                   borderRadius: BorderRadius.circular(15),
                   color: Colors.grey[300].withOpacity(0.01)),
               width: size.width * 0.85,
-              height: size.height * 0.27,
+              height: size.height * 0.30,
               child: Column(
                 children: [
                   Container(
@@ -100,21 +100,20 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
             Container(
-              margin: EdgeInsets.only(top: 20),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(15),
                 color: Colors.grey.withOpacity(0.01),
               ),
               width: size.width * 0.85,
               height: size.height * 0.20,
-              child: Column(
+              child: Row(
                 children: [
                   Container(
-                      margin: EdgeInsets.only(top: 25),
+                      margin: EdgeInsets.only(right: 25,left: 10),
                       decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(15),
-                      color: Colors.redAccent,),
-                      width: 250,
+                     color: Color(0xFFeeeee0,),),
+                      width: size.width*0.35,
                       child: TextButton(
                           onPressed: () => Navigator.pushReplacement(
             //Navigator.push(
@@ -125,11 +124,10 @@ class _HomePageState extends State<HomePage> {
                             style: TextStyle(fontSize: 20,color: Colors.black),
                           ))),
                   Container(
-                      margin: EdgeInsets.only(top: 10),
                       decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(15),
-                      color: Colors.redAccent,),
-                      width: 250,
+                      color: Color(0xFFeeeee0),),
+                       width: size.width*0.35,
                       child: TextButton(
                           onPressed: () => Navigator.pushReplacement(
             //Navigator.push(

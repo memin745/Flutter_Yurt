@@ -29,14 +29,14 @@ class _YemekTablosuPageState extends State<YemekTablosuPage> {
         ),
       ),
       body: Container(
-        margin: EdgeInsets.symmetric(
-            horizontal: size.width * 0.07, vertical: size.width * 0.06),
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(15),
-          color: Colors.grey[300]
+       decoration: BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage("assets/3.jpg"),
+            fit: BoxFit.cover,
+          ),
         ),
-        width: size.width * 0.85,
-        height: size.height * 70,
+        width: size.width * 1,
+        height: size.height * 1,
 
       
     ),

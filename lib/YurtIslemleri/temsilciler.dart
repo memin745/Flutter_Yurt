@@ -30,34 +30,73 @@ class _TemsilcilerPageState extends State<TemsilcilerPage> {
           ),
         ),
         body: Container(
-          margin: EdgeInsets.symmetric(
-              horizontal: size.width * 0.07, vertical: size.width * 0.06),
           decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(15),
-            color: Colors.grey,
+          image: DecorationImage(
+            image: AssetImage("assets/3.jpg"),
+            fit: BoxFit.cover,
           ),
-          width: size.width * 0.85,
-          height: size.height * 0.80,
+        ),
+          width: size.width * 1,
+          height: size.height * 1,
           child: Column(mainAxisAlignment: MainAxisAlignment.start, children: [
             Container(
               padding: EdgeInsets.only(top: 40),
             ),
-            Temsilciler("Muhammet","Emin","2")
+            Expanded(
+            child: ListView(
+              scrollDirection: Axis.vertical,
+              children: [
+                Padding(
+                padding: const EdgeInsets.all(8),
+                child:Temsilciler("Muhammet Emin","YAĞMUR","2",context),
+                ),
+                Padding(
+                padding: const EdgeInsets.all(8),
+                child:Temsilciler("Ömer Faruk","Işık","3",context),
+                ),
+                Padding(
+                padding: const EdgeInsets.all(8),
+                child:Temsilciler("Ebu Bekir Talha","İşçimen","6",context),
+                ),
+                Padding(
+                padding: const EdgeInsets.all(8),
+                child:Temsilciler("Ahmet Hasana","Çelik","2",context),
+                ),
+                Padding(
+                padding: const EdgeInsets.all(8),
+                child:Temsilciler("Muhammet Emin","YAĞMUR","2",context),
+                ),
+                Padding(
+                padding: const EdgeInsets.all(8),
+                child:Temsilciler("Ömer Faruk","Işık","3",context),
+                ),
+                Padding(
+                padding: const EdgeInsets.all(8),
+                child:Temsilciler("Ebu Bekir Talha","İşçimen","6",context),
+                ),
+                Padding(
+                padding: const EdgeInsets.all(8),
+                child:Temsilciler("Ahmet Hasana","Çelik","2",context),
+                ),
+              ],
+            )
+          )
           ]),
         ));
   }
 }
 
-Widget Temsilciler(String title,String title2, String title3) {
+Widget Temsilciler(String title,String title2, String title3,context) {
+     Size size = MediaQuery.of(context).size;
   return Container(
-    width: 330,
-    height: 90,
+    width: size.width*0.80,
+    height:size.height * 0.12,
     decoration: BoxDecoration(
         color: Color(0xFFD9D9D9), borderRadius: BorderRadius.circular(69)),
     child: Row(children: [
       Container(
-        width: 200,
-        height: 90,
+        width:size.width * 0.70,
+        height: size.height *0.12,
         decoration: BoxDecoration(
           color: Colors.blue,
           borderRadius: BorderRadius.only(
@@ -69,28 +108,28 @@ Widget Temsilciler(String title,String title2, String title3) {
         child: Column(children: [
           Container(
             padding: EdgeInsets.only(top: 10),
-            width: 130,
-            height: 30,
+            width:size.width * 0.60,
+            height: size.height *0.04,
             child: Text("Adı : " + title,style: TextStyle(fontSize: 15,fontWeight: FontWeight.bold),),
           ),
           Container(
             padding: EdgeInsets.only(top: 10),
-            width: 130,
-            height: 30,
+           width:size.width * 0.60,
+            height: size.height *0.04,
             child: Text("Soyad : " + title2,style: TextStyle(fontSize: 15,fontWeight: FontWeight.bold),),
           ),
           Container(
             padding: EdgeInsets.only(bottom: 10),
-            width: 130,
-            height: 30,
+           width:size.width * 0.60,
+            height: size.height *0.04,
             child: Text("Katı : " + title3,style: TextStyle(fontSize: 15,fontWeight: FontWeight.bold),),
           ),
 
         ]),
       ),
       Container(
-        width: 130,
-        height: 90,
+        width:size.width * 0.259,
+        height: size.height *0.12,
         decoration: BoxDecoration(
           color: Colors.red,
           borderRadius: BorderRadius.only(

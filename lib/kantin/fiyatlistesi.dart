@@ -29,14 +29,14 @@ class _FiyatListesiPageState extends State<FiyatListesiPage> {
         ),
       ),
       body: Container(
-        margin: EdgeInsets.symmetric(
-            horizontal: size.width * 0.07, vertical: size.width * 0.06),
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(15),
-          color: Colors.grey[300],
+          image: DecorationImage(
+            image: AssetImage("assets/3.jpg"),
+            fit: BoxFit.cover,
+          ),
         ),
-        width: size.width * 0.85,
-        height: size.height * 0.80,
+        width: size.width * 1,
+        height: size.height * 1,
         child: Column(mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Container(
@@ -51,7 +51,7 @@ class _FiyatListesiPageState extends State<FiyatListesiPage> {
                         
                     child: Text(
                       "Fiyat Listesi Burası",
-                      style: TextStyle(fontSize: 20),
+                      style: TextStyle(fontSize: 20,color: Colors.black),
                     ))),
             
           ],

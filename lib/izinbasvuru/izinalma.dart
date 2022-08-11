@@ -29,36 +29,25 @@ class _IzinAlmaPageState extends State<IzinAlmaPage> {
         ),
       ),
       body: Container(
-        margin: EdgeInsets.symmetric(
-            horizontal: size.width * 0.07, vertical: size.width * 0.06),
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(15),
-          color: Colors.grey,
-        ),
-        width: size.width * 0.85,
-        height: size.height * 0.80,
+          image: DecorationImage(
+            image: AssetImage("assets/3.jpg"),
+            fit: BoxFit.cover,
+          ),
+      ),
+        width: size.width * 1,
+        height: size.height * 1,
         child: Column(children: [
           Container(
             margin: EdgeInsets.only(top: size.height * 0.10),
             width: size.width * 0.70,
             height: size.height * 0.07,
             child: Row(children: [
-              Container(
-                decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(20)),
-                width: size.width * 0.30,
-                height: size.height * 0.05,
-                child: Text(
-                  "Gidiş Tarihi",
-                  textAlign: TextAlign.center,
-                  style: TextStyle(fontSize: 20),
-                ),
-              ),
+              IzinAlma("Gidiş Tarihi", context, 0),
               Container(
                 margin: EdgeInsets.only(left: size.width * 0.08),
                 decoration: BoxDecoration(
-                    color: Colors.white,
+                    color: Color(0xFFeeeee0,),
                     borderRadius: BorderRadius.circular(20)),
                 width: size.width * 0.30,
                 height: size.height * 0.05,
@@ -68,22 +57,11 @@ class _IzinAlmaPageState extends State<IzinAlmaPage> {
           Container(
             margin: EdgeInsets.only(top: 30),
             child: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-              Container(
-                decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(20)),
-                width: size.width * 0.30,
-                height: size.height * 0.05,
-                child: Text(
-                  "Geliş Tarihi",
-                  textAlign: TextAlign.center,
-                  style: TextStyle(fontSize: 20),
-                ),
-              ),
+              IzinAlma("Geliş Tarihi", context, 0),
               Container(
                 margin: EdgeInsets.only(left: size.width * 0.08),
                 decoration: BoxDecoration(
-                    color: Colors.white,
+                    color: Color(0xFFeeeee0,),
                     borderRadius: BorderRadius.circular(20)),
                 width: size.width * 0.30,
                 height: size.height * 0.05,
@@ -99,38 +77,31 @@ class _IzinAlmaPageState extends State<IzinAlmaPage> {
           Container(
             margin: EdgeInsets.only(top: 30),
             child: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-              Container(
-                decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(20)),
-                width: size.width * 0.30,
-                height: size.height * 0.05,
-                child: Text(
-                  "Şehir",
-                  textAlign: TextAlign.center,
-                  style: TextStyle(fontSize: 20),
-                ),
-              ),
+              IzinAlma("Şehir", context,0),
               Container(
                 margin: EdgeInsets.only(left: size.width * 0.08),
                 decoration: BoxDecoration(
-                    color: Colors.white,
+                    color: Color(0xFFeeeee0,),
                     borderRadius: BorderRadius.circular(20)),
                 width: size.width * 0.30,
                 height: size.height * 0.05,
               ),
             ]),
           ),
-          Container(
-            margin: EdgeInsets.only(top: size.width * 0.10),
-            decoration: BoxDecoration(borderRadius: BorderRadius.circular(15),color: Colors.white,),
-            padding: EdgeInsets.only(top: 5),
-            child: Text("Başvur",textAlign: TextAlign.center, style: TextStyle(fontSize: 20),),
-            width: size.width * 0.30,
-                height: size.height * 0.05,
-          )
+          IzinAlma("Basvur", context,0.10),
         ]),
       ),
     );
   }
+}
+Widget IzinAlma(String title,context, double bosluk){
+  Size size = MediaQuery.of(context).size;
+  return Container(
+            margin: EdgeInsets.only(top: size.width * bosluk),
+            decoration: BoxDecoration(borderRadius: BorderRadius.circular(15),color: Color(0xFFeeeee0,),),
+            padding: EdgeInsets.only(top: 5),
+            child: Text(title,textAlign: TextAlign.center, style: TextStyle(fontSize: 20),),
+            width: size.width * 0.30,
+                height: size.height * 0.05,
+          );
 }
