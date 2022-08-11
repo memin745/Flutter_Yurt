@@ -66,16 +66,15 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
             Container(
-              margin: EdgeInsets.only(top: size.width * 0.03),
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(15),
                   color: Colors.grey[300].withOpacity(0.01),),
               width: size.width * 0.85,
-              height: size.height * 0.30,
+              height: size.height * 0.31,
               child: Column(
                 children: [
                   Container(
-                      padding: EdgeInsets.only(top: 20),
+                    margin: EdgeInsets.only(top: 10),
                       child: Text(
                         "Duyurular",
                         style:
@@ -100,6 +99,7 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
             Container(
+              padding: EdgeInsets.only(top:15),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(15),
                 color: Colors.grey.withOpacity(0.01),
@@ -109,6 +109,7 @@ class _HomePageState extends State<HomePage> {
               child: Row(
                 children: [
                   Container(
+                    
                       margin: EdgeInsets.only(right: 25,left: 10),
                       decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(15),
