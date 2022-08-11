@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_3/Duyurular/DuyurularSayfasi.dart';
 import 'package:flutter_application_3/YurtIslemleri/YurtIslemleri.dart';
-import 'package:flutter_application_3/deneme.dart';
 import 'package:flutter_application_3/homepage.dart';
 import 'package:flutter_application_3/izinbasvuru/izinvebasvuru.dart';
 import 'package:flutter_application_3/profil/profilgiris.dart';
@@ -84,7 +83,7 @@ class _MainLayoutState extends State<MainLayout> {
             key: _page5,
             onGenerateRoute: (route) => MaterialPageRoute(
               settings: route,
-              builder: (context) =>DenemePage()
+              builder: (context) =>ProfilGirisPage()
             ),
           ),
         ],
@@ -102,7 +101,7 @@ class _MainLayoutState extends State<MainLayout> {
           },
           type: BottomNavigationBarType.fixed,
           selectedItemColor: Color(0xffcd5b45),
-          unselectedItemColor: Color(0xFFf0f8ff),
+          unselectedItemColor: Color(0xFF000066),
           showSelectedLabels: false,
           showUnselectedLabels: false,
           items: const <BottomNavigationBarItem>[

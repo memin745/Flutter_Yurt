@@ -32,7 +32,7 @@ class _ProfilKullaniciPageState extends State<ProfilKullaniciPage> {
       body: Container(
         decoration: BoxDecoration(
           image: DecorationImage(
-            image: AssetImage("assets/3.jpg"),
+            image: AssetImage("assets/i4.jpeg"),
             fit: BoxFit.cover,
           ),
         ),

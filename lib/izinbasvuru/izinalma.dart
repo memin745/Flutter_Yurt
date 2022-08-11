@@ -31,7 +31,7 @@ class _IzinAlmaPageState extends State<IzinAlmaPage> {
       body: Container(
         decoration: BoxDecoration(
           image: DecorationImage(
-            image: AssetImage("assets/3.jpg"),
+            image: AssetImage("assets/i4.jpeg"),
             fit: BoxFit.cover,
           ),
       ),
