@@ -21,8 +21,11 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return Scaffold(
+      
+          
+       
       appBar: AppBar(
-        backgroundColor: Colors.blue[200],
+        backgroundColor: Colors.white,
         centerTitle: true,
         leading: Container(
             width: 200,
@@ -33,33 +36,24 @@ class _HomePageState extends State<HomePage> {
         leadingWidth: 200,
         title: Text("Şehit Furkan Doğan Yurdu"),
       ),
-      body: Container(
-        padding: EdgeInsets.only(top: size.width * 0.02),
+      body: Container(padding: EdgeInsets.only(top: size.width*0.02),
         child: Column(
           children: [
-            Container(
-              decoration: BoxDecoration(
-                border: Border.all(
-                  width: 5
-                ),borderRadius: BorderRadius.circular(10)
-              ),
-              margin: EdgeInsets.all(10),
-              child: SizedBox(
-                height: 200.0,
-                width: double.infinity,
-                child: Carousel(
-                  dotSize: 6.0,
-                  dotSpacing: 15.0,
-                  dotPosition: DotPosition.bottomCenter,
-                  images: [
-                    Image.asset('assets/test.png', fit: BoxFit.cover),
-                    Image.asset('assets/test.png', fit: BoxFit.cover),
-                    Image.asset('assets/test.png', fit: BoxFit.cover),
-                    Image.asset('assets/test.png', fit: BoxFit.cover),
-                    Image.asset('assets/test.png', fit: BoxFit.cover),
-                    Image.asset('assets/test.png', fit: BoxFit.cover),
-                  ],
-                ),
+            SizedBox(
+              height: 200.0,
+              width: double.infinity,
+              child: Carousel(
+                dotSize: 6.0,
+                dotSpacing: 15.0,
+                dotPosition: DotPosition.bottomCenter,
+                images: [
+                  Image.asset('assets/test.png', fit: BoxFit.cover),
+                  Image.asset('assets/test.png', fit: BoxFit.cover),
+                  Image.asset('assets/test.png', fit: BoxFit.cover),
+                  Image.asset('assets/test.png', fit: BoxFit.cover),
+                  Image.asset('assets/test.png', fit: BoxFit.cover),
+                  Image.asset('assets/test.png', fit: BoxFit.cover),
+                ],
               ),
             ),
             Container(
@@ -75,23 +69,24 @@ class _HomePageState extends State<HomePage> {
                       padding: EdgeInsets.only(top: 20),
                       child: Text(
                         "Duyurular",
-                        style: TextStyle(
-                            fontSize: 20, fontWeight: FontWeight.bold),
+                        style:
+                            TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                       )),
-                  Expanded(
-                    child: ListView(
-                      scrollDirection: Axis.vertical,
-                      children: [
-                        Duyurular("Duyuru 1", context),
-                        Duyurular("Duyuru 2", context),
-                        Duyurular("Duyuru 3", context),
-                        Duyurular("Duyuru 4", context),
-                        Duyurular("Duyuru 5", context),
-                        Duyurular("Duyuru 6", context),
-                        Duyurular("Duyuru 7", context),
-                      ],
-                    ),
-                  ),
+                       Expanded(
+            child: ListView(
+              scrollDirection: Axis.vertical,
+              children: [
+                Duyurular("Duyuru 1",context),
+                Duyurular("Duyuru 2",context),
+                Duyurular("Duyuru 3",context),
+                Duyurular("Duyuru 4",context),
+                Duyurular("Duyuru 5",context),
+                Duyurular("Duyuru 6",context),
+                Duyurular("Duyuru 7",context),
+              ],
+            ),
+                       ),
+                  
                 ],
               ),
             ),
@@ -108,17 +103,14 @@ class _HomePageState extends State<HomePage> {
                   Container(
                       margin: EdgeInsets.only(top: 25),
                       decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(15),
-                        color: Colors.white,
-                      ),
+                borderRadius: BorderRadius.circular(15),
+                      color: Colors.white,),
                       width: 250,
                       child: TextButton(
                           onPressed: () => Navigator.pushReplacement(
-                                //Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => KantinPage()),
-                              ),
+            //Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => KantinPage()),),
                           child: Text(
                             "Kantin",
                             style: TextStyle(fontSize: 20),
@@ -126,25 +118,24 @@ class _HomePageState extends State<HomePage> {
                   Container(
                       margin: EdgeInsets.only(top: 10),
                       decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(15),
-                        color: Colors.white,
-                      ),
+                borderRadius: BorderRadius.circular(15),
+                      color: Colors.white,),
                       width: 250,
                       child: TextButton(
                           onPressed: () => Navigator.pushReplacement(
-                                //Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => YemekhanePage()),
-                              ),
-                          child: Text("Yemekhane",
-                              style: TextStyle(fontSize: 20)))),
+            //Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => YemekhanePage()),),
+                          child:
+                              Text("Yemekhane", style: TextStyle(fontSize: 20)))),
                 ],
               ),
             ),
+            
           ],
         ),
       ),
+        
     );
   }
 }

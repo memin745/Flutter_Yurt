@@ -44,9 +44,11 @@ class _MainLayoutState extends State<MainLayout> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      
 
 
       body: IndexedStack(
+        
         index: _currentIndex,
         children: <Widget>[
           Navigator(

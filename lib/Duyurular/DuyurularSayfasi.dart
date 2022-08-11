@@ -19,7 +19,14 @@ class _DuyurularSayfasiPageState extends State<DuyurularSayfasiPage> {
       appBar: AppBar(
         backgroundColor: Colors.grey,
         title: Text("Şehit Furkan Doğan Yurdu"),
-
+         leading: new IconButton(
+          icon: new Icon(Icons.arrow_back, color: Colors.white),
+          onPressed: () => Navigator.pushReplacement(
+            //Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => HomePage()),
+          ),
+        ),
       ),
       body: Container(
         margin: EdgeInsets.symmetric(
