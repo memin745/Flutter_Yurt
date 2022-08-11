@@ -4,7 +4,6 @@ import 'package:flutter_application_3/profil/izinislemleri.dart';
 import 'package:flutter_application_3/profil/profilkullan%C4%B1c%C4%B1.dart';
 import 'package:flutter_application_3/profil/yurtfaaliyetleri.dart';
 
-
 class ProfilGirisPage extends StatefulWidget {
   const ProfilGirisPage({Key key}) : super(key: key);
 
@@ -18,11 +17,9 @@ class _ProfilGirisPageState extends State<ProfilGirisPage> {
     int _currentIndex = 0;
     Size size = MediaQuery.of(context).size;
     return Scaffold(
-      
       appBar: AppBar(
         backgroundColor: Colors.grey,
         title: Text("Şehit Furkan Doğan Yurdu"),
-        
       ),
       body: Container(
         decoration: BoxDecoration(
@@ -38,13 +35,14 @@ class _ProfilGirisPageState extends State<ProfilGirisPage> {
             margin: EdgeInsets.only(top: 25),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(15),
-              color: Colors.blue,
+              color: Color(0xFFeeeee0),
             ),
             child: Row(
               children: [
                 Container(
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(15),
+                      color: Color(0xFFeeeee0),
                     ),
                     width: size.width * 0.50,
                     height: size.height * 0.08,
@@ -57,7 +55,7 @@ class _ProfilGirisPageState extends State<ProfilGirisPage> {
                             ),
                         child: Text("Kullanıcı Bilgileri",
                             style:
-                                TextStyle(fontSize: 20, color: Colors.white)))),
+                                TextStyle(fontSize: 20, color: Colors.black)))),
                 Container(
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(15),
@@ -77,42 +75,50 @@ class _ProfilGirisPageState extends State<ProfilGirisPage> {
           Container(
             margin: EdgeInsets.only(top: 20),
             decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(15), color: Colors.grey),
+              borderRadius: BorderRadius.circular(15),
+              color: Color(0xFFeeeee0),
+            ),
             width: size.width * 0.70,
             height: size.height * 0.08,
             child: TextButton(
                 onPressed: () => Navigator.pushReplacement(
                       //Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => YurtFaaliyetleriPage()),
+                      MaterialPageRoute(
+                          builder: (context) => YurtFaaliyetleriPage()),
                     ),
                 child: Text("Yurt Faaliyetleri",
-                    style: TextStyle(fontSize: 20, color: Colors.white))),
+                    style: TextStyle(fontSize: 20, color: Colors.black))),
           ),
           Container(
               margin: EdgeInsets.only(top: 20),
               decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(15), color: Colors.grey),
+                borderRadius: BorderRadius.circular(15),
+                color: Color(0xFFeeeee0),
+              ),
               width: size.width * 0.70,
               height: size.height * 0.08,
               child: TextButton(
                   onPressed: () => Navigator.pushReplacement(
                         //Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => IzinIslemleriPage()),
+                        MaterialPageRoute(
+                            builder: (context) => IzinIslemleriPage()),
                       ),
                   child: Text("İzin İşlemleri",
-                      style: TextStyle(fontSize: 20, color: Colors.white)))),
+                      style: TextStyle(fontSize: 20, color: Colors.black)))),
           Container(
               margin: EdgeInsets.only(top: 20),
               decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(15), color: Colors.grey),
+                borderRadius: BorderRadius.circular(15),
+                color: Color(0xFFeeeee0),
+              ),
               width: size.width * 0.70,
               height: size.height * 0.08,
               child: TextButton(
                   onPressed: () => {},
                   child: Text("Çıkış",
-                      style: TextStyle(fontSize: 20, color: Colors.white)))),
+                      style: TextStyle(fontSize: 20, color: Colors.black)))),
           Container(
             margin: EdgeInsets.only(top: size.height * 0.2),
             padding: EdgeInsets.only(left: size.height * 0.05),
@@ -120,16 +126,20 @@ class _ProfilGirisPageState extends State<ProfilGirisPage> {
               borderRadius: BorderRadius.circular(15),
             ),
             child: Row(children: [
-              Container(
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(15),
-                ),
-                width: size.width * 0.20,
-                height: size.height * 0.08,
-                margin: EdgeInsets.only(top: 20),
-                child: Icon(
-                  Icons.call,
-                  size: 50,
+              Padding(
+                padding: const EdgeInsets.only(left: 30.0),
+                child: Container(
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(15),
+                  ),
+                  width: size.width * 0.20,
+                  height: size.height * 0.08,
+                  margin: EdgeInsets.only(top: 20),
+                  child: Icon(
+                    Icons.call,
+                    size: 50,
+                    color: Colors.white,
+                  ),
                 ),
               ),
               Container(
@@ -142,6 +152,7 @@ class _ProfilGirisPageState extends State<ProfilGirisPage> {
                 child: Icon(
                   Icons.mail,
                   size: 50,
+                  color: Colors.white,
                 ),
               ),
               Container(
@@ -154,6 +165,7 @@ class _ProfilGirisPageState extends State<ProfilGirisPage> {
                 child: Icon(
                   Icons.person,
                   size: 50,
+                  color: Colors.white,
                 ),
               ),
             ]),

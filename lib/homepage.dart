@@ -69,7 +69,7 @@ class _HomePageState extends State<HomePage> {
               margin: EdgeInsets.only(top: size.width * 0.03),
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(15),
-                  color: Colors.grey[300].withOpacity(0.01)),
+                  color: Colors.grey[300].withOpacity(0.01),),
               width: size.width * 0.85,
               height: size.height * 0.30,
               child: Column(
