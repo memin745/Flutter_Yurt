@@ -28,14 +28,14 @@ class _BasvurularimPageState extends State<BasvurularimPage> {
         ),
       ),
       body: Container(
-        margin: EdgeInsets.symmetric(
-            horizontal: size.width * 0.07, vertical: size.width * 0.06),
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(15),
-          color: Colors.grey,
-        ),
-        width: size.width * 0.85,
-        height: size.height * 0.80,
+          image: DecorationImage(
+            image: AssetImage("assets/3.jpg"),
+            fit: BoxFit.cover,
+          ),
+      ),
+        width: size.width * 1,
+        height: size.height * 1,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [Container(
@@ -49,13 +49,19 @@ class _BasvurularimPageState extends State<BasvurularimPage> {
             height: size.height *0.30,
           ),
           Container(
-            margin: EdgeInsets.only(top: size.height * 0.03),
-            padding: EdgeInsets.only(top: size.height *0.06),
-            width: size.width *0.75,
-            height: size.height *0.20,
-            decoration: BoxDecoration(color: Colors.black,borderRadius: BorderRadius.circular(15)),
-            child: Text("Etkinlik ile Bilgiler",textAlign: TextAlign.center, style: TextStyle(fontSize: 20,color: Colors.white),),
-          ),
+                margin: EdgeInsets.only(top: 15),
+                decoration: BoxDecoration(color: Colors.black,borderRadius: BorderRadius.circular(15)),
+                width: size.width * 0.80,
+                height: size.height * 0.30,
+                child: ListView(
+                  scrollDirection: Axis.vertical,
+                  children: [
+                    Container(child: Text("Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",textAlign: TextAlign.center, style:TextStyle(fontSize: 20,fontWeight: FontWeight.w800,color: Colors.white),),)
+                  ],
+                ),
+              
+              
+              ),
           Container(
             width: size.width * 0.35,
             height: size.height*0.06,

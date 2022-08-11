@@ -19,7 +19,7 @@ class _BavurularPageState extends State<BavurularPage> {
     return Scaffold(
       
       appBar: AppBar(
-        backgroundColor: Colors.grey,
+        backgroundColor: Color(0xFF808080),
         title: Text("Şehit Furkan Doğan Yurdu"),
         automaticallyImplyLeading: false,
         leading: new IconButton(onPressed: () => Navigator.pushReplacement(
@@ -31,14 +31,14 @@ class _BavurularPageState extends State<BavurularPage> {
         ),
       ),
       body: Container(
-        margin: EdgeInsets.symmetric(
-            horizontal: size.width * 0.07, vertical: size.width * 0.06),
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(15),
-          color: Colors.grey,
-        ),
-        width: size.width * 0.85,
-        height: size.height * 0.80,
+         decoration: BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage("assets/3.jpg"),
+            fit: BoxFit.cover,
+          ),
+      ),
+        width: size.width * 1,
+        height: size.height * 1,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
@@ -47,7 +47,7 @@ class _BavurularPageState extends State<BavurularPage> {
               child: Column(children: [
                 Text(
                   "Güncel Başvurular",
-                  style: TextStyle(fontSize: 20, color: Colors.black),
+                  style: TextStyle(fontSize: 20, color: Colors.white),
                 )
               ]),
             ),
@@ -102,7 +102,7 @@ return Container(
                 margin: EdgeInsets.only(top: 25),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(15),
-                  color: Colors.white,
+                 color: Colors.redAccent[100],
                 ),
                 width: 250,
                 height: size.height * 0.08,
