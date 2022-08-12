@@ -4,6 +4,7 @@ import 'package:flutter_application_3/Duyurular/DuyurularSayfasi.dart';
 import 'package:flutter_application_3/LoginPage.dart';
 import 'package:flutter_application_3/YurtIslemleri/YurtIslemleri.dart';
 import 'package:flutter_application_3/homepage.dart';
+import 'package:flutter_application_3/izinbasvuru/basvurularim.dart';
 import 'package:flutter_application_3/izinbasvuru/izinvebasvuru.dart';
 import 'package:flutter_application_3/profil/profilgiris.dart';
 
@@ -22,7 +23,7 @@ class MyGrillApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       routes: {
-        '/mainlayout': (context) => const MainLayout(),
+        '/mainlayout': (context) => const SignInScreen(),
       },
       initialRoute: '/mainlayout',
     );
@@ -59,7 +60,7 @@ class _MainLayoutState extends State<MainLayout> {
             key: _page1,
             onGenerateRoute: (route) => MaterialPageRoute(
               settings: route,
-              builder: (context) => SignInScreen(),
+              builder: (context) => HomePage(),
             ),
           ),
           Navigator(
