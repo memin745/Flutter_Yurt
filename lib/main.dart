@@ -14,6 +14,17 @@ void main() async {
   await Firebase.initializeApp();
   runApp(const MyGrillApp());
 }
+/*void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
+  bool loggedIn = FirebaseAuth.instance.currentUser !=null;
+  runApp(MaterialApp(
+    debugShowCheckedModeBanner: false,
+    home: loggedIn ? MainLayout(): SignInScreen(),
+  ),
+ );
+}
+*/
 
 class MyGrillApp extends StatelessWidget {
   const MyGrillApp({Key key}) : super(key: key);
