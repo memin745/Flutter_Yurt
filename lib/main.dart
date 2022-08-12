@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_3/Duyurular/DuyurularSayfasi.dart';
@@ -12,15 +13,16 @@ import 'package:flutter_application_3/profil/profilgiris.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
-  runApp(const MyGrillApp());
+   bool loggedIn = FirebaseAuth.instance.currentUser !=null;
+  runApp(MaterialApp(
+    debugShowCheckedModeBanner: false,
+    home: loggedIn ? MainLayout(): SignInScreen(),
+  ),);
 }
 /*void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
-  bool loggedIn = FirebaseAuth.instance.currentUser !=null;
-  runApp(MaterialApp(
-    debugShowCheckedModeBanner: false,
-    home: loggedIn ? MainLayout(): SignInScreen(),
+ 
   ),
  );
 }
@@ -31,13 +33,7 @@ class MyGrillApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      routes: {
-        '/mainlayout': (context) => const SignInScreen(),
-      },
-      initialRoute: '/mainlayout',
-    );
+    
   }
 }
 
