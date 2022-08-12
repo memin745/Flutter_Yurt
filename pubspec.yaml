@@ -37,7 +37,7 @@ dependencies:
   carousel_pro: ^1.0.0
   syncfusion_flutter_datepicker: ^19.2.60
   firebase_core: ^1.20.1
-  firebase_auth: ^3.6.3
+  firebase_auth: ^3.3.3
 
 
 
