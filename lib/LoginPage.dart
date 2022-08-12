@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import 'homepage.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key key}) : super(key: key);
@@ -24,7 +25,7 @@ class _LoginPageState extends State<LoginPage> {
             Container(
               padding: EdgeInsets.only(left: 35, top: 130),
               child: Text(
-                'Welcome\nBack',
+                'Hoşgeldiniz',
                 style: TextStyle(color: Colors.white, fontSize: 33),
               ),
             ),
@@ -70,7 +71,7 @@ class _LoginPageState extends State<LoginPage> {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Text(
-                                'Sign in',
+                                'Giriş',
                                 style: TextStyle(
                                     fontSize: 27, fontWeight: FontWeight.w700),
                               ),
@@ -79,7 +80,12 @@ class _LoginPageState extends State<LoginPage> {
                                 backgroundColor: Color(0xff4c505b),
                                 child: IconButton(
                                     color: Colors.white,
-                                    onPressed: () {},
+                                    onPressed: () => Navigator.pushReplacement(
+                                          //Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                              builder: (context) => HomePage()),
+                                        ),
                                     icon: Icon(
                                       Icons.arrow_forward,
                                     )),
@@ -96,20 +102,12 @@ class _LoginPageState extends State<LoginPage> {
                                 onPressed: () {
                                   Navigator.pushNamed(context, 'register');
                                 },
-                                child: Text(
-                                  'Sign Up',
-                                  textAlign: TextAlign.left,
-                                  style: TextStyle(
-                                      decoration: TextDecoration.underline,
-                                      color: Color(0xff4c505b),
-                                      fontSize: 18),
-                                ),
                                 style: ButtonStyle(),
                               ),
                               TextButton(
                                   onPressed: () {},
                                   child: Text(
-                                    'Forgot Password',
+                                    'Parolanızı mı Unuttunuz?',
                                     style: TextStyle(
                                       decoration: TextDecoration.underline,
                                       color: Color(0xff4c505b),
