@@ -1,3 +1,4 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_3/Duyurular/DuyurularSayfasi.dart';
 import 'package:flutter_application_3/LoginPage.dart';
@@ -8,6 +9,8 @@ import 'package:flutter_application_3/profil/profilgiris.dart';
 
 
 void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   runApp(const MyGrillApp());
 }
 
@@ -56,7 +59,7 @@ class _MainLayoutState extends State<MainLayout> {
             key: _page1,
             onGenerateRoute: (route) => MaterialPageRoute(
               settings: route,
-              builder: (context) => HomePage(),
+              builder: (context) => SignInScreen(),
             ),
           ),
           Navigator(
