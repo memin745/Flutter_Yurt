@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:firebase_auth/firebase_auth.dart';
 
 import 'package:flutter/material.dart';
@@ -17,6 +19,10 @@ class _SignInScreenState extends State<SignInScreen> {
   TextEditingController _emailTextController = TextEditingController();
   @override
   Widget build(BuildContext context) {
+    final FirebaseAuth auth = FirebaseAuth.instance;
+  final User user = auth.currentUser;
+  final uid = user.email;
+  Text(uid);
     return Scaffold(
       body: Container(
         width: MediaQuery.of(context).size.width,
@@ -65,6 +71,7 @@ class _SignInScreenState extends State<SignInScreen> {
                       .then((value) {
                     Navigator.push(context,
                         MaterialPageRoute(builder: (context) => MainLayout()));
+                       
                   }).onError((error, stackTrace) {
                     print("Giriş olmadı ${error.toString()}");
                   });

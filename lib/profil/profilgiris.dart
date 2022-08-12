@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_3/LoginPage.dart';
 import 'package:flutter_application_3/homepage.dart';
 import 'package:flutter_application_3/profil/izinislemleri.dart';
 import 'package:flutter_application_3/profil/profilkullan%C4%B1c%C4%B1.dart';
@@ -116,7 +117,13 @@ class _ProfilGirisPageState extends State<ProfilGirisPage> {
               width: size.width * 0.70,
               height: size.height * 0.08,
               child: TextButton(
-                  onPressed: () => {},
+                  onPressed: () => Navigator.pushReplacement(
+                        //Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => SignInScreen
+                            ()),
+                      ),
                   child: Text("Çıkış",
                       style: TextStyle(fontSize: 20, color: Colors.black)))),
           Container(
