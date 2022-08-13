@@ -11,6 +11,33 @@ class IzinAlmaPage extends StatefulWidget {
 }
 
 class _IzinAlmaPageState extends State<IzinAlmaPage> {
+  DateTime _dateTime = DateTime.now();
+  DateTime _dateTime2 = DateTime.now();
+
+  void _showDatePicker() {
+    showDatePicker(
+      context: context,
+      initialDate: DateTime.now(),
+      firstDate: DateTime(1950),
+      lastDate: DateTime(2050),
+    ).then((value) {
+      setState(() {
+        _dateTime = value;
+      });
+    });
+  }
+  void _showDatePicker2() {
+    showDatePicker(
+      context: context,
+      initialDate: DateTime.now(),
+      firstDate: DateTime(1950),
+      lastDate: DateTime(2050),
+    ).then((value) {
+      setState(() {
+        _dateTime2 = value;
+      });
+    });
+  }
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -40,9 +67,8 @@ class _IzinAlmaPageState extends State<IzinAlmaPage> {
         child: Column(children: [
           Container(
             margin: EdgeInsets.only(top: size.height * 0.10),
-            width: size.width * 0.70,
             height: size.height * 0.07,
-            child: Row(children: [
+            child: Row(mainAxisAlignment: MainAxisAlignment.center,children: [
               IzinAlma("Gidiş Tarihi", context, 0),
                Container(
                 padding:  EdgeInsets.only(left: size.width * 0.02),
@@ -50,13 +76,11 @@ class _IzinAlmaPageState extends State<IzinAlmaPage> {
                 decoration: BoxDecoration(
                     color: Color(0xFFeeeee0,),
                     borderRadius: BorderRadius.circular(20)),
-                width: size.width * 0.30,
+                width: size.width * 0.35,
                 height: size.height * 0.05,
-                child:TextField(
-                    decoration: InputDecoration(
-                      border: InputBorder.none,
-                      hintText: 'Gidiş Tarihi',
-                    ),
+                child:TextButton(
+                  child: Text(_dateTime2.toString(),textAlign: TextAlign.center, style: TextStyle(fontSize: 20,color: Colors.black),),
+                    onPressed: _showDatePicker2,
                   ),
               ),
             ]),
@@ -66,18 +90,17 @@ class _IzinAlmaPageState extends State<IzinAlmaPage> {
             child: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
               IzinAlma("Geliş Tarihi", context, 0),
               Container(
+                
                 padding:  EdgeInsets.only(left: size.width * 0.02),
                 margin: EdgeInsets.only(left: size.width * 0.08),
                 decoration: BoxDecoration(
                     color: Color(0xFFeeeee0,),
                     borderRadius: BorderRadius.circular(20)),
-                width: size.width * 0.30,
+                width: size.width * 0.35,
                 height: size.height * 0.05,
-                child:TextField(
-                    decoration: InputDecoration(
-                      border: InputBorder.none,
-                      hintText: 'Geliş Tarihi',
-                    ),
+                child:TextButton(
+                  child: Text(_dateTime.toString(),textAlign: TextAlign.center, style: TextStyle(fontSize: 20,color: Colors.black),),
+                    onPressed: _showDatePicker,
                   ),
               ),
             ]),
@@ -87,6 +110,7 @@ class _IzinAlmaPageState extends State<IzinAlmaPage> {
             child: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
               IzinAlma("Şehir", context,0),
                Container(
+                
                 padding:  EdgeInsets.only(left: size.width * 0.02),
                 margin: EdgeInsets.only(left: size.width * 0.08),
                 decoration: BoxDecoration(
