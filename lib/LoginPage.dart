@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application_3/homepage.dart';
 import 'package:flutter_application_3/main.dart';
 import 'package:flutter_application_3/resuable_widgets.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 class SignInScreen extends StatefulWidget {
   const SignInScreen({Key key}) : super(key: key);
@@ -65,8 +66,22 @@ class _SignInScreenState extends State<SignInScreen> {
                       .then((value) {
                     Navigator.push(context,
                         MaterialPageRoute(builder: (context) => MainLayout()));
+                       Fluttertoast.showToast(msg: "Giriş Başarılı",
+             toastLength: Toast.LENGTH_SHORT,
+             gravity: ToastGravity.BOTTOM,
+             timeInSecForIosWeb: 5,
+             backgroundColor: Colors.amber,
+             textColor: Colors.white,
+             fontSize: 15);
                   }).onError((error, stackTrace) {
                     print("Giriş olmadı ${error.toString()}");
+                    Fluttertoast.showToast(msg: "Giriş Başarısız",
+             toastLength: Toast.LENGTH_SHORT,
+             gravity: ToastGravity.BOTTOM,
+             timeInSecForIosWeb: 5,
+             backgroundColor: Colors.amber,
+             textColor: Colors.white,
+             fontSize: 15);
                   });
                 }),
               ],
