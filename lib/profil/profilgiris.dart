@@ -91,6 +91,7 @@ class _ProfilGirisPageState extends State<ProfilGirisPage> {
                 child: Text("Yurt Faaliyetleri",
                     style: TextStyle(fontSize: 20, color: Colors.black))),
           ),
+          
           Container(
               margin: EdgeInsets.only(top: 20),
               decoration: BoxDecoration(
