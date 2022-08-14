@@ -20,14 +20,7 @@ void main() async {
     home: loggedIn ? MainLayout(): SignInScreen(),
   ),);
 }
-/*void main() async {
-  WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp();
- 
-  ),
- );
-}
-*/
+
 
 class MyGrillApp extends StatelessWidget {
   const MyGrillApp({Key key}) : super(key: key);
