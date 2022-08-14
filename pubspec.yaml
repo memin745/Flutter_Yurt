@@ -38,7 +38,6 @@ dependencies:
   syncfusion_flutter_datepicker: ^19.2.60
   firebase_core: ^1.20.1
   firebase_auth: ^3.3.3
-  flutter_secure_storage: ^5.1.0
   fluttertoast: ^8.0.8
 
 
