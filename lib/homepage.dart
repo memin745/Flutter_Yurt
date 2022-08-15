@@ -46,7 +46,13 @@ class _HomePageState extends State<HomePage> {
         child: Column(
           children: [
             Container(margin: EdgeInsets.all(10),
-            decoration: BoxDecoration(border: Border.all(width: 2)),
+          
+            padding: EdgeInsets.all(23),
+            decoration: BoxDecoration(image: DecorationImage(
+          image: AssetImage(
+              'assets/tablet.png'),
+          fit: BoxFit.fill,
+        ),),
               child: SizedBox(
                 height: 200.0,
                 width: double.infinity,
@@ -70,7 +76,7 @@ class _HomePageState extends State<HomePage> {
                   borderRadius: BorderRadius.circular(15),
                   color: Colors.grey[300].withOpacity(0.01),),
               width: size.width * 0.90,
-              height: size.height * 0.31,
+              height: size.height * 0.30,
               child: Column(
                 children: [
                   Container(
@@ -103,13 +109,12 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
             Container(
-              padding: EdgeInsets.only(top:15),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(15),
                 color: Colors.grey.withOpacity(0.01),
               ),
               width: size.width * 0.85,
-              height: size.height * 0.20,
+              height: size.height * 0.15,
               child: Row(
                 children: [
                   Container(
