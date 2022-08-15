@@ -1,6 +1,8 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_3/LoginPage.dart';
 import 'package:flutter_application_3/homepage.dart';
+import 'package:flutter_application_3/main.dart';
 import 'package:flutter_application_3/profil/izinislemleri.dart';
 import 'package:flutter_application_3/profil/profilkullan%C4%B1c%C4%B1.dart';
 import 'package:flutter_application_3/profil/yurtfaaliyetleri.dart';
@@ -13,6 +15,7 @@ class ProfilGirisPage extends StatefulWidget {
 }
 
 class _ProfilGirisPageState extends State<ProfilGirisPage> {
+  bool loggedIn = FirebaseAuth.instance.currentUser == IdTokenResult;
   @override
   Widget build(BuildContext context) {
     int _currentIndex = 0;
@@ -91,7 +94,6 @@ class _ProfilGirisPageState extends State<ProfilGirisPage> {
                 child: Text("Yurt Faaliyetleri",
                     style: TextStyle(fontSize: 20, color: Colors.black))),
           ),
-          
           Container(
               margin: EdgeInsets.only(top: 20),
               decoration: BoxDecoration(
@@ -118,12 +120,11 @@ class _ProfilGirisPageState extends State<ProfilGirisPage> {
               width: size.width * 0.70,
               height: size.height * 0.08,
               child: TextButton(
-                  onPressed: () => Navigator.pushReplacement(
-                        //Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => SignInScreen
-                            ()),
+                  onPressed: () => runApp(
+                        MaterialApp(
+                          debugShowCheckedModeBanner: false,
+                          home: SignInScreen(),
+                        ),
                       ),
                   child: Text("Çıkış",
                       style: TextStyle(fontSize: 20, color: Colors.black)))),
