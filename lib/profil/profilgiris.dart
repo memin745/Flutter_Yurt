@@ -13,6 +13,16 @@ class ProfilGirisPage extends StatefulWidget {
   @override
   State<ProfilGirisPage> createState() => _ProfilGirisPageState();
 }
+final FirebaseAuth _auth = FirebaseAuth.instance;
+
+Future<void> _signOut() async {
+    await _auth.signOut();
+    await FirebaseAuth.instance.signOut();
+    runApp(MaterialApp(
+    debugShowCheckedModeBanner: false,
+    home: SignInScreen(),
+  ),);
+  }
 
 class _ProfilGirisPageState extends State<ProfilGirisPage> {
   bool loggedIn = FirebaseAuth.instance.currentUser == IdTokenResult;
@@ -120,12 +130,8 @@ class _ProfilGirisPageState extends State<ProfilGirisPage> {
               width: size.width * 0.70,
               height: size.height * 0.08,
               child: TextButton(
-                  onPressed: () => runApp(
-                        MaterialApp(
-                          debugShowCheckedModeBanner: false,
-                          home: SignInScreen(),
-                        ),
-                      ),
+                  onPressed: () => _signOut(),
+                    
                   child: Text("Çıkış",
                       style: TextStyle(fontSize: 20, color: Colors.black)))),
           Container(
