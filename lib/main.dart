@@ -4,16 +4,18 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application_3/Duyurular/DuyurularSayfasi.dart';
 import 'package:flutter_application_3/LoginPage.dart';
 import 'package:flutter_application_3/YurtIslemleri/YurtIslemleri.dart';
+import 'package:flutter_application_3/firebase_options.dart';
 
 import 'package:flutter_application_3/homepage.dart';
-import 'package:flutter_application_3/izinbasvuru/basvurularim.dart';
 import 'package:flutter_application_3/izinbasvuru/izinvebasvuru.dart';
 import 'package:flutter_application_3/profil/profilgiris.dart';
 
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
    bool loggedIn = FirebaseAuth.instance.currentUser !=null;
   runApp(MaterialApp(
     debugShowCheckedModeBanner: false,
