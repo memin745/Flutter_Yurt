@@ -19,23 +19,26 @@ class _ProfilKullaniciPageState extends State<ProfilKullaniciPage> {
   String bolum = "Bölüm Loading...";
   String universite = "Universite Loading...";
   String oda = "Email Loading...";
-  void getData()async{
+  String sehir = "Şehir Loading...";
+  void getData() async {
     User user = await FirebaseAuth.instance.currentUser;
-    var vari=FirebaseFirestore.instance.collection('users').doc(user.uid).get().then((vari) => 
-    setState(() {
-      name = vari.data()['adi'];
-      email = vari.data()['email'];
-      soyadi = vari.data()['soyadi'];
-      bolum = vari.data()['bolum'];
-      universite = vari.data()['universite'];
-      oda = vari.data()['oda'];
-      
-    }));
+    var vari = FirebaseFirestore.instance
+        .collection('users')
+        .doc(user.uid)
+        .get()
+        .then((vari) => setState(() {
+              name = vari.data()['adi'];
+              email = vari.data()['email'];
+              soyadi = vari.data()['soyadi'];
+              bolum = vari.data()['bolum'];
+              universite = vari.data()['universite'];
+              oda = vari.data()['oda'];
+              sehir = vari.data()['sehir'];
+            }));
   }
+
   String myEmail;
   List<String> docIds = [];
-
-
 
   @override
   void initState() {
@@ -81,49 +84,38 @@ class _ProfilKullaniciPageState extends State<ProfilKullaniciPage> {
                 color: Color(0xFFeeeee0),
               ),
             ),
-              Expanded( 
-            child: ListView(
-              scrollDirection: Axis.vertical,
-              children: [
-            Center(
-              
-              child: Container(
-                child: KullaniciProfil("Adı : "+name, context),
-                
-          
+            Expanded(
+              child: ListView(
+                scrollDirection: Axis.vertical,
+                children: [
+
+                   Container(
+                      child: KullaniciProfil("Adı : " + name, context),
+                    ),
+                  
+                  Container(
+                    child: KullaniciProfil("Soyadı : " + soyadi, context),
+                  ),
+                  Container(
+                    child: KullaniciProfil("Email : " + email, context),
+                  ),
+                  Container(
+                    child: KullaniciProfil("Şehir : " + sehir, context),
+                  ),
+                  Container(
+                    child: KullaniciProfil("Bölümü : " + bolum, context),
+                  ),
+                  Container(
+                    child: KullaniciProfil("Oda No : " + oda, context),
+                  ),
+                  Container(
+                    child:
+                        KullaniciProfil("Üniversite : " + universite, context),
+                  ),
+                  SizedBox(height: size.height * 0.05),
+                ],
               ),
             ),
-            Container(
-              child: KullaniciProfil("Soyadı : " + soyadi, context),
-              
-          
-            ),
-            Container(
-              child: KullaniciProfil("Email : " + email, context),
-              
-          
-            ),
-            Container(
-              child: KullaniciProfil("Bölümü : " +bolum, context),
-              
-          
-            ),
-            Container(
-              child: KullaniciProfil("Oda No : " + oda, context),
-              
-          
-            ),
-            Container(
-              child: KullaniciProfil("Üniversite : "+universite, context),
-              
-            
-            ),
-            SizedBox(height: size.height*0.05),
-              ],
-            ),
-            
-              ),
-            
           ],
         ),
       ),
@@ -150,18 +142,18 @@ class _ProfilKullaniciPageState extends State<ProfilKullaniciPage> {
 Widget KullaniciProfil(String title, context) {
   Size size = MediaQuery.of(context).size;
   return Container(
-    margin: EdgeInsets.only(top: size.height*0.03),
+    margin: EdgeInsets.only(top: size.height * 0.03),
     decoration: BoxDecoration(
       borderRadius: BorderRadius.circular(15),
       color: Color(0xFFeeeee0),
     ),
     width: size.width * 1,
     height: size.height * 0.1,
-    padding: EdgeInsets.only(top: size.height*0.030),
+    padding: EdgeInsets.only(top: size.height * 0.030),
     child: Text(
       title,
       textAlign: TextAlign.center,
-      style: TextStyle(fontSize: 20, color: Colors.black),
+      style: TextStyle(fontSize: 22, color: Colors.black),
     ),
   );
 }
