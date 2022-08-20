@@ -1,9 +1,8 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_application_3/get_user_name.dart';
-import 'package:flutter_application_3/homepage.dart';
 import 'package:flutter_application_3/profil/profilgiris.dart';
 
 class ProfilKullaniciPage extends StatefulWidget {
@@ -14,21 +13,33 @@ class ProfilKullaniciPage extends StatefulWidget {
 }
 
 class _ProfilKullaniciPageState extends State<ProfilKullaniciPage> {
+  String name = "Name Loading...";
+  String email = "Email Loading...";
+  String soyadi = "Soyadı Loading...";
+  String bolum = "Bölüm Loading...";
+  String universite = "Universite Loading...";
+  String oda = "Email Loading...";
+  void getData()async{
+    User user = await FirebaseAuth.instance.currentUser;
+    var vari=FirebaseFirestore.instance.collection('users').doc(user.uid).get().then((vari) => 
+    setState(() {
+      name = vari.data()['adi'];
+      email = vari.data()['email'];
+      soyadi = vari.data()['soyadi'];
+      bolum = vari.data()['bolum'];
+      universite = vari.data()['universite'];
+      oda = vari.data()['oda'];
+      
+    }));
+  }
+  String myEmail;
   List<String> docIds = [];
 
-  Future getDocIds() async {
-    await FirebaseFirestore.instance
-        .collection('users')
-        .get()
-        .then((snapshot) => snapshot.docs.forEach((document) {
-              print(document.reference);
-              docIds.add(document.reference.id);
-            }));
-  }
+
 
   @override
   void initState() {
-
+    getData();
     super.initState();
   }
 
@@ -70,40 +81,83 @@ class _ProfilKullaniciPageState extends State<ProfilKullaniciPage> {
                 color: Color(0xFFeeeee0),
               ),
             ),
-            Expanded(child: FutureBuilder(
-              future: getDocIds(),
-              builder: (context, snapshot) {
-                return ListView.builder(
-                  itemCount:2,
-                  itemBuilder: (context, index) {
-                    return Container(
-                      child: ListTile(
-                        title: GetUserName(documentId: docIds[index],),
-                        
-                      ),
-                    );
-                  },
-                );
-              },
-            )),
+              Expanded( 
+            child: ListView(
+              scrollDirection: Axis.vertical,
+              children: [
+            Center(
+              
+              child: Container(
+                child: KullaniciProfil("Adı : "+name, context),
+                
+          
+              ),
+            ),
+            Container(
+              child: KullaniciProfil("Soyadı : " + soyadi, context),
+              
+          
+            ),
+            Container(
+              child: KullaniciProfil("Email : " + email, context),
+              
+          
+            ),
+            Container(
+              child: KullaniciProfil("Bölümü : " +bolum, context),
+              
+          
+            ),
+            Container(
+              child: KullaniciProfil("Oda No : " + oda, context),
+              
+          
+            ),
+            Container(
+              child: KullaniciProfil("Üniversite : "+universite, context),
+              
+            
+            ),
+            SizedBox(height: size.height*0.05),
+              ],
+            ),
+            
+              ),
+            
           ],
         ),
       ),
     );
+  }
+
+  _fetch() async {
+    final FirebaseFirestore _firestoreDb = FirebaseFirestore.instance;
+    final _firebaseUser = await FirebaseAuth.instance.currentUser.uid;
+
+    if (_firebaseUser != null)
+      // ignore: curly_braces_in_flow_control_structures
+      await _firestoreDb
+          .collection('users')
+          .doc(_firebaseUser)
+          .get()
+          .then((ds) {
+        String myEmail = ds.data()["adi"];
+        print(myEmail);
+      });
   }
 }
 
 Widget KullaniciProfil(String title, context) {
   Size size = MediaQuery.of(context).size;
   return Container(
-    margin: EdgeInsets.only(top: 25),
+    margin: EdgeInsets.only(top: size.height*0.03),
     decoration: BoxDecoration(
       borderRadius: BorderRadius.circular(15),
       color: Color(0xFFeeeee0),
     ),
-    width: size.width * 0.50,
-    height: size.height * 0.08,
-    padding: EdgeInsets.only(top: 25),
+    width: size.width * 1,
+    height: size.height * 0.1,
+    padding: EdgeInsets.only(top: size.height*0.030),
     child: Text(
       title,
       textAlign: TextAlign.center,
