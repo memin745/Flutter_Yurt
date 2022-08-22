@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_3/homepage.dart';
+import 'package:flutter_application_3/izinbasvuru/basvurular.dart';
 
 
 class BasvurularimPage extends StatefulWidget {
@@ -22,7 +23,7 @@ class _BasvurularimPageState extends State<BasvurularimPage> {
         leading: new IconButton(onPressed: () => Navigator.pushReplacement(
             //Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => HomePage()),
+            MaterialPageRoute(builder: (context) => BavurularPage()),
         ),
           icon: new Icon(Icons.arrow_back, color: Colors.white),
         ),
