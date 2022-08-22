@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_application_3/homepage.dart';
 import 'package:flutter_application_3/izinbasvuru/izinvebasvuru.dart';
@@ -10,6 +12,10 @@ class IzinAlmaPage extends StatefulWidget {
 }
 
 class _IzinAlmaPageState extends State<IzinAlmaPage> {
+  TextEditingController gidisController= TextEditingController();
+  TextEditingController donusController= TextEditingController();
+  TextEditingController izinSehirController= TextEditingController();
+
   DateTime _dateTime = DateTime.now();
   DateTime _dateTime2 = DateTime.now();
 
@@ -22,6 +28,7 @@ class _IzinAlmaPageState extends State<IzinAlmaPage> {
     ).then((value) {
       setState(() {
         _dateTime = value;
+        
       });
     });
   }
@@ -86,6 +93,7 @@ class _IzinAlmaPageState extends State<IzinAlmaPage> {
                   child: Text(
                     _dateTime2.toString(),
                     
+                    
                     textAlign: TextAlign.center,
                     style: TextStyle(fontSize: 20, color: Colors.black),
                   ),
@@ -134,15 +142,50 @@ class _IzinAlmaPageState extends State<IzinAlmaPage> {
                 width: size.width * 0.30,
                 height: size.height * 0.05,
                 child: TextField(
+                  controller: izinSehirController,
                   decoration: InputDecoration(
                     border: InputBorder.none,
                     hintText: 'Şehir',
+                    
                   ),
                 ),
               ),
+                Container(
+              padding: EdgeInsets.only(left: size.width * 0.02),
+              margin: EdgeInsets.only(left: size.width * 0.08, top: 25),
+              decoration: BoxDecoration(
+                  color: Color(0xFFff0000
+                
+                  ),
+                  borderRadius: BorderRadius.circular(20)),
+              width: size.width * 0.25,
+              height: size.height * 0.08,
+              child:  TextButton(onPressed:() async{
+
+                print(gidisController.text);
+                print(donusController.text);
+                print(izinSehirController.text);
+
+
+
+                Map<String, String> movieData = {
+            'name': gidisController.text,
+            'duyuru': donusController.text,
+
+              };
+              
+              },
+              
+              
+                  child: Text(
+                    "Bildir",
+                    style: TextStyle(fontSize: 20, color: Colors.black),
+                  ),
+                ),
+            ),
             ]),
           ),
-          IzinAlma("Basvur", context, 0.10),
+          
         ]),
       ),
     );

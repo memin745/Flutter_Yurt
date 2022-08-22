@@ -114,7 +114,7 @@ class _YurtArizaPageState extends State<YurtArizaPage> {
               
               
                   child: Text(
-                    "Yayınla",
+                    "Bildir",
                     style: TextStyle(fontSize: 20, color: Colors.black),
                   ),
                 ),
