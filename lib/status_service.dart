@@ -7,7 +7,7 @@ class StatusService{
 
 
   Stream<QuerySnapshot>getStatus(){
-    var ref = _firestore.collection("users").snapshots();
+    var ref = _firestore.collection("Duyurular").snapshots();
     return ref;
   }
 }

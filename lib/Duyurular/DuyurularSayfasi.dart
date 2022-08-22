@@ -1,115 +1,113 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_3/Duyurular/DuyuruMetni.dart';
 import 'package:flutter_application_3/homepage.dart';
-
+import 'package:flutter_application_3/status_service.dart';
 
 class DuyurularSayfasiPage extends StatefulWidget {
-  const DuyurularSayfasiPage({ Key key }) : super(key: key);
+  const DuyurularSayfasiPage({Key key}) : super(key: key);
 
   @override
   State<DuyurularSayfasiPage> createState() => _DuyurularSayfasiPageState();
 }
 
 class _DuyurularSayfasiPageState extends State<DuyurularSayfasiPage> {
+  StatusService _statusService = StatusService();
+
   @override
   Widget build(BuildContext context) {
-    Size size = MediaQuery.of(context).size;
-    int _currentIndex = 0;
+    var size = MediaQuery.of(context).size;
+
     return Scaffold(
-      
       appBar: AppBar(
         backgroundColor: Color(0xFF808080),
         title: Text("Şehit Furkan Doğan Yurdu"),
-         leading: new IconButton(
-          icon: new Icon(Icons.arrow_back, color: Colors.white),
+        automaticallyImplyLeading: false,
+        leading: new IconButton(
           onPressed: () => Navigator.pushReplacement(
             //Navigator.push(
             context,
             MaterialPageRoute(builder: (context) => HomePage()),
           ),
+          icon: new Icon(Icons.arrow_back, color: Colors.white),
         ),
       ),
       body: Container(
-        decoration: BoxDecoration(
+         decoration: BoxDecoration(
           image: DecorationImage(
             image: AssetImage("assets/i4.jpeg"),
             fit: BoxFit.cover,
           ),
       ),
-       
-        
-        
-        width: MediaQuery.of(context).size.width,
-        height: size.height * 1,
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: [
-            Container(
-              padding: EdgeInsets.only(top: 15),
-              child: Text("Duyurular",style: TextStyle(fontSize: 25,fontWeight: FontWeight.bold,color:Colors.white),),
-            ),
-            
-            Expanded(
-            child: Scrollbar(
-              isAlwaysShown: true,
-              child: ListView(
-                scrollDirection: Axis.vertical,
-                children: [
-                  Padding(
-                  padding: const EdgeInsets.all(8),
-                  child:Duyurular("Duyuru", context),
-                  ),
-                  Padding(
-                  padding: const EdgeInsets.all(8),
-                  child:Duyurular("Duyuru 1", context),
-                  ),
-                  Padding(
-                  padding: const EdgeInsets.all(8),
-                  child:Duyurular("Duyuru 2 ", context),
-                  ), 
-                  Padding(
-                  padding: const EdgeInsets.all(8),
-                  child:Duyurular("Duyuru 3", context),
-                  ),
-                  Padding(
-                  padding: const EdgeInsets.all(8),
-                  child:Duyurular("Duyuru 4", context),
-                  ),
-                  Padding(
-                  padding: const EdgeInsets.all(8),
-                  child:Duyurular("Duyuru 5", context),
-                  ),
-                  Padding(
-                  padding: const EdgeInsets.all(8),
-                  child:Duyurular("Duyuru 6 ", context),
-                  ),
-                  Padding(
-                  padding: const EdgeInsets.all(8),
-                  child:Duyurular("Duyuru 7", context),
-                  ),
-                ],
-              ),
-            )
-          )
-            
-          ],
+        child: StreamBuilder<QuerySnapshot>(
+          stream: _statusService.getStatus(),
+          builder: (context, snaphot) {
+            return !snaphot.hasData
+                ? CircularProgressIndicator()
+                : ListView.builder(
+                    itemCount: snaphot.data.docs.length,
+                    itemBuilder: (context, index) {
+                      DocumentSnapshot mypost = snaphot.data.docs[index]?? '';
+
+                      Future<void> _showChoiseDialog(BuildContext context) {}
+
+                      return Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: InkWell(
+                          onTap: () {
+                            _showChoiseDialog(context);
+                          },
+                          child: Container(
+                            height: size.height * .3,
+                            decoration: BoxDecoration(
+                                 color: Color(0xFFeeeee0),
+                                border: Border.all(color: Colors.blue, width: 2),
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(15
+                                    ))),
+                            child: Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Text(
+                                    "${mypost['Metin']}",
+                                    style: TextStyle(fontSize: 16),
+                                    textAlign: TextAlign.center,
+                                  ),
+                                  
+                                ],
+                              ),
+                            ),
+                          ),
+                        ),
+                      );
+                    });
+          },
         ),
       ),
     );
   }
 }
-Widget Duyurular(String title, context){Size size = MediaQuery.of(context).size;
-   return Container(
-              margin: EdgeInsets.only(top: 15,left: 15,right: 15),
-              decoration: BoxDecoration(color: Color(0xFFeeeee0),borderRadius: BorderRadius.circular(15)),
-              width: size.width * 0.70,
-              height: size.height * 0.09,
-              child: TextButton(onPressed: () => Navigator.pushReplacement(
-            //Navigator.push(
-            context,
-            MaterialPageRoute(builder: (context) => DuyuruMetniPage()),
-        ),
-              child: Text(title,style:TextStyle(fontSize: 20,color: Colors.black),),
-              ),
-            );
+
+Widget Duyurular(String title, context) {
+  Size size = MediaQuery.of(context).size;
+  return Container(
+    margin: EdgeInsets.only(top: 15, left: 15, right: 15),
+    decoration: BoxDecoration(
+        color: Color(0xFFeeeee0), borderRadius: BorderRadius.circular(15)),
+    width: size.width * 0.70,
+    height: size.height * 0.09,
+    child: TextButton(
+      onPressed: () => Navigator.pushReplacement(
+        //Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => DuyuruMetniPage()),
+      ),
+      child: Text(
+        title,
+        style: TextStyle(fontSize: 20, color: Colors.black),
+      ),
+    ),
+  );
 }

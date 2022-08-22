@@ -28,14 +28,14 @@ class _ProfilKullaniciPageState extends State<ProfilKullaniciPage> {
         .doc(user.uid)
         .get()
         .then((vari) => setState(() {
-              name = vari.data()['adi'];
-              email = vari.data()['email'];
-              soyadi = vari.data()['soyadi'];
-              bolum = vari.data()['bolum'];
-              universite = vari.data()['universite'];
-              oda = vari.data()['oda'];
-              sehir = vari.data()['sehir'];
-              sinif = vari.data()['sinif'];
+              name = vari.data()['İsim Soyisim'];
+              email = vari.data()['Bölüm'];
+              soyadi = vari.data()['Telefon'];
+              bolum = vari.data()['T.C'];
+              universite = vari.data()['Üniversite'];
+              oda = vari.data()['Oda'];
+              sehir = vari.data()['Şehir'];
+              sinif = vari.data()['Sınıf'];
             }));
   }
 
@@ -92,31 +92,31 @@ class _ProfilKullaniciPageState extends State<ProfilKullaniciPage> {
                 children: [
 
                    Container(
-                      child: KullaniciProfil("Adı : " + name, context),
+                      child: KullaniciProfil( name, context),
                     ),
                   
                   Container(
-                    child: KullaniciProfil("Soyadı : " + soyadi, context),
+                    child: KullaniciProfil( soyadi, context),
                   ),
                   Container(
-                    child: KullaniciProfil("Şehir : " + sehir, context),
+                    child: KullaniciProfil( sehir, context),
                   ),
                   Container(
-                    child: KullaniciProfil("Email : " + email, context),
-                  ),
-                  Container(
-                    child:
-                        KullaniciProfil("Üniversite : " + universite, context),
-                  ),
-                  Container(
-                    child: KullaniciProfil("Bölümü : " + bolum, context),
+                    child: KullaniciProfil(email, context),
                   ),
                   Container(
                     child:
-                        KullaniciProfil("Sınıf : " + sinif, context),
+                        KullaniciProfil(universite, context),
                   ),
                   Container(
-                    child: KullaniciProfil("Oda No : " + oda, context),
+                    child: KullaniciProfil(bolum, context),
+                  ),
+                  Container(
+                    child:
+                        KullaniciProfil(sinif, context),
+                  ),
+                  Container(
+                    child: KullaniciProfil(oda, context),
                   ),
                   
                   SizedBox(height: size.height * 0.05),

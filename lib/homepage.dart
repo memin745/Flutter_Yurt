@@ -1,7 +1,9 @@
 import 'package:carousel_pro/carousel_pro.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_3/Duyurular/DuyurularSayfasi.dart';
 import 'package:flutter_application_3/kantin/kantin.dart';
+import 'package:flutter_application_3/status_service.dart';
 import 'package:flutter_application_3/yemekhane/yememkhanesayfa.dart';
 
 class HomePage extends StatefulWidget {
@@ -19,6 +21,8 @@ class _HomePageState extends State<HomePage> {
   ];
   @override
   Widget build(BuildContext context) {
+    StatusService _statusService = StatusService();
+
     Size size = MediaQuery.of(context).size;
     return Scaffold(
       
@@ -90,18 +94,52 @@ class _HomePageState extends State<HomePage> {
             child: Scrollbar(
               showTrackOnHover: true,
               isAlwaysShown: true,
-              child: ListView(
-                scrollDirection: Axis.vertical,
-                children: [
-                  Duyurular("Duyuru 1",context),
-                  Duyurular("Duyuru 2",context),
-                  Duyurular("Duyuru 3",context),
-                  Duyurular("Duyuru 4",context),
-                  Duyurular("Duyuru 5",context),
-                  Duyurular("Duyuru 6",context),
-                  Duyurular("Duyuru 7",context),
-                ],
-              ),
+              child: StreamBuilder<QuerySnapshot>(
+          stream: _statusService.getStatus(),
+          builder: (context, snaphot) {
+            return !snaphot.hasData
+                ? CircularProgressIndicator()
+                : ListView.builder(
+                    itemCount: snaphot.data.docs.length,
+                    itemBuilder: (context, index) {
+                      DocumentSnapshot mypost = snaphot.data.docs[index]?? '';
+
+                      Future<void> _showChoiseDialog(BuildContext context) {}
+
+                      return Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: InkWell(
+                          onTap: () {
+                            _showChoiseDialog(context);
+                          },
+                          child: Container(
+                            height: size.height * .1,
+                            decoration: BoxDecoration(
+                                 color: Color(0xFFeeeee0),
+                                border: Border.all(color: Colors.blue, width: 2),
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(15
+                                    ))),
+                            child: Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Text(
+                                    "${mypost['Metin']}",
+                                    style: TextStyle(fontSize: 16),
+                                    textAlign: TextAlign.center,
+                                  ),
+                                  
+                                ],
+                              ),
+                            ),
+                          ),
+                        ),
+                      );
+                    });
+          },
+        ),
             ),
                        ),
                   
