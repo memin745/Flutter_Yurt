@@ -20,6 +20,7 @@ class _ProfilKullaniciPageState extends State<ProfilKullaniciPage> {
   String universite = "Universite Loading...";
   String oda = "Email Loading...";
   String sehir = "Şehir Loading...";
+  String sinif = "Sınıf Loading...";
   void getData() async {
     User user = await FirebaseAuth.instance.currentUser;
     var vari = FirebaseFirestore.instance
@@ -34,6 +35,7 @@ class _ProfilKullaniciPageState extends State<ProfilKullaniciPage> {
               universite = vari.data()['universite'];
               oda = vari.data()['oda'];
               sehir = vari.data()['sehir'];
+              sinif = vari.data()['sinif'];
             }));
   }
 
@@ -97,21 +99,26 @@ class _ProfilKullaniciPageState extends State<ProfilKullaniciPage> {
                     child: KullaniciProfil("Soyadı : " + soyadi, context),
                   ),
                   Container(
-                    child: KullaniciProfil("Email : " + email, context),
-                  ),
-                  Container(
                     child: KullaniciProfil("Şehir : " + sehir, context),
                   ),
                   Container(
-                    child: KullaniciProfil("Bölümü : " + bolum, context),
-                  ),
-                  Container(
-                    child: KullaniciProfil("Oda No : " + oda, context),
+                    child: KullaniciProfil("Email : " + email, context),
                   ),
                   Container(
                     child:
                         KullaniciProfil("Üniversite : " + universite, context),
                   ),
+                  Container(
+                    child: KullaniciProfil("Bölümü : " + bolum, context),
+                  ),
+                  Container(
+                    child:
+                        KullaniciProfil("Sınıf : " + sinif, context),
+                  ),
+                  Container(
+                    child: KullaniciProfil("Oda No : " + oda, context),
+                  ),
+                  
                   SizedBox(height: size.height * 0.05),
                 ],
               ),

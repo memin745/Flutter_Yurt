@@ -1,3 +1,5 @@
+// ignore_for_file: deprecated_member_use
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_3/LoginPage.dart';
@@ -6,6 +8,7 @@ import 'package:flutter_application_3/main.dart';
 import 'package:flutter_application_3/profil/izinislemleri.dart';
 import 'package:flutter_application_3/profil/profilkullan%C4%B1c%C4%B1.dart';
 import 'package:flutter_application_3/profil/yurtfaaliyetleri.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class ProfilGirisPage extends StatefulWidget {
   const ProfilGirisPage({Key key}) : super(key: key);
@@ -25,6 +28,16 @@ Future<void> _signOut() async {
   }
 
 class _ProfilGirisPageState extends State<ProfilGirisPage> {
+
+  void launchWhatsapp(number,message)async{
+    String url = "whatsapp://send?phone=$number&text=$message";
+
+    await canLaunch(url) ? launch(url) : print("Can't open whatsapp");
+  }
+
+  final String _url ='https://youtube.com';
+  final String _phoneNumber = "+905331608752";
+  final String  _email = "mailto:omerfarukiskk@gmail.com";
   bool loggedIn = FirebaseAuth.instance.currentUser == IdTokenResult;
   @override
   Widget build(BuildContext context) {
@@ -143,50 +156,46 @@ class _ProfilGirisPageState extends State<ProfilGirisPage> {
             child: Row(children: [
               Padding(
                 padding: const EdgeInsets.only(left: 30.0),
-                child: Container(
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(15),
-                  ),
-                  width: size.width * 0.20,
-                  height: size.height * 0.08,
-                  margin: EdgeInsets.only(top: 20),
-                  child: Icon(
-                    Icons.call,
-                    size: 50,
-                    color: Colors.white,
-                  ),
-                ),
+                child: MaterialButton(onPressed: () async{
+              final _call = 'tel:$_phoneNumber';
+              final _text = 'sms:$_phoneNumber';
+              final email = _email;
+              if(await canLaunch(email)){
+                // ignore: deprecated_member_use
+                await launch(email);
+              }
+            },
+            child: Icon(Icons.mail,
+            size: 50,
+            color: Colors.white,)
+            ),
               ),
-              Container(
-                padding: EdgeInsets.only(top: size.height * 0.02),
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(15),
-                ),
-                width: size.width * 0.20,
-                height: size.height * 0.08,
-                child: Icon(
-                  Icons.mail,
-                  size: 50,
-                  color: Colors.white,
-                ),
-              ),
-              Container(
-                padding: EdgeInsets.only(top: size.height * 0.02),
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(15),
-                ),
-                width: size.width * 0.20,
-                height: size.height * 0.08,
-                child: Icon(
-                  Icons.person,
-                  size: 50,
-                  color: Colors.white,
-                ),
-              ),
-            ]),
-          ),
+              MaterialButton(onPressed: () async{
+              final _call = 'tel:$_phoneNumber';
+              final _text = 'sms:$_phoneNumber';
+              final email = _email;
+              if(await canLaunch(_call)){
+                // ignore: deprecated_member_use
+                await launch(_call);
+              }
+            },
+            child: Icon(Icons.call,
+            size: 50,
+             color: Colors.white,)
+            ),
+             
+             MaterialButton(onPressed: (){launchWhatsapp("+905331608752", "Selam");},
+             
+            child: Icon(Icons.whatsapp,
+            size: 50,
+            color: Colors.white,)
+            ),
         ]),
       ),
+        ]
+        )
+      )
     );
+
   }
 }
