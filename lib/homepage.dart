@@ -113,27 +113,19 @@ class _HomePageState extends State<HomePage> {
                             _showChoiseDialog(context);
                           },
                           child: Container(
-                            height: size.height * .1,
-                            decoration: BoxDecoration(
-                                 color: Color(0xFFeeeee0),
-                                border: Border.all(color: Colors.blue, width: 2),
-                                borderRadius:
-                                    BorderRadius.all(Radius.circular(15
-                                    ))),
-                            child: Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Column(
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Text(
-                                    "${mypost['Metin']}",
-                                    style: TextStyle(fontSize: 16),
-                                    textAlign: TextAlign.center,
-                                  ),
-                                  
-                                ],
-                              ),
-                            ),
+                            margin: EdgeInsets.only(top: 15),
+                decoration: BoxDecoration(color: Colors.white,borderRadius: BorderRadius.circular(15)),
+                width: size.width * 10,
+                height: size.height * 0.10,
+                child: ListView(
+                  scrollDirection: Axis.vertical,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.all(16.0),
+                      child: Container(child: Text("${mypost['Metin']}",textAlign: TextAlign.center, style:TextStyle(fontSize: 20,fontWeight: FontWeight.w800),),),
+                    )
+                  ],
+                ),
                           ),
                         ),
                       );

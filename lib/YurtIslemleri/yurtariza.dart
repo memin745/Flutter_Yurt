@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_3/YurtIslemleri/YurtIslemleri.dart';
 import 'package:flutter_application_3/homepage.dart';
@@ -16,7 +17,7 @@ class _YurtArizaPageState extends State<YurtArizaPage> {
   final _firestore = FirebaseFirestore.instance;
   TextEditingController katController = TextEditingController();
   TextEditingController sorunController = TextEditingController();
-  
+  String email;
   @override
   Widget build(BuildContext context) {
      CollectionReference arizaRef = _firestore.collection('Ariza');
@@ -103,15 +104,17 @@ class _YurtArizaPageState extends State<YurtArizaPage> {
 
 
                 Map<String, String> movieData = {
+
             'name': katController.text,
             'duyuru': sorunController.text,
 
               };
               String kat=katController.text;
               String sorun=sorunController.text;
-              await arizaRef.doc(FirebaseAuth.instance.currentUser.email).set({'Kat' : '$kat','Sorun':'$sorun'});
-              },
               
+              await arizaRef.doc().set({'Email':FirebaseAuth.instance.currentUser.email,'Kat' : '$kat','Sorun':'$sorun','Tarih':DateTime.now()},katController.text = null);
+              },
+            
               
                   child: Text(
                     "Bildir",
