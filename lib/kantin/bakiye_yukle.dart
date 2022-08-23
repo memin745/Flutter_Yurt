@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_3/kantin/kantin.dart';
+import 'package:photo_view/photo_view.dart';
 class BakiyeYuklePage extends StatefulWidget {
   const BakiyeYuklePage({ Key key }) : super(key: key);
 
@@ -38,6 +39,7 @@ class _BakiyeYuklePageState extends State<BakiyeYuklePage> {
         child: Column(mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Container(
+              height: 500,
                 margin: EdgeInsets.only(top: 25),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(15),
@@ -45,14 +47,10 @@ class _BakiyeYuklePageState extends State<BakiyeYuklePage> {
                     0xFFeeeee0,
                   ),
                 ),
-                width: 250,
-                child: TextButton(
-                    
-                        
-                    child: Text(
-                      "Bakiye Yükleme",
-                      style: TextStyle(fontSize: 20,color: Colors.black),
-                    ))),
+                width: 400,
+                child:  PhotoView(
+      imageProvider: AssetImage("assets/3.jpg"),
+    )),
             
           ],
         ),
