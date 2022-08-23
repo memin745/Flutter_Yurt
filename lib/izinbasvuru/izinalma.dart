@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_3/homepage.dart';
 import 'package:flutter_application_3/izinbasvuru/izinvebasvuru.dart';
@@ -12,9 +13,11 @@ class IzinAlmaPage extends StatefulWidget {
 }
 
 class _IzinAlmaPageState extends State<IzinAlmaPage> {
-  TextEditingController gidisController= TextEditingController();
-  TextEditingController donusController= TextEditingController();
-  TextEditingController izinSehirController= TextEditingController();
+  final _firestore = FirebaseFirestore.instance;
+
+  TextEditingController gidisController = TextEditingController();
+  TextEditingController donusController = TextEditingController();
+  TextEditingController izinSehirController = TextEditingController();
 
   DateTime _dateTime = DateTime.now();
   DateTime _dateTime2 = DateTime.now();
@@ -28,7 +31,6 @@ class _IzinAlmaPageState extends State<IzinAlmaPage> {
     ).then((value) {
       setState(() {
         _dateTime = value;
-        
       });
     });
   }
@@ -48,6 +50,8 @@ class _IzinAlmaPageState extends State<IzinAlmaPage> {
 
   @override
   Widget build(BuildContext context) {
+    CollectionReference izinRef = _firestore.collection('Izinler');
+
     Size size = MediaQuery.of(context).size;
     int _currentIndex = 0;
     return Scaffold(
@@ -91,9 +95,7 @@ class _IzinAlmaPageState extends State<IzinAlmaPage> {
                 height: size.height * 0.05,
                 child: TextButton(
                   child: Text(
-                    _dateTime2.toString(),
-                    
-                    
+                    _dateTime.toString(),
                     textAlign: TextAlign.center,
                     style: TextStyle(fontSize: 20, color: Colors.black),
                   ),
@@ -105,7 +107,7 @@ class _IzinAlmaPageState extends State<IzinAlmaPage> {
           Container(
             margin: EdgeInsets.only(top: 30),
             child: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-              IzinAlma("Geliş Tarihi", context, 0),
+              IzinAlma("Dönüş Tarihi", context, 0),
               Container(
                 padding: EdgeInsets.only(left: size.width * 0.02),
                 margin: EdgeInsets.only(left: size.width * 0.08),
@@ -118,7 +120,7 @@ class _IzinAlmaPageState extends State<IzinAlmaPage> {
                 height: size.height * 0.05,
                 child: TextButton(
                   child: Text(
-                    _dateTime.toString(),
+                    _dateTime2.toString(),
                     textAlign: TextAlign.center,
                     style: TextStyle(fontSize: 20, color: Colors.black),
                   ),
@@ -146,46 +148,41 @@ class _IzinAlmaPageState extends State<IzinAlmaPage> {
                   decoration: InputDecoration(
                     border: InputBorder.none,
                     hintText: 'Şehir',
-                    
                   ),
                 ),
               ),
-                Container(
-              padding: EdgeInsets.only(left: size.width * 0.02),
-              margin: EdgeInsets.only(left: size.width * 0.08, top: 25),
-              decoration: BoxDecoration(
-                  color: Color(0xFFff0000
-                
-                  ),
-                  borderRadius: BorderRadius.circular(20)),
-              width: size.width * 0.25,
-              height: size.height * 0.08,
-              child:  TextButton(onPressed:() async{
-
+            ]),
+          ),
+          Container(
+            padding: EdgeInsets.only(left: size.width * 0.02),
+            margin: EdgeInsets.only(left: size.width * 0.08, top: 25),
+            decoration: BoxDecoration(
+                color: Color(0xFFff0000),
+                borderRadius: BorderRadius.circular(20)),
+            width: size.width * 0.25,
+            height: size.height * 0.08,
+            child: TextButton(
+              onPressed: () async {
                 print(gidisController.text);
                 print(donusController.text);
                 print(izinSehirController.text);
 
-
-
                 Map<String, String> movieData = {
-            'name': gidisController.text,
-            'duyuru': donusController.text,
-
-              };
-              
+                  'gidis': gidisController.text,
+                  'donus': donusController.text,
+                };
+                String sehir = izinSehirController.text;
+                String gidis = _dateTime.toString();
+                String donus = _dateTime2.toString();
+                await izinRef.doc().set(
+                    {'Sehir': '$sehir', 'Gidis': '$gidis', 'Donus': '$donus'});
               },
-              
-              
-                  child: Text(
-                    "Bildir",
-                    style: TextStyle(fontSize: 20, color: Colors.black),
-                  ),
-                ),
+              child: Text(
+                "Bildir",
+                style: TextStyle(fontSize: 20, color: Colors.black),
+              ),
             ),
-            ]),
           ),
-          
         ]),
       ),
     );
