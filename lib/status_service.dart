@@ -11,3 +11,13 @@ class StatusService{
     return ref;
   }
 }
+class StatusServicebasvurular{
+  final FirebaseFirestore _firestore = FirebaseFirestore.instance;
+
+
+
+  Stream<QuerySnapshot>getStatus(){
+    var ref = _firestore.collection("Basvurular").snapshots();
+    return ref;
+  }
+}

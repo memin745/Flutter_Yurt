@@ -1,16 +1,43 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_3/homepage.dart';
 import 'package:flutter_application_3/izinbasvuru/basvurular.dart';
 
 
 class BasvurularimPage extends StatefulWidget {
-  const BasvurularimPage({Key key}) : super(key: key);
+  final  String takenvalue;
+  final String postValue;
+  const BasvurularimPage({Key key,  this.takenvalue,this.postValue}) : super(key: key);
+   
 
   @override
   State<BasvurularimPage> createState() => _BasvurularimPageState();
 }
 
 class _BasvurularimPageState extends State<BasvurularimPage> {
+  String name = "Name Loading...";
+
+  void getData() async {
+    User user = await FirebaseAuth.instance.currentUser;
+    var vari = FirebaseFirestore.instance
+        .collection('Basvurular')
+        .doc()
+        .get()
+        .then((vari) => setState(() {
+              name = vari.data()['Basvuru Icerik'];
+            }));
+  }
+
+  String myEmail;
+  List<String> docIds = [];
+
+  @override
+  void initState() {
+    getData();
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -57,8 +84,8 @@ class _BasvurularimPageState extends State<BasvurularimPage> {
                 child: ListView(
                   scrollDirection: Axis.vertical,
                   children: [
-                    Container(child: Text("Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",textAlign: TextAlign.center, style:TextStyle(fontSize: 20,fontWeight: FontWeight.w800,color: Colors.white),),)
-                  ],
+                    Container(child: Text(widget.postValue,textAlign: TextAlign.center, style:TextStyle(fontSize: 20,fontWeight: FontWeight.w800,color: Colors.white),),)
+                  ]
                 ),
               
               
@@ -69,7 +96,7 @@ class _BasvurularimPageState extends State<BasvurularimPage> {
             margin:EdgeInsets.only(top: size.height * 0.05,),
             decoration: BoxDecoration(borderRadius : BorderRadius.circular(20),color: Colors.white),
             child: TextButton(
-              onPressed: () {}, child: Text("Basvur",style: TextStyle(fontSize: 22,color: Colors.black),
+              onPressed: () {}, child: Text("Başvur",style: TextStyle(fontSize: 22,color: Colors.black),
               ),
               
             ),

@@ -1,8 +1,9 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_3/homepage.dart';
 import 'package:flutter_application_3/izinbasvuru/basvurularim.dart';
 import 'package:flutter_application_3/izinbasvuru/izinvebasvuru.dart';
-
+import 'package:flutter_application_3/status_service.dart';
 
 class BavurularPage extends StatefulWidget {
   const BavurularPage({Key key}) : super(key: key);
@@ -12,109 +13,124 @@ class BavurularPage extends StatefulWidget {
 }
 
 class _BavurularPageState extends State<BavurularPage> {
+
+  StatusServicebasvurular _statusServicebasvurular = StatusServicebasvurular();
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     int _currentIndex = 0;
     return Scaffold(
-      
       appBar: AppBar(
         backgroundColor: Color(0xFF808080),
         title: Text("Şehit Furkan Doğan Yurdu"),
         automaticallyImplyLeading: false,
-        leading: new IconButton(onPressed: () => Navigator.pushReplacement(
+        leading: new IconButton(
+          onPressed: () => Navigator.pushReplacement(
             //Navigator.push(
             context,
             MaterialPageRoute(builder: (context) => IzinveBasvuruPage()),
-        ),
+          ),
           icon: new Icon(Icons.arrow_back, color: Colors.white),
         ),
       ),
       body: Container(
-         decoration: BoxDecoration(
+        decoration: BoxDecoration(
           image: DecorationImage(
             image: AssetImage("assets/i4.jpeg"),
             fit: BoxFit.cover,
           ),
-      ),
-        width: size.width * 1,
-        height: size.height * 1,
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: [
-            Container(
-              padding: EdgeInsets.only(top: size.height * 0.02),
-              child: Column(children: [
-                Text(
-                  "Güncel Başvurular",
-                  style: TextStyle(fontSize: 20, color: Colors.white),
-                )
-              ]),
-            ),
-             Expanded(
-            child: ListView(
-              scrollDirection: Axis.vertical,
-              children: [
-                Padding(
-                padding: const EdgeInsets.all(8),
-                child:Basvurular("Basvurularım",context),
-                ),
-                Padding(
-                padding: const EdgeInsets.all(8),
-                child:Basvurular("Basvurularım",context),
-                ),
-                Padding(
-                padding: const EdgeInsets.all(8),
-                child:Basvurular("Basvurularım",context),
-                ),
-                Padding(
-                padding: const EdgeInsets.all(8),
-                child:Basvurular("Basvurularım",context),
-                ),
-                Padding(
-                padding: const EdgeInsets.all(8),
-                child:Basvurular("Basvurularım",context),
-                ),
-                Padding(
-                padding: const EdgeInsets.all(8),
-                child:Basvurular("Basvurularım",context),
-                ),
-                Padding(
-                padding: const EdgeInsets.all(8),
-                child:Basvurular("Basvurularım",context),
-                ),
-                Padding(
-                padding: const EdgeInsets.all(8),
-                child:Basvurular("Basvurularım",context),
-                ),
-              ],
-            )
-          )
+        ),
+        child: Scrollbar(
+          showTrackOnHover: true,
+          isAlwaysShown: true,
+          child: StreamBuilder<QuerySnapshot>(
+            stream: _statusServicebasvurular.getStatus(),
+            builder: (context, snaphot) {
+              return !snaphot.hasData
+                  ? CircularProgressIndicator()
+                  : ListView.builder(
+                      itemCount: snaphot.data.docs.length,
+                      itemBuilder: (context, index) {
+                        DocumentSnapshot mypost =
+                            snaphot.data.docs[index] ?? '';
+                            String postValue = "${mypost['Basvuru Icerik']}" ;
 
-          ],
+                        Future<void> _showChoiseDialog(BuildContext context) {}
+
+                        return Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: InkWell(
+                            onTap: () {
+                              _showChoiseDialog(context);
+                            },
+                            child: Container(
+                              height: size.height * .2,
+                              decoration: BoxDecoration(
+                                  color: Color(0xFFeeeee0),
+                                  border:
+                                      Border.all(color: Colors.blue, width: 2),
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(15))),
+                              child: ListView(
+                                scrollDirection: Axis.vertical,
+                                children: [
+                                  Padding(
+                                    padding: const EdgeInsets.all(16.0),
+                                    child: Container(
+                                      child: TextButton(
+                                        onPressed: () =>
+                                            Navigator.pushReplacement(
+                                          //Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                              builder: (context) =>
+                                                  BasvurularimPage(
+                                                      takenvalue:index.toString(),postValue : postValue)),
+                                        ),
+                                        child: Text(
+                                         "${mypost['Başvuru Adi']}",
+                                          textAlign: TextAlign.center,
+                                          style: TextStyle(
+                                              fontSize: 20,
+                                              fontWeight: FontWeight.w800),
+                                        ),
+                                      ),
+                                    ),
+                                  )
+                                ],
+                              ),
+                            ),
+                          ),
+                        );
+                      });
+            },
+          ),
         ),
       ),
     );
   }
 }
-Widget Basvurular(String title,context){Size size = MediaQuery.of(context).size;
-return Container(
-                margin: EdgeInsets.only(top: 25),
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(15),
-                 color: Color(
-                    0xFFeeeee0,
-                  ),
-                ),
-                width: 250,
-                height: size.height * 0.08,
-                child: TextButton(onPressed: () => Navigator.pushReplacement(
-            //Navigator.push(
-            context,
-            MaterialPageRoute(builder: (context) => BasvurularimPage()),),
-                    child: Text(
-                  title,
-                  style: TextStyle(fontSize: 20, color: Colors.black),
-                )));
 
+Widget Basvurular(String title, context) {
+  Size size = MediaQuery.of(context).size;
+  return Container(
+      margin: EdgeInsets.only(top: 25),
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(15),
+        color: Color(
+          0xFFeeeee0,
+        ),
+      ),
+      width: 250,
+      height: size.height * 0.08,
+      child: TextButton(
+          onPressed: () => Navigator.pushReplacement(
+                //Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => BasvurularimPage()),
+              ),
+          child: Text(
+            title,
+            style: TextStyle(fontSize: 20, color: Colors.black),
+          )));
 }

@@ -33,57 +33,65 @@ class _DuyurularSayfasiPageState extends State<DuyurularSayfasiPage> {
         ),
       ),
       body: Container(
-         decoration: BoxDecoration(
+        decoration: BoxDecoration(
           image: DecorationImage(
             image: AssetImage("assets/i4.jpeg"),
             fit: BoxFit.cover,
           ),
-      ),
-        child: StreamBuilder<QuerySnapshot>(
-          stream: _statusService.getStatus(),
-          builder: (context, snaphot) {
-            return !snaphot.hasData
-                ? CircularProgressIndicator()
-                : ListView.builder(
-                    itemCount: snaphot.data.docs.length,
-                    itemBuilder: (context, index) {
-                      DocumentSnapshot mypost = snaphot.data.docs[index]?? '';
+        ),
+        child: Scrollbar(
+          showTrackOnHover: true,
+          isAlwaysShown: true,
+          child: StreamBuilder<QuerySnapshot>(
+            stream: _statusService.getStatus(),
+            builder: (context, snaphot) {
+              return !snaphot.hasData
+                  ? CircularProgressIndicator()
+                  : ListView.builder(
+                      itemCount: snaphot.data.docs.length,
+                      itemBuilder: (context, index) {
+                        DocumentSnapshot mypost =
+                            snaphot.data.docs[index] ?? '';
 
-                      Future<void> _showChoiseDialog(BuildContext context) {}
+                        Future<void> _showChoiseDialog(BuildContext context) {}
 
-                      return Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: InkWell(
-                          onTap: () {
-                            _showChoiseDialog(context);
-                          },
-                          child: Container(
-                            height: size.height * .3,
-                            decoration: BoxDecoration(
-                                 color: Color(0xFFeeeee0),
-                                border: Border.all(color: Colors.blue, width: 2),
-                                borderRadius:
-                                    BorderRadius.all(Radius.circular(15
-                                    ))),
-                            child: Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Column(
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        return Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: InkWell(
+                            onTap: () {
+                              _showChoiseDialog(context);
+                            },
+                            child: Container(
+                              height: size.height * .2,
+                              decoration: BoxDecoration(
+                                  color: Color(0xFFeeeee0),
+                                  border:
+                                      Border.all(color: Colors.blue, width: 2),
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(15))),
+                              child: ListView(
+                                scrollDirection: Axis.vertical,
                                 children: [
-                                  Text(
-                                    "${mypost['Metin']}",
-                                    style: TextStyle(fontSize: 16),
-                                    textAlign: TextAlign.center,
-                                  ),
-                                  
+                                  Padding(
+                                    padding: const EdgeInsets.all(16.0),
+                                    child: Container(
+                                      child: Text(
+                                        "${mypost['Metin']}",
+                                        textAlign: TextAlign.center,
+                                        style: TextStyle(
+                                            fontSize: 20,
+                                            fontWeight: FontWeight.w800),
+                                      ),
+                                    ),
+                                  )
                                 ],
                               ),
                             ),
                           ),
-                        ),
-                      );
-                    });
-          },
+                        );
+                      });
+            },
+          ),
         ),
       ),
     );
