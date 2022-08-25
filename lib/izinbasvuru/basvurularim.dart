@@ -134,7 +134,7 @@ class _BasvurularimPageState extends State<BasvurularimPage> {
                   FirebaseAuth.instance;
                   await basvuruRef
                       .doc(widget.postValue2)
-                      .set({email:FieldValue.arrayUnion([name,email,soyadi])});
+                      .set({name:FieldValue.arrayUnion([name,soyadi])},SetOptions(merge: true));
                 },
                 child: Text(
                   "Başvur",
