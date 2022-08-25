@@ -13,7 +13,6 @@ class BavurularPage extends StatefulWidget {
 }
 
 class _BavurularPageState extends State<BavurularPage> {
-
   StatusServicebasvurular _statusServicebasvurular = StatusServicebasvurular();
   @override
   Widget build(BuildContext context) {
@@ -53,8 +52,8 @@ class _BavurularPageState extends State<BavurularPage> {
                       itemBuilder: (context, index) {
                         DocumentSnapshot mypost =
                             snaphot.data.docs[index] ?? '';
-                            String postValue = "${mypost['Basvuru Icerik']}" ;
-
+                        String postValue = "${mypost['Basvuru Icerik']}";
+                        String postValue2 = "${mypost['Başvuru Adi']}";
                         Future<void> _showChoiseDialog(BuildContext context) {}
 
                         return Padding(
@@ -85,10 +84,13 @@ class _BavurularPageState extends State<BavurularPage> {
                                           MaterialPageRoute(
                                               builder: (context) =>
                                                   BasvurularimPage(
-                                                      takenvalue:index.toString(),postValue : postValue)),
+                                                      takenvalue:
+                                                          index.toString(),
+                                                      postValue: postValue,
+                                                      postValue2: postValue2)),
                                         ),
                                         child: Text(
-                                         "${mypost['Başvuru Adi']}",
+                                          "${mypost['Başvuru Adi']}",
                                           textAlign: TextAlign.center,
                                           style: TextStyle(
                                               fontSize: 20,
