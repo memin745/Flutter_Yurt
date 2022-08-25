@@ -1,8 +1,15 @@
+import 'dart:io';
+
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_3/kantin/kantin.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:photo_view/photo_view.dart';
+
 class BakiyeYuklePage extends StatefulWidget {
-  const BakiyeYuklePage({ Key key }) : super(key: key);
+  const BakiyeYuklePage({Key key}) : super(key: key);
 
   @override
   State<BakiyeYuklePage> createState() => _BakiyeYuklePageState();
@@ -11,7 +18,7 @@ class BakiyeYuklePage extends StatefulWidget {
 class _BakiyeYuklePageState extends State<BakiyeYuklePage> {
   @override
   Widget build(BuildContext context) {
-     Size size = MediaQuery.of(context).size;
+    Size size = MediaQuery.of(context).size;
     int _currentIndex = 0;
     return Scaffold(
       appBar: AppBar(
@@ -27,34 +34,46 @@ class _BakiyeYuklePageState extends State<BakiyeYuklePage> {
           ),
         ),
       ),
-      body: Container(
-        decoration: BoxDecoration(
-          image: DecorationImage(
-            image: AssetImage("assets/i4.jpeg"),
-            fit: BoxFit.cover,
-          ),
-        ),
-        width: size.width * 1,
-        height: size.height * 1,
-        child: Column(mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Container(
-              height: 500,
-                margin: EdgeInsets.only(top: 25),
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(15),
-                  color: Color(
-                    0xFFeeeee0,
-                  ),
-                ),
-                width: 400,
-                child:  PhotoView(
-      imageProvider: AssetImage("assets/3.jpg"),
-    )),
-            
-          ],
-        ),
-      ),
+      body: ProfilTasarimiPage(),
+    );
+  }
+}
+
+class ProfilTasarimiPage extends StatefulWidget {
+  const ProfilTasarimiPage({Key key}) : super(key: key);
+
+  @override
+  State<ProfilTasarimiPage> createState() => _ProfilTasarimiPageState();
+}
+
+class _ProfilTasarimiPageState extends State<ProfilTasarimiPage> {
+  File yuklenecekDosya;
+  FirebaseAuth auth = FirebaseAuth.instance;
+  String indermeBaglantisi;
+
+  kameradanYukle() async {
+    var alinanDosya = await ImagePicker().getImage(source: ImageSource.camera);
+    setState(() {
+      yuklenecekDosya = File(alinanDosya.path);
+    });
+    Reference referansYol = FirebaseStorage.instance
+        .ref()
+        .child("profilresimleri")
+        .child("profilResmi.png");
+        // ignore: unused_local_variable
+        UploadTask yuklemeGorevi = referansYol.putFile(yuklenecekDosya);
+        String url = await(await yuklemeGorevi).ref.getDownloadURL();
+        setState(() {
+          indermeBaglantisi = url;
+        });
+  }
+  
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      child: TextButton(onPressed: () => kameradanYukle(),child: Text("YÜKLE"),),
+      
     );
   }
 }
