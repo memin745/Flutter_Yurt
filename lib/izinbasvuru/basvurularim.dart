@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_3/homepage.dart';
 import 'package:flutter_application_3/izinbasvuru/basvurular.dart';
@@ -8,7 +9,8 @@ import 'package:flutter_application_3/izinbasvuru/basvurular.dart';
 class BasvurularimPage extends StatefulWidget {
   final  String takenvalue;
   final String postValue;
-  const BasvurularimPage({Key key,  this.takenvalue,this.postValue}) : super(key: key);
+  final String postValue2;
+  const BasvurularimPage({Key key,  this.takenvalue,this.postValue,this.postValue2}) : super(key: key);
    
 
   @override
@@ -16,16 +18,33 @@ class BasvurularimPage extends StatefulWidget {
 }
 
 class _BasvurularimPageState extends State<BasvurularimPage> {
+  final _firestore =FirebaseFirestore.instance;
+  final FirebaseAuth auth = FirebaseAuth.instance;
   String name = "Name Loading...";
-
+  String email = "Email Loading...";
+  String soyadi = "Soyadı Loading...";
+  String bolum = "Bölüm Loading...";
+  String universite = "Universite Loading...";
+  String oda = "Email Loading...";
+  String sehir = "Şehir Loading...";
+  String sinif = "Sınıf Loading...";
+  String Tc = "Tc Loading...";
   void getData() async {
     User user = await FirebaseAuth.instance.currentUser;
     var vari = FirebaseFirestore.instance
-        .collection('Basvurular')
-        .doc()
+        .collection('users')
+        .doc(user.uid)
         .get()
         .then((vari) => setState(() {
-              name = vari.data()['Basvuru Icerik'];
+              name = vari.data()['İsim Soyisim'];
+              email = vari.data()['Email'];
+              soyadi = vari.data()['Telefon'];
+              Tc = vari.data()['T.C'];
+              universite = vari.data()['Üniversite'];
+              oda = vari.data()['Oda'];
+              sehir = vari.data()['Şehir'];
+              sinif = vari.data()['Sınıf'];
+              bolum = vari.data()['Bölüm'];
             }));
   }
 
@@ -40,6 +59,7 @@ class _BasvurularimPageState extends State<BasvurularimPage> {
 
   @override
   Widget build(BuildContext context) {
+    CollectionReference basvuruRef =_firestore.collection("AlinanBasvurular");
     Size size = MediaQuery.of(context).size;
     int _currentIndex = 0;
     return Scaffold(
@@ -95,11 +115,24 @@ class _BasvurularimPageState extends State<BasvurularimPage> {
             height: size.height*0.06,
             margin:EdgeInsets.only(top: size.height * 0.05,),
             decoration: BoxDecoration(borderRadius : BorderRadius.circular(20),color: Colors.white),
-            child: TextButton(
-              onPressed: () {}, child: Text("Başvur",style: TextStyle(fontSize: 22,color: Colors.black),
-              ),
+            child:  TextButton(onPressed:() async{
+
+             
+
+                Map<String, String> movieData = {
+           
+                  
+              };
+              FirebaseAuth.instance;
+              await basvuruRef.doc(widget.postValue2).set({"Adı":name,"Email":email,"Telefon":soyadi});
+              },
               
-            ),
+              
+                  child: Text(
+                    "Başvur",
+                    style: TextStyle(fontSize: 20, color: Colors.black),
+                  ),
+                ),
           ),
           
           ],

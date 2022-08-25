@@ -15,12 +15,13 @@ class ProfilKullaniciPage extends StatefulWidget {
 class _ProfilKullaniciPageState extends State<ProfilKullaniciPage> {
   String name = "Name Loading...";
   String email = "Email Loading...";
-  String soyadi = "Soyadı Loading...";
+  String Telefon = "Telefon Loading...";
   String bolum = "Bölüm Loading...";
   String universite = "Universite Loading...";
   String oda = "Email Loading...";
   String sehir = "Şehir Loading...";
   String sinif = "Sınıf Loading...";
+  String Tc = "Tc Loading...";
   void getData() async {
     User user = await FirebaseAuth.instance.currentUser;
     var vari = FirebaseFirestore.instance
@@ -29,13 +30,14 @@ class _ProfilKullaniciPageState extends State<ProfilKullaniciPage> {
         .get()
         .then((vari) => setState(() {
               name = vari.data()['İsim Soyisim'];
-              email = vari.data()['Bölüm'];
-              soyadi = vari.data()['Telefon'];
-              bolum = vari.data()['T.C'];
+              email = vari.data()['Email'];
+              Telefon = vari.data()['Telefon'];
+              Tc = vari.data()['T.C'];
               universite = vari.data()['Üniversite'];
               oda = vari.data()['Oda'];
               sehir = vari.data()['Şehir'];
               sinif = vari.data()['Sınıf'];
+              bolum = vari.data()['Bölüm'];
             }));
   }
 
@@ -96,7 +98,7 @@ class _ProfilKullaniciPageState extends State<ProfilKullaniciPage> {
                     ),
                   
                   Container(
-                    child: KullaniciProfil( soyadi, context),
+                    child: KullaniciProfil( Telefon, context),
                   ),
                   Container(
                     child: KullaniciProfil( sehir, context),
@@ -113,7 +115,7 @@ class _ProfilKullaniciPageState extends State<ProfilKullaniciPage> {
                   ),
                   Container(
                     child:
-                        KullaniciProfil(sinif, context),
+                        KullaniciProfil(sinif+'. Sınıf', context),
                   ),
                   Container(
                     child: KullaniciProfil(oda, context),
