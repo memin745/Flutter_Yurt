@@ -4,6 +4,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_3/YurtIslemleri/YurtIslemleri.dart';
 import 'package:flutter_application_3/homepage.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 
 class YurtArizaPage extends StatefulWidget {
@@ -112,7 +113,18 @@ class _YurtArizaPageState extends State<YurtArizaPage> {
               String kat=katController.text;
               String sorun=sorunController.text;
               
-              await arizaRef.doc().set({'Email':FirebaseAuth.instance.currentUser.email,'Kat' : '$kat','Sorun':'$sorun','Tarih':DateTime.now()},katController.text = null);
+              await arizaRef.doc().set({'Email':FirebaseAuth.instance.currentUser.email,'Kat' : '$kat','Sorun':'$sorun','Tarih':DateTime.now(),'Ariza Durumu':false},katController.text = null);
+              Fluttertoast.showToast(msg: "Arıza Gönderildi",
+             toastLength: Toast.LENGTH_SHORT,
+             gravity: ToastGravity.BOTTOM,
+             timeInSecForIosWeb: 5,
+             backgroundColor: Colors.amber,
+             textColor: Colors.white,
+             fontSize: 15);
+             Navigator.pushReplacement(
+              //Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => YurtArizaPage()));
               },
             
               
