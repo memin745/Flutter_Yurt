@@ -112,7 +112,7 @@ class _YurtArizaPageState extends State<YurtArizaPage> {
               String kat=katController.text;
               String sorun=sorunController.text;
               
-              await arizaRef.doc().set({'Email':FirebaseAuth.instance.currentUser.email,'Kat' : '$kat','Sorun':'$sorun','Tarih':DateTime.now(),'Arıza Durumu':false },katController.text = null);
+              await arizaRef.doc().set({'Email':FirebaseAuth.instance.currentUser.email,'Kat' : '$kat','Sorun':'$sorun','Tarih':DateTime.now()},katController.text = null);
               },
             
               

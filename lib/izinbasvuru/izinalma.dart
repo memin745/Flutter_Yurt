@@ -5,6 +5,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_3/homepage.dart';
 import 'package:flutter_application_3/izinbasvuru/izinvebasvuru.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 class IzinAlmaPage extends StatefulWidget {
   const IzinAlmaPage({Key key}) : super(key: key);
@@ -214,8 +215,9 @@ class _IzinAlmaPageState extends State<IzinAlmaPage> {
                         '-' +
                         _dateTime2.year.toString();
                 await izinRef.doc().set(
-                    {'Sehir': '$sehir', 'Gidis': '$gidis', 'Donus': '$donus','Ogrenci':name});
+                    {'Sehir': '$sehir', 'Gidis': '$gidis', 'Donus': '$donus'});
               },
+              
               child: Text(
                 "Bildir",
                 style: TextStyle(fontSize: 20, color: Colors.black),
