@@ -216,6 +216,17 @@ class _IzinAlmaPageState extends State<IzinAlmaPage> {
                         _dateTime2.year.toString();
                 await izinRef.doc().set(
                     {'Sehir': '$sehir', 'Gidis': '$gidis', 'Donus': '$donus'});
+                    Fluttertoast.showToast(msg: "İzin Gönderildi",
+             toastLength: Toast.LENGTH_SHORT,
+             gravity: ToastGravity.BOTTOM,
+             timeInSecForIosWeb: 5,
+             backgroundColor: Colors.amber,
+             textColor: Colors.white,
+             fontSize: 15);
+             Navigator.pushReplacement(
+              //Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => IzinAlmaPage()));
               },
               
               child: Text(
