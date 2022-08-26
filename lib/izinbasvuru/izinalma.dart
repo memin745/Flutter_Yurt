@@ -4,6 +4,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_3/homepage.dart';
 import 'package:flutter_application_3/izinbasvuru/izinvebasvuru.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 class IzinAlmaPage extends StatefulWidget {
   const IzinAlmaPage({Key key}) : super(key: key);
@@ -176,7 +177,19 @@ class _IzinAlmaPageState extends State<IzinAlmaPage> {
                 String donus = _dateTime2.toString();
                 await izinRef.doc().set(
                     {'Sehir': '$sehir', 'Gidis': '$gidis', 'Donus': '$donus'});
+                    Fluttertoast.showToast(msg: "İzin Gönderildi",
+             toastLength: Toast.LENGTH_SHORT,
+             gravity: ToastGravity.BOTTOM,
+             timeInSecForIosWeb: 5,
+             backgroundColor: Colors.amber,
+             textColor: Colors.white,
+             fontSize: 15);
+             Navigator.pushReplacement(
+              //Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => IzinAlmaPage()));
               },
+              
               child: Text(
                 "Bildir",
                 style: TextStyle(fontSize: 20, color: Colors.black),
