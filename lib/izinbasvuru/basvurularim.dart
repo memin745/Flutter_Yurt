@@ -22,7 +22,7 @@ class _BasvurularimPageState extends State<BasvurularimPage> {
   final FirebaseAuth auth = FirebaseAuth.instance;
   String name = "Name Loading...";
   String email = "Email Loading...";
-  String soyadi = "Soyadı Loading...";
+  String Telefon = "Soyadı Loading...";
   String bolum = "Bölüm Loading...";
   String universite = "Universite Loading...";
   String oda = "Email Loading...";
@@ -38,7 +38,7 @@ class _BasvurularimPageState extends State<BasvurularimPage> {
         .then((vari) => setState(() {
               name = vari.data()['İsim Soyisim'];
               email = vari.data()['Email'];
-              soyadi = vari.data()['Telefon'];
+              Telefon = vari.data()['Telefon'];
               Tc = vari.data()['T.C'];
               universite = vari.data()['Üniversite'];
               oda = vari.data()['Oda'];
@@ -134,7 +134,7 @@ class _BasvurularimPageState extends State<BasvurularimPage> {
                   FirebaseAuth.instance;
                   await basvuruRef
                       .doc(widget.postValue2)
-                      .set({name:FieldValue.arrayUnion([name,soyadi])},SetOptions(merge: true));
+                      .set({"ogrenci":FieldValue.arrayUnion([name]),"Duyuru Adi":widget.postValue2,"Email":FieldValue.arrayUnion([email]),"Telefon":FieldValue.arrayUnion([Telefon]),},SetOptions(merge: true));
                 },
                 child: Text(
                   "Başvur",

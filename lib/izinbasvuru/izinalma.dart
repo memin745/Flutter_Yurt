@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_3/homepage.dart';
 import 'package:flutter_application_3/izinbasvuru/izinvebasvuru.dart';
@@ -13,6 +14,28 @@ class IzinAlmaPage extends StatefulWidget {
 }
 
 class _IzinAlmaPageState extends State<IzinAlmaPage> {
+   String name = "Name Loading...";
+ 
+  void getData() async {
+    User user = await FirebaseAuth.instance.currentUser;
+    var vari = FirebaseFirestore.instance
+        .collection('users')
+        .doc(user.uid)
+        .get()
+        .then((vari) => setState(() {
+              name = vari.data()['İsim Soyisim'];
+            
+            }));
+  }
+
+  String myEmail;
+  List<String> docIds = [];
+
+  @override
+  void initState() {
+    getData();
+    super.initState();
+  }
   final _firestore = FirebaseFirestore.instance;
 
   TextEditingController gidisController = TextEditingController();
@@ -95,11 +118,15 @@ class _IzinAlmaPageState extends State<IzinAlmaPage> {
                 height: size.height * 0.05,
                 child: TextButton(
                   child: Text(
-                    _dateTime.toString(),
+                    _dateTime.day.toString() +
+                        '-' +
+                        _dateTime.month.toString() +
+                        '-' +
+                        _dateTime.year.toString(),
                     textAlign: TextAlign.center,
                     style: TextStyle(fontSize: 20, color: Colors.black),
                   ),
-                  onPressed: _showDatePicker2,
+                  onPressed: _showDatePicker,
                 ),
               ),
             ]),
@@ -120,11 +147,15 @@ class _IzinAlmaPageState extends State<IzinAlmaPage> {
                 height: size.height * 0.05,
                 child: TextButton(
                   child: Text(
-                    _dateTime2.toString(),
+                    _dateTime2.day.toString() +
+                        '-' +
+                        _dateTime2.month.toString() +
+                        '-' +
+                        _dateTime2.year.toString(),
                     textAlign: TextAlign.center,
                     style: TextStyle(fontSize: 20, color: Colors.black),
                   ),
-                  onPressed: _showDatePicker,
+                  onPressed: _showDatePicker2,
                 ),
               ),
             ]),
@@ -172,10 +203,18 @@ class _IzinAlmaPageState extends State<IzinAlmaPage> {
                   'donus': donusController.text,
                 };
                 String sehir = izinSehirController.text;
-                String gidis = _dateTime.toString();
-                String donus = _dateTime2.toString();
+                String gidis = _dateTime.day.toString() +
+                        '-' +
+                        _dateTime.month.toString() +
+                        '-' +
+                        _dateTime.year.toString();
+                String donus = _dateTime2.day.toString() +
+                        '-' +
+                        _dateTime2.month.toString() +
+                        '-' +
+                        _dateTime2.year.toString();
                 await izinRef.doc().set(
-                    {'Sehir': '$sehir', 'Gidis': '$gidis', 'Donus': '$donus'});
+                    {'Sehir': '$sehir', 'Gidis': '$gidis', 'Donus': '$donus','Ogrenci':name});
               },
               child: Text(
                 "Bildir",
