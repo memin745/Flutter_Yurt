@@ -96,9 +96,39 @@ class _BavurularPageState extends State<BavurularPage> {
                                               fontSize: 20,
                                               fontWeight: FontWeight.w800),
                                         ),
+                                        
                                       ),
                                     ),
-                                  )
+                                    
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.all(16.0),
+                                    child: Container(
+                                      child: TextButton(
+                                        onPressed: () =>
+                                            Navigator.pushReplacement(
+                                          //Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                              builder: (context) =>
+                                                  BasvurularimPage(
+                                                      takenvalue:
+                                                          index.toString(),
+                                                      postValue: postValue,
+                                                      postValue2: postValue2)),
+                                        ),
+                                        child: Text(
+                                          "${mypost['Tarih']}",
+                                          textAlign: TextAlign.center,
+                                          style: TextStyle(
+                                              fontSize: 20,color: Colors.black,
+                                              fontWeight: FontWeight.w800),
+                                        ),
+                                        
+                                      ),
+                                    ),
+                                    
+                                  ),
                                 ],
                               ),
                             ),
