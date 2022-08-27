@@ -8,10 +8,13 @@ import 'package:flutter_application_3/firebase_options.dart';
 import 'package:flutter_application_3/homepage.dart';
 import 'package:flutter_application_3/izinbasvuru/izinvebasvuru.dart';
 import 'package:flutter_application_3/profil/profilgiris.dart';
+import 'package:flutter_native_splash/flutter_native_splash.dart';
 
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
+  FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
@@ -30,6 +33,7 @@ class MyGrillApp extends StatelessWidget {
   Widget build(BuildContext context) {
     
   }
+  
 }
 
 class MainLayout extends StatefulWidget {
@@ -47,7 +51,14 @@ class _MainLayoutState extends State<MainLayout> {
   final _page3 = GlobalKey<NavigatorState>();
   final _page4 = GlobalKey<NavigatorState>();
   final _page5 = GlobalKey<NavigatorState>();
-
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    Future.delayed(Duration(seconds: 3)).then((value) => {
+      FlutterNativeSplash.remove()
+    });
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(

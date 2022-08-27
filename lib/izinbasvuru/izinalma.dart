@@ -80,7 +80,20 @@ class _IzinAlmaPageState extends State<IzinAlmaPage> {
     int _currentIndex = 0;
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Color(0xFF808080),
+        flexibleSpace: Container(
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            begin: Alignment.centerLeft,
+            end: Alignment.centerRight,
+            colors: <Color>[
+              Colors.white,
+              Color(0xFF808080),
+              Colors.blueGrey,
+
+            ],
+          ),
+        ),
+      ),
         title: Text("Şehit Furkan Doğan Yurdu"),
         automaticallyImplyLeading: false,
         leading: new IconButton(
