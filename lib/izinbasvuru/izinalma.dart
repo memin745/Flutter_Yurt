@@ -85,9 +85,8 @@ class _IzinAlmaPageState extends State<IzinAlmaPage> {
           gradient: LinearGradient(
             begin: Alignment.centerLeft,
             end: Alignment.centerRight,
-            colors: <Color>[
-              Colors.white,
-              Color(0xFF808080),
+           colors: <Color>[
+              Colors.black26,
               Colors.blueGrey,
 
             ],

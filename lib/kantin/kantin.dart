@@ -47,9 +47,8 @@ class _KantinPageState extends State<KantinPage> {
           gradient: LinearGradient(
             begin: Alignment.centerLeft,
             end: Alignment.centerRight,
-            colors: <Color>[
-              Colors.white,
-              Color(0xFF808080),
+           colors: <Color>[
+              Colors.black26,
               Colors.blueGrey,
 
             ],

@@ -22,8 +22,7 @@ class _YemekTablosuPageState extends State<YemekTablosuPage> {
             begin: Alignment.centerLeft,
             end: Alignment.centerRight,
             colors: <Color>[
-              Colors.white,
-              Color(0xFF808080),
+              Colors.black26,
               Colors.blueGrey,
 
             ],

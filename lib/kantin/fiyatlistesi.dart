@@ -22,8 +22,7 @@ class _FiyatListesiPageState extends State<FiyatListesiPage> {
             begin: Alignment.centerLeft,
             end: Alignment.centerRight,
             colors: <Color>[
-              Colors.white,
-              Color(0xFF808080),
+              Colors.black26,
               Colors.blueGrey,
 
             ],

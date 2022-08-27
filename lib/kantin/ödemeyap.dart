@@ -21,8 +21,7 @@ class _OdemelerPageState extends State<OdemelerPage> {
             begin: Alignment.centerLeft,
             end: Alignment.centerRight,
             colors: <Color>[
-              Colors.white,
-              Color(0xFF808080),
+              Colors.black26,
               Colors.blueGrey,
 
             ],
