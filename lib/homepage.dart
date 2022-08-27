@@ -55,9 +55,9 @@ class _HomePageState extends State<HomePage> {
         title: Text("Şehit Furkan Doğan"),
       ),
       body: LiquidPullToRefresh(
-        color: Colors.deepPurple,
+        color: Colors.blueGrey[400],
         height: 300,
-        backgroundColor: Colors.deepPurple[200],
+        backgroundColor: Colors.black26,
         onRefresh: _handleRefresh,
         animSpeedFactor: 2,
         showChildOpacityTransition: true,

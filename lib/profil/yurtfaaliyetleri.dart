@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_3/profil/profilgiris.dart';
+import 'package:liquid_pull_to_refresh/liquid_pull_to_refresh.dart';
 
 class YurtFaaliyetleriPage extends StatefulWidget {
   const YurtFaaliyetleriPage({ Key key }) : super(key: key);
@@ -11,6 +12,9 @@ class YurtFaaliyetleriPage extends StatefulWidget {
 class _YurtFaaliyetleriPageState extends State<YurtFaaliyetleriPage> {
   @override
   Widget build(BuildContext context) {
+    Future<void> _handleRefresh() async {
+    return await Future.delayed(Duration(seconds: 2));
+  }
     int _currentIndex = 0;
     Size size = MediaQuery.of(context).size;
     return Scaffold(
@@ -39,67 +43,75 @@ class _YurtFaaliyetleriPageState extends State<YurtFaaliyetleriPage> {
           ),
         ),
       ),
-      body: Container(
-        decoration: BoxDecoration(
-          image: DecorationImage(
-            image: AssetImage("assets/i4.jpeg"),
-            fit: BoxFit.cover,
-          ),
-        ),
-        width: size.width * 1,
-        height: size.height * 1,
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          
-          children: [
-            Container(
-              margin: EdgeInsets.only(top: 20),
-              child: Text("Yurt Faaliyetleri",style: TextStyle(fontSize: 20,color: Colors.white),
-              
-              ),
+      body: LiquidPullToRefresh(
+        color: Colors.blue[400],
+        height: size.height*0.2,
+        backgroundColor: Colors.black26,
+        onRefresh: _handleRefresh,
+        animSpeedFactor: 2,
+        showChildOpacityTransition: false,
+        child: Container(
+          decoration: BoxDecoration(
+            image: DecorationImage(
+              image: AssetImage("assets/i4.jpeg"),
+              fit: BoxFit.cover,
             ),
-            Expanded( 
-            child: ListView(
-              scrollDirection: Axis.vertical,
-              children: [
-                Padding(
-                padding: const EdgeInsets.all(8),
-                child:YurtFaaliyetleri("Faaliyet",context),
+          ),
+          width: size.width * 1,
+          height: size.height * 1,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            
+            children: [
+              Container(
+                margin: EdgeInsets.only(top: 20),
+                child: Text("Yurt Faaliyetleri",style: TextStyle(fontSize: 20,color: Colors.white),
                 
                 ),
-                Padding(
-                padding: const EdgeInsets.all(8),
-                child:YurtFaaliyetleri("Faaliyet",context),
-                ),
-                Padding(
-                padding: const EdgeInsets.all(8),
-                child:YurtFaaliyetleri("Faaliyet",context),
-                ),
-                Padding(
-                padding: const EdgeInsets.all(8),
-                child:YurtFaaliyetleri("Faaliyet",context),
-                ),
-                Padding(
-                padding: const EdgeInsets.all(8),
-                child:YurtFaaliyetleri("Faaliyet",context),
-                ),
-                Padding(
-                padding: const EdgeInsets.all(8),
-                child:YurtFaaliyetleri("Faaliyet",context),
-                ),
-                Padding(
-                padding: const EdgeInsets.all(8),
-                child:YurtFaaliyetleri("Faaliyet",context),
-                ),
-                Padding(
-                padding: const EdgeInsets.all(8),
-                child:YurtFaaliyetleri("Faaliyet",context),
-                ),
-              ],
+              ),
+              Expanded( 
+              child: ListView(
+                scrollDirection: Axis.vertical,
+                children: [
+                  Padding(
+                  padding: const EdgeInsets.all(8),
+                  child:YurtFaaliyetleri("Faaliyet",context),
+                  
+                  ),
+                  Padding(
+                  padding: const EdgeInsets.all(8),
+                  child:YurtFaaliyetleri("Faaliyet",context),
+                  ),
+                  Padding(
+                  padding: const EdgeInsets.all(8),
+                  child:YurtFaaliyetleri("Faaliyet",context),
+                  ),
+                  Padding(
+                  padding: const EdgeInsets.all(8),
+                  child:YurtFaaliyetleri("Faaliyet",context),
+                  ),
+                  Padding(
+                  padding: const EdgeInsets.all(8),
+                  child:YurtFaaliyetleri("Faaliyet",context),
+                  ),
+                  Padding(
+                  padding: const EdgeInsets.all(8),
+                  child:YurtFaaliyetleri("Faaliyet",context),
+                  ),
+                  Padding(
+                  padding: const EdgeInsets.all(8),
+                  child:YurtFaaliyetleri("Faaliyet",context),
+                  ),
+                  Padding(
+                  padding: const EdgeInsets.all(8),
+                  child:YurtFaaliyetleri("Faaliyet",context),
+                  ),
+                ],
+              )
             )
-          )
-
-          ],
+      
+            ],
+          ),
         ),
       ),
     );

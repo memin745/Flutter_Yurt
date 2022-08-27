@@ -227,7 +227,7 @@ class _IzinAlmaPageState extends State<IzinAlmaPage> {
                         '-' +
                         _dateTime2.year.toString();
                 await izinRef.doc().set(
-                    {'Sehir': '$sehir', 'Gidis': '$gidis', 'Donus': '$donus'});
+                    {'Sehir': '$sehir', 'Gidis': '$gidis', 'Donus': '$donus','Ogrenci':name});
                     Fluttertoast.showToast(msg: "İzin Gönderildi",
              toastLength: Toast.LENGTH_SHORT,
              gravity: ToastGravity.BOTTOM,

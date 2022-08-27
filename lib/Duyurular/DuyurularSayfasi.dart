@@ -50,9 +50,9 @@ class _DuyurularSayfasiPageState extends State<DuyurularSayfasiPage> {
         ),
       ),
       body: LiquidPullToRefresh(
-        color: Colors.deepPurple,
+        color: Colors.blue[400],
         height: size.height*0.2,
-        backgroundColor: Colors.deepPurple[200],
+        backgroundColor: Colors.black26,
         onRefresh: _handleRefresh,
         animSpeedFactor: 2,
         showChildOpacityTransition: false,
