@@ -50,7 +50,13 @@ class _IzinveBasvuruPageState extends State<IzinveBasvuruPage> {
                   borderRadius: BorderRadius.circular(15),
                   color: Color(
                     0xFFeeeee0,
-                  ),
+                  ),boxShadow: [
+                  BoxShadow(
+                    color: Colors.black.withOpacity(0.50),
+                    blurRadius: 20,
+                    offset: Offset(0, 4),
+                  )
+                ]
                 ),
                 width: 250,
                 height: size.height * 0.08,
@@ -74,7 +80,13 @@ class _IzinveBasvuruPageState extends State<IzinveBasvuruPage> {
                   borderRadius: BorderRadius.circular(15),
                   color: Color(
                     0xFFeeeee0,
-                  ),
+                  ),boxShadow: [
+                  BoxShadow(
+                    color: Colors.black.withOpacity(0.50),
+                    blurRadius: 20,
+                    offset: Offset(0, 4),
+                  )
+                ]
                 ),
                 width: 250,
                 height: size.height * 0.08,

@@ -179,6 +179,13 @@ Widget KullaniciProfil(String title, context) {
     decoration: BoxDecoration(
       borderRadius: BorderRadius.circular(15),
       color: Color(0xFFeeeee0),
+      border: Border.all(width: 1),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.black.withOpacity(0.50),
+                    blurRadius: 20,
+                    offset: Offset(0, 4),
+                  )],
     ),
     width: size.width * 1,
     height: size.height * 0.1,

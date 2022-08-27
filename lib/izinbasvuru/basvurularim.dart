@@ -133,13 +133,19 @@ class _BasvurularimPageState extends State<BasvurularimPage> {
               ]),
             ),
             Container(
-              width: size.width * 0.35,
-              height: size.height * 0.06,
+              width: size.width * 0.45,
+              height: size.height * 0.08,
               margin: EdgeInsets.only(
                 top: size.height * 0.05,
               ),
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(20), color: Colors.white),
+              decoration:  BoxDecoration(
+                      color: Color.fromARGB(255, 194, 45, 45),
+                      borderRadius: BorderRadius.circular(20),
+                      border: Border.all(width: 1),boxShadow: [BoxShadow(
+                        color: Colors.black.withOpacity(0.50),
+                        blurRadius: 20,
+                        offset: Offset(0,4),
+                      )]),
               child: TextButton(
                 onPressed: () async {
                   Map<String, String> movieData = {};
@@ -150,7 +156,7 @@ class _BasvurularimPageState extends State<BasvurularimPage> {
                 },
                 child: Text(
                   "Başvur",
-                  style: TextStyle(fontSize: 20, color: Colors.black),
+                  style: TextStyle(fontSize: 24, color: Colors.black,fontWeight: FontWeight.bold),
                 ),
               ),
             ),

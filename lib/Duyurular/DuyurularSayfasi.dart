@@ -18,26 +18,25 @@ class _DuyurularSayfasiPageState extends State<DuyurularSayfasiPage> {
   @override
   Widget build(BuildContext context) {
     Future<void> _handleRefresh() async {
-    return await Future.delayed(Duration(seconds: 2));
-  }
+      return await Future.delayed(Duration(seconds: 2));
+    }
 
     var size = MediaQuery.of(context).size;
 
     return Scaffold(
       appBar: AppBar(
-         flexibleSpace: Container(
-        decoration: BoxDecoration(
-          gradient: LinearGradient(
-            begin: Alignment.centerLeft,
-            end: Alignment.centerRight,
-            colors: <Color>[
-              Colors.black26,
-              Colors.blueGrey,
-
-            ],
+        flexibleSpace: Container(
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+              begin: Alignment.centerLeft,
+              end: Alignment.centerRight,
+              colors: <Color>[
+                Colors.black26,
+                Colors.blueGrey,
+              ],
+            ),
           ),
         ),
-      ),
         title: Text("Şehit Furkan Doğan Yurdu"),
         automaticallyImplyLeading: false,
         leading: new IconButton(
@@ -51,7 +50,7 @@ class _DuyurularSayfasiPageState extends State<DuyurularSayfasiPage> {
       ),
       body: LiquidPullToRefresh(
         color: Colors.blue[400],
-        height: size.height*0.2,
+        height: size.height * 0.2,
         backgroundColor: Colors.black26,
         onRefresh: _handleRefresh,
         animSpeedFactor: 2,
@@ -76,9 +75,11 @@ class _DuyurularSayfasiPageState extends State<DuyurularSayfasiPage> {
                         itemBuilder: (context, index) {
                           DocumentSnapshot mypost =
                               snaphot.data.docs[index] ?? '';
-      
-                          Future<void> _showChoiseDialog(BuildContext context) {}
-      
+                          String postValue = "${mypost['Metin']}";
+
+                          Future<void> _showChoiseDialog(
+                              BuildContext context) {}
+
                           return Padding(
                             padding: const EdgeInsets.all(8.0),
                             child: InkWell(
@@ -89,22 +90,42 @@ class _DuyurularSayfasiPageState extends State<DuyurularSayfasiPage> {
                                 height: size.height * .2,
                                 decoration: BoxDecoration(
                                     color: Color(0xFFeeeee0),
-                                    border:
-                                        Border.all(color: Colors.blue, width: 2),
+                                    boxShadow: [
+                                      BoxShadow(
+                                        color: Colors.black.withOpacity(0.50),
+                                        blurRadius: 20,
+                                        offset: Offset(0, 4),
+                                      )
+                                    ],
+                                    border: Border.all(
+                                        color: Colors.blue, width: 2),
                                     borderRadius:
-                                        BorderRadius.all(Radius.circular(15))),
+                                        BorderRadius.all(Radius.circular(20))),
                                 child: ListView(
                                   scrollDirection: Axis.vertical,
                                   children: [
                                     Padding(
                                       padding: const EdgeInsets.all(16.0),
                                       child: Container(
-                                        child: Text(
-                                          "${mypost['Metin']}",
-                                          textAlign: TextAlign.center,
-                                          style: TextStyle(
-                                              fontSize: 20,
-                                              fontWeight: FontWeight.w800),
+                                        child: TextButton(
+                                          onPressed: () =>
+                                              Navigator.pushReplacement(
+                                            //Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                                builder: (context) =>
+                                                    DuyuruMetniPage(
+                                                      postValue: postValue,
+                                                    )),
+                                          ),
+                                          child: Text(
+                                            postValue,
+                                            textAlign: TextAlign.center,
+                                            style: TextStyle(
+                                                fontSize: 20,
+                                                fontWeight: FontWeight.w800,
+                                                color: Colors.black),
+                                          ),
                                         ),
                                       ),
                                     )

@@ -5,7 +5,8 @@ import 'package:liquid_pull_to_refresh/liquid_pull_to_refresh.dart';
 
 
 class DuyuruMetniPage extends StatefulWidget {
-  const DuyuruMetniPage({ Key key }) : super(key: key);
+  final String postValue;
+  const DuyuruMetniPage({ Key key ,this.postValue}) : super(key: key);
 
   @override
   State<DuyuruMetniPage> createState() => _DuyuruMetniPageState();
@@ -81,13 +82,18 @@ class _DuyuruMetniPageState extends State<DuyuruMetniPage> {
               
                 Container(
                   margin: EdgeInsets.only(top: 15),
-                  decoration: BoxDecoration(color: Colors.white,borderRadius: BorderRadius.circular(15)),
+                  decoration: BoxDecoration(color: Colors.white,borderRadius: BorderRadius.circular(15), boxShadow: [
+                  BoxShadow(
+                    color: Colors.black.withOpacity(0.50),
+                    blurRadius: 20,
+                    offset: Offset(0, 4),
+                  )],),
                   width: size.width * 10,
                   height: size.height * 0.40,
                   child: ListView(
                     scrollDirection: Axis.vertical,
                     children: [
-                      Container(child: Text("Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",textAlign: TextAlign.center, style:TextStyle(fontSize: 20,fontWeight: FontWeight.w800),),)
+                      Container(child: Text(widget.postValue,textAlign: TextAlign.center, style:TextStyle(fontSize: 20,fontWeight: FontWeight.w800),),)
                     ],
                   ),
                 

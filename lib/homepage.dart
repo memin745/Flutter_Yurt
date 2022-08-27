@@ -23,27 +23,26 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     Future<void> _handleRefresh() async {
-    return await Future.delayed(Duration(seconds: 2));
-  }
+      return await Future.delayed(Duration(seconds: 2));
+    }
 
     StatusService _statusService = StatusService();
 
     Size size = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(
-         flexibleSpace: Container(
-        decoration: BoxDecoration(
-          gradient: LinearGradient(
-            begin: Alignment.centerLeft,
-            end: Alignment.centerRight,
-            colors: <Color>[
-              Colors.black26,
-              Colors.blueGrey,
-
-            ],
+        flexibleSpace: Container(
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+              begin: Alignment.centerLeft,
+              end: Alignment.centerRight,
+              colors: <Color>[
+                Colors.black26,
+                Colors.blueGrey,
+              ],
+            ),
           ),
         ),
-      ),
         centerTitle: true,
         leading: Container(
             width: 200,
@@ -137,10 +136,10 @@ class _HomePageState extends State<HomePage> {
                                     itemBuilder: (context, index) {
                                       DocumentSnapshot mypost =
                                           snaphot.data.docs[index] ?? '';
-      
+
                                       Future<void> _showChoiseDialog(
                                           BuildContext context) {}
-      
+
                                       return Padding(
                                         padding: const EdgeInsets.all(8.0),
                                         child: InkWell(
@@ -152,19 +151,28 @@ class _HomePageState extends State<HomePage> {
                                             decoration: BoxDecoration(
                                                 color: Colors.white,
                                                 borderRadius:
-                                                    BorderRadius.circular(15)),
+                                                    BorderRadius.circular(15),
+                                                boxShadow: [
+                                                  BoxShadow(
+                                                    color: Colors.black
+                                                        .withOpacity(0.50),
+                                                    blurRadius: 20,
+                                                    offset: Offset(0, 4),
+                                                  )
+                                                ]),
                                             width: size.width * 10,
                                             height: size.height * 0.10,
                                             child: ListView(
                                               scrollDirection: Axis.vertical,
                                               children: [
                                                 Padding(
-                                                  padding:
-                                                      const EdgeInsets.all(16.0),
+                                                  padding: const EdgeInsets.all(
+                                                      16.0),
                                                   child: Container(
                                                     child: Text(
                                                       "${mypost['Metin']}",
-                                                      textAlign: TextAlign.center,
+                                                      textAlign:
+                                                          TextAlign.center,
                                                       style: TextStyle(
                                                           fontSize: 20,
                                                           fontWeight:
@@ -200,7 +208,13 @@ class _HomePageState extends State<HomePage> {
                           borderRadius: BorderRadius.circular(15),
                           color: Color(
                             0xFFeeeee0,
-                          ),
+                          ),boxShadow: [
+                  BoxShadow(
+                    color: Colors.black.withOpacity(0.50),
+                    blurRadius: 20,
+                    offset: Offset(0, 4),
+                  )
+                ]
                         ),
                         width: size.width * 0.35,
                         child: TextButton(
@@ -212,12 +226,19 @@ class _HomePageState extends State<HomePage> {
                                 ),
                             child: Text(
                               "Kantin",
-                              style: TextStyle(fontSize: 20, color: Colors.black),
+                              style:
+                                  TextStyle(fontSize: 20, color: Colors.black),
                             ))),
                     Container(
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(15),
-                          color: Color(0xFFeeeee0),
+                          color: Color(0xFFeeeee0),boxShadow: [
+                  BoxShadow(
+                    color: Colors.black.withOpacity(0.50),
+                    blurRadius: 20,
+                    offset: Offset(0, 4),
+                  )
+                ]
                         ),
                         width: size.width * 0.35,
                         child: TextButton(

@@ -75,6 +75,13 @@ class _ProfilGirisPageState extends State<ProfilGirisPage> {
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(15),
               color: Color(0xFFeeeee0),
+              
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.black.withOpacity(0.50),
+                    blurRadius: 20,
+                    offset: Offset(0, 4),
+                  )]
             ),
             child: Row(
               children: [
@@ -82,6 +89,7 @@ class _ProfilGirisPageState extends State<ProfilGirisPage> {
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(15),
                       color: Color(0xFFeeeee0),
+                      
                     ),
                     width: size.width * 0.50,
                     height: size.height * 0.08,
@@ -98,6 +106,7 @@ class _ProfilGirisPageState extends State<ProfilGirisPage> {
                 Container(
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(15),
+                  
                   ),
                   width: size.width * 0.20,
                   height: size.height * 0.08,
@@ -116,6 +125,13 @@ class _ProfilGirisPageState extends State<ProfilGirisPage> {
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(15),
               color: Color(0xFFeeeee0),
+              border: Border.all(width: 1),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.black.withOpacity(0.50),
+                    blurRadius: 20,
+                    offset: Offset(0, 4),
+                  )],
             ),
             width: size.width * 0.70,
             height: size.height * 0.08,
@@ -133,6 +149,12 @@ class _ProfilGirisPageState extends State<ProfilGirisPage> {
               margin: EdgeInsets.only(top: 20),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(15),
+                 boxShadow: [
+                  BoxShadow(
+                    color: Colors.black.withOpacity(0.50),
+                    blurRadius: 20,
+                    offset: Offset(0, 4),
+                  )],
                 color: Color(0xFFeeeee0),
               ),
               width: size.width * 0.70,
@@ -151,6 +173,12 @@ class _ProfilGirisPageState extends State<ProfilGirisPage> {
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(15),
                 color: Color(0xFFeeeee0),
+                 boxShadow: [
+                  BoxShadow(
+                    color: Colors.black.withOpacity(1),
+                    blurRadius: 20,
+                    offset: Offset(0, 4),
+                  )],
               ),
               width: size.width * 0.70,
               height: size.height * 0.08,

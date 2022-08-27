@@ -20,19 +20,18 @@ class _BavurularPageState extends State<BavurularPage> {
     int _currentIndex = 0;
     return Scaffold(
       appBar: AppBar(
-         flexibleSpace: Container(
-        decoration: BoxDecoration(
-          gradient: LinearGradient(
-            begin: Alignment.centerLeft,
-            end: Alignment.centerRight,
-            colors: <Color>[
-              Colors.black26,
-              Colors.blueGrey,
-
-            ],
+        flexibleSpace: Container(
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+              begin: Alignment.centerLeft,
+              end: Alignment.centerRight,
+              colors: <Color>[
+                Colors.black26,
+                Colors.blueGrey,
+              ],
+            ),
           ),
         ),
-      ),
         title: Text("Şehit Furkan Doğan Yurdu"),
         automaticallyImplyLeading: false,
         leading: new IconButton(
@@ -108,10 +107,8 @@ class _BavurularPageState extends State<BavurularPage> {
                                               fontSize: 20,
                                               fontWeight: FontWeight.w800),
                                         ),
-                                        
                                       ),
                                     ),
-                                    
                                   ),
                                   Padding(
                                     padding: const EdgeInsets.all(16.0),
@@ -133,13 +130,12 @@ class _BavurularPageState extends State<BavurularPage> {
                                           "${mypost['Tarih']}",
                                           textAlign: TextAlign.center,
                                           style: TextStyle(
-                                              fontSize: 20,color: Colors.black,
+                                              fontSize: 20,
+                                              color: Colors.black,
                                               fontWeight: FontWeight.w800),
                                         ),
-                                        
                                       ),
                                     ),
-                                    
                                   ),
                                 ],
                               ),
