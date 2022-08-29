@@ -23,7 +23,7 @@ void main() async {
       home: AnimatedSplashScreen(
         splash: Column(children: [
           Image.asset('assets/ev.gif'),
-          
+           
         ]),
         backgroundColor:Color(0xFFCEEEFF),
       
