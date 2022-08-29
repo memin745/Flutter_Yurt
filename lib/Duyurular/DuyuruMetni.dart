@@ -52,7 +52,7 @@ class _DuyuruMetniPageState extends State<DuyuruMetniPage> {
         backgroundColor: Colors.black26,
         onRefresh: _handleRefresh,
         animSpeedFactor: 2,
-        showChildOpacityTransition: false,
+        showChildOpacityTransition: true,
         child: Container(
           decoration: BoxDecoration(
             image: DecorationImage(
@@ -84,12 +84,12 @@ class _DuyuruMetniPageState extends State<DuyuruMetniPage> {
                   margin: EdgeInsets.only(top: 15),
                   decoration: BoxDecoration(color: Colors.white,borderRadius: BorderRadius.circular(15), boxShadow: [
                   BoxShadow(
-                    color: Colors.black.withOpacity(0.50),
-                    blurRadius: 20,
-                    offset: Offset(0, 4),
+                    color: Colors.black.withOpacity(1),
+                    blurRadius: 50,
+                    offset: Offset(10, 10),
                   )],),
-                  width: size.width * 10,
-                  height: size.height * 0.40,
+                  width: size.width * 0.80,
+                  height: size.height * 0.30,
                   child: ListView(
                     scrollDirection: Axis.vertical,
                     children: [

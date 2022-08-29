@@ -100,7 +100,7 @@ class _YurtArizaPageState extends State<YurtArizaPage> {
                   padding: EdgeInsets.only(left: size.width * 0.02),
                   margin: EdgeInsets.only(left: size.width * 0.08, top: 25),
                   decoration: BoxDecoration(
-                      color: Color.fromARGB(255, 194, 45, 45),
+                      color: Color.fromARGB(255, 47, 194, 62),
                       borderRadius: BorderRadius.circular(20),
                       border: Border.all(width: 1),boxShadow: [BoxShadow(
                         color: Colors.black.withOpacity(0.50),
@@ -145,7 +145,7 @@ class _YurtArizaPageState extends State<YurtArizaPage> {
                     child: Text(
                       "Bildir",
                       style: TextStyle(
-                          fontSize: 24,
+                          fontSize: 26,
                           color: Colors.black,
                           fontWeight: FontWeight.bold),
                     ),
