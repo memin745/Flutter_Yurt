@@ -1,3 +1,4 @@
+import 'package:animated_splash_screen/animated_splash_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -8,29 +9,40 @@ import 'package:flutter_application_3/firebase_options.dart';
 import 'package:flutter_application_3/homepage.dart';
 import 'package:flutter_application_3/izinbasvuru/izinvebasvuru.dart';
 import 'package:flutter_application_3/profil/profilgiris.dart';
-
+import 'package:page_transition/page_transition.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-   bool loggedIn = FirebaseAuth.instance.currentUser !=null;
-  runApp(MaterialApp(
-    debugShowCheckedModeBanner: false,
-    home: loggedIn ? MainLayout(): SignInScreen(),
-  ),);
+  bool loggedIn = FirebaseAuth.instance.currentUser != null;
+  runApp(
+    MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: AnimatedSplashScreen(
+        splash: Column(children: [
+          Image.asset('assets/ev.gif'),
+          
+        ]),
+        backgroundColor:Color(0xFFCEEEFF),
+      
+        nextScreen: loggedIn ? MainLayout() : SignInScreen(),
+        splashIconSize: 500,
+        duration: 3000,
+        splashTransition: SplashTransition.fadeTransition,
+        pageTransitionType: PageTransitionType.topToBottom,
+        animationDuration: const Duration(seconds: 1),
+      ),
+    ),
+  );
 }
-
 
 class MyGrillApp extends StatelessWidget {
   const MyGrillApp({Key key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
-    
-  }
-  
+  Widget build(BuildContext context) {}
 }
 
 class MainLayout extends StatefulWidget {
@@ -48,15 +60,11 @@ class _MainLayoutState extends State<MainLayout> {
   final _page3 = GlobalKey<NavigatorState>();
   final _page4 = GlobalKey<NavigatorState>();
   final _page5 = GlobalKey<NavigatorState>();
-  
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      
-
-
       body: IndexedStack(
-        
         index: _currentIndex,
         children: <Widget>[
           Navigator(
@@ -69,30 +77,22 @@ class _MainLayoutState extends State<MainLayout> {
           Navigator(
             key: _page2,
             onGenerateRoute: (route) => MaterialPageRoute(
-              settings: route,
-              builder: (context) => IzinveBasvuruPage()
-            ),
+                settings: route, builder: (context) => IzinveBasvuruPage()),
           ),
           Navigator(
             key: _page3,
             onGenerateRoute: (route) => MaterialPageRoute(
-              settings: route,
-              builder: (context) => YurtIslemleriPage()
-            ),
+                settings: route, builder: (context) => YurtIslemleriPage()),
           ),
           Navigator(
             key: _page4,
             onGenerateRoute: (route) => MaterialPageRoute(
-              settings: route,
-              builder: (context) => DuyurularSayfasiPage()
-            ),
+                settings: route, builder: (context) => DuyurularSayfasiPage()),
           ),
           Navigator(
             key: _page5,
             onGenerateRoute: (route) => MaterialPageRoute(
-              settings: route,
-              builder: (context) =>ProfilGirisPage()
-            ),
+                settings: route, builder: (context) => ProfilGirisPage()),
           ),
         ],
       ),
@@ -114,9 +114,12 @@ class _MainLayoutState extends State<MainLayout> {
           showUnselectedLabels: false,
           items: const <BottomNavigationBarItem>[
             BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Anasayfa'),
-            BottomNavigationBarItem(icon: Icon(Icons.add_to_photos), label: 'İzin-Başvuru'),
-            BottomNavigationBarItem(icon: Icon(Icons.apartment), label: 'Yurt İşlemleri'),
-            BottomNavigationBarItem(icon: Icon(Icons.article), label: 'Duyurular'),
+            BottomNavigationBarItem(
+                icon: Icon(Icons.add_to_photos), label: 'İzin-Başvuru'),
+            BottomNavigationBarItem(
+                icon: Icon(Icons.apartment), label: 'Yurt İşlemleri'),
+            BottomNavigationBarItem(
+                icon: Icon(Icons.article), label: 'Duyurular'),
             BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Profil'),
           ],
         ),
@@ -124,4 +127,3 @@ class _MainLayoutState extends State<MainLayout> {
     );
   }
 }
-  
