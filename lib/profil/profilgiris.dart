@@ -3,6 +3,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_3/LoginPage.dart';
+import 'package:flutter_application_3/Options/appbarContainer.dart';
 import 'package:flutter_application_3/Options/backgroundimage.dart';
 import 'package:flutter_application_3/Options/buttons.dart';
 import 'package:flutter_application_3/homepage.dart';
@@ -50,18 +51,7 @@ class _ProfilGirisPageState extends State<ProfilGirisPage> {
     Size size = MediaQuery.of(context).size;
     return Scaffold(
         appBar: AppBar(
-          flexibleSpace: Container(
-            decoration: BoxDecoration(
-              gradient: LinearGradient(
-                begin: Alignment.centerLeft,
-                end: Alignment.centerRight,
-                colors: <Color>[
-                  Colors.black26,
-                  Colors.blueGrey,
-                ],
-              ),
-            ),
-          ),
+          flexibleSpace: appbarContainer(),
           title: Text("Şehit Furkan Doğan Yurdu"),
         ),
         body: Container(

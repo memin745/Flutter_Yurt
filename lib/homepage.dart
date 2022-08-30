@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_3/Duyurular/DuyurularSayfasi.dart';
+import 'package:flutter_application_3/Options/appbarContainer.dart';
 import 'package:flutter_application_3/Options/backgroundimage.dart';
 import 'package:flutter_application_3/Options/slider.dart';
 import 'package:flutter_application_3/Options/status_service.dart';
@@ -33,18 +34,7 @@ class _HomePageState extends State<HomePage> {
     Size size = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(
-        flexibleSpace: Container(
-          decoration: BoxDecoration(
-            gradient: LinearGradient(
-              begin: Alignment.centerLeft,
-              end: Alignment.centerRight,
-              colors: <Color>[
-                Colors.black26,
-                Colors.blueGrey,
-              ],
-            ),
-          ),
-        ),
+        flexibleSpace: appbarContainer(),
         centerTitle: true,
         leading: Container(
             width: 200,
@@ -180,4 +170,6 @@ class _HomePageState extends State<HomePage> {
     );
   }
 }
+
+
 

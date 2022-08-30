@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_3/Options/appbarContainer.dart';
 import 'package:flutter_application_3/Options/backgroundimage.dart';
 import 'package:flutter_application_3/Options/buttons.dart';
 import 'package:flutter_application_3/homepage.dart';
@@ -22,19 +23,7 @@ class _IzinveBasvuruPageState extends State<IzinveBasvuruPage> {
     int _currentIndex = 0;
     return Scaffold(
       appBar: AppBar(
-         flexibleSpace: Container(
-        decoration: BoxDecoration(
-          gradient: LinearGradient(
-            begin: Alignment.centerLeft,
-            end: Alignment.centerRight,
-            colors: <Color>[
-              Colors.black26,
-              Colors.blueGrey,
-
-            ],
-          ),
-        ),
-      ),
+         flexibleSpace: appbarContainer(),
         title: Text("Şehit Furkan Doğan Yurdu"),
       ),
       body: Container(

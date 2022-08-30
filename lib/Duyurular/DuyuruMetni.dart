@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_3/Duyurular/DuyurularSayfasi.dart';
+import 'package:flutter_application_3/Options/appbarContainer.dart';
 import 'package:flutter_application_3/Options/backgroundimage.dart';
 import 'package:flutter_application_3/homepage.dart';
 import 'package:liquid_pull_to_refresh/liquid_pull_to_refresh.dart';
@@ -25,19 +26,7 @@ class _DuyuruMetniPageState extends State<DuyuruMetniPage> {
     int _currentIndex = 0;
     return Scaffold(
       appBar: AppBar(
-         flexibleSpace: Container(
-        decoration: BoxDecoration(
-          gradient: LinearGradient(
-            begin: Alignment.centerLeft,
-            end: Alignment.centerRight,
-            colors: <Color>[
-              Colors.black26,
-              Colors.blueGrey,
-
-            ],
-          ),
-        ),
-      ),
+         flexibleSpace: appbarContainer(),
         title: Text("Şehit Furkan Doğan Yurdu"),
         automaticallyImplyLeading: false,
         leading: new IconButton(onPressed: () => Navigator.pushReplacement(

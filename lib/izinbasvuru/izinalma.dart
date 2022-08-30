@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_application_3/Options/appbarContainer.dart';
 import 'package:flutter_application_3/Options/backgroundimage.dart';
 import 'package:flutter_application_3/homepage.dart';
 import 'package:flutter_application_3/izinbasvuru/izinvebasvuru.dart';
@@ -82,18 +83,7 @@ class _IzinAlmaPageState extends State<IzinAlmaPage> {
     int _currentIndex = 0;
     return Scaffold(
       appBar: AppBar(
-        flexibleSpace: Container(
-          decoration: BoxDecoration(
-            gradient: LinearGradient(
-              begin: Alignment.centerLeft,
-              end: Alignment.centerRight,
-              colors: <Color>[
-                Colors.black26,
-                Colors.blueGrey,
-              ],
-            ),
-          ),
-        ),
+        flexibleSpace: appbarContainer(),
         title: Text("Şehit Furkan Doğan Yurdu"),
         automaticallyImplyLeading: false,
         leading: new IconButton(

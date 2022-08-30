@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_3/Options/appbarContainer.dart';
 import 'package:flutter_application_3/Options/backgroundimage.dart';
 import 'package:flutter_application_3/profil/profilgiris.dart';
 import 'package:liquid_pull_to_refresh/liquid_pull_to_refresh.dart';
@@ -21,19 +22,7 @@ class _YurtFaaliyetleriPageState extends State<YurtFaaliyetleriPage> {
     Size size = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(
-         flexibleSpace: Container(
-        decoration: BoxDecoration(
-          gradient: LinearGradient(
-            begin: Alignment.centerLeft,
-            end: Alignment.centerRight,
-            colors: <Color>[
-              Colors.black26,
-              Colors.blueGrey,
-
-            ],
-          ),
-        ),
-      ),
+         flexibleSpace: appbarContainer(),
         title: Text("Şehit Furkan Doğan Yurdu"),
         automaticallyImplyLeading: false,
         leading: new IconButton(
