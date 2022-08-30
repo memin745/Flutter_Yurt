@@ -4,7 +4,9 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_3/Options/appbarContainer.dart';
+import 'package:flutter_application_3/Options/backIconButton.dart';
 import 'package:flutter_application_3/Options/backgroundimage.dart';
+import 'package:flutter_application_3/Options/baslikContainer.dart';
 import 'package:flutter_application_3/homepage.dart';
 import 'package:flutter_application_3/izinbasvuru/izinvebasvuru.dart';
 import 'package:fluttertoast/fluttertoast.dart';
@@ -84,15 +86,10 @@ class _IzinAlmaPageState extends State<IzinAlmaPage> {
     return Scaffold(
       appBar: AppBar(
         flexibleSpace: appbarContainer(),
-        title: Text("Şehit Furkan Doğan Yurdu"),
+        title: baslikTitle(),
         automaticallyImplyLeading: false,
-        leading: new IconButton(
-          onPressed: () => Navigator.pushReplacement(
-            //Navigator.push(
-            context,
-            MaterialPageRoute(builder: (context) => IzinveBasvuruPage()),
-          ),
-          icon: new Icon(Icons.arrow_back, color: Colors.white),
+        leading: backIconButton(
+          page: IzinveBasvuruPage(),
         ),
       ),
       body: Container(
@@ -116,13 +113,14 @@ class _IzinAlmaPageState extends State<IzinAlmaPage> {
                 decoration: BoxDecoration(
                     color: Color(
                       0xFFeeeee0,
-                    ),boxShadow: [
-                  BoxShadow(
-                    color: Colors.black.withOpacity(0.50),
-                    blurRadius: 20,
-                    offset: Offset(0, 4),
-                  )
-                ],
+                    ),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.black.withOpacity(0.50),
+                        blurRadius: 20,
+                        offset: Offset(0, 4),
+                      )
+                    ],
                     borderRadius: BorderRadius.circular(20)),
                 width: size.width * 0.35,
                 height: size.height * 0.05,
@@ -149,16 +147,18 @@ class _IzinAlmaPageState extends State<IzinAlmaPage> {
                 padding: EdgeInsets.only(left: size.width * 0.02),
                 margin: EdgeInsets.only(left: size.width * 0.08),
                 decoration: BoxDecoration(
-                    color: Color(
-                      0xFFeeeee0,
-                    ),
-                    borderRadius: BorderRadius.circular(20),boxShadow: [
-                  BoxShadow(
-                    color: Colors.black.withOpacity(0.50),
-                    blurRadius: 20,
-                    offset: Offset(0, 4),
-                  )
-                ],),
+                  color: Color(
+                    0xFFeeeee0,
+                  ),
+                  borderRadius: BorderRadius.circular(20),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.black.withOpacity(0.50),
+                      blurRadius: 20,
+                      offset: Offset(0, 4),
+                    )
+                  ],
+                ),
                 width: size.width * 0.35,
                 height: size.height * 0.05,
                 child: TextButton(
@@ -186,13 +186,14 @@ class _IzinAlmaPageState extends State<IzinAlmaPage> {
                 decoration: BoxDecoration(
                     color: Color(
                       0xFFeeeee0,
-                    ),boxShadow: [
-                  BoxShadow(
-                    color: Colors.black.withOpacity(0.50),
-                    blurRadius: 20,
-                    offset: Offset(0, 4),
-                  )
-                ],
+                    ),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.black.withOpacity(0.50),
+                        blurRadius: 20,
+                        offset: Offset(0, 4),
+                      )
+                    ],
                     borderRadius: BorderRadius.circular(20)),
                 width: size.width * 0.30,
                 height: size.height * 0.05,
@@ -279,22 +280,22 @@ Widget IzinAlma(String title, context, double bosluk) {
   return Container(
     margin: EdgeInsets.only(top: size.width * bosluk),
     decoration: BoxDecoration(
-      borderRadius: BorderRadius.circular(15),
-      color: Color(
-        0xFFeeeee0,
-      ),boxShadow: [
-                  BoxShadow(
-                    color: Colors.black.withOpacity(0.50),
-                    blurRadius: 20,
-                    offset: Offset(0, 4),
-                  )
-                ]
-    ),
+        borderRadius: BorderRadius.circular(15),
+        color: Color(
+          0xFFeeeee0,
+        ),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withOpacity(0.50),
+            blurRadius: 20,
+            offset: Offset(0, 4),
+          )
+        ]),
     padding: EdgeInsets.only(top: 10),
     child: Text(
       title,
       textAlign: TextAlign.center,
-      style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),
+      style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
     ),
     width: size.width * 0.35,
     height: size.height * 0.06,

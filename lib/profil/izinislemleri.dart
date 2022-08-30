@@ -4,10 +4,11 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_3/Options/appbarContainer.dart';
+import 'package:flutter_application_3/Options/backIconButton.dart';
 import 'package:flutter_application_3/Options/backgroundimage.dart';
+import 'package:flutter_application_3/Options/baslikContainer.dart';
 import 'package:flutter_application_3/Options/status_service.dart';
 import 'package:flutter_application_3/profil/profilgiris.dart';
-
 
 class IzinIslemleriPage extends StatefulWidget {
   const IzinIslemleriPage({Key key}) : super(key: key);
@@ -38,6 +39,7 @@ class _IzinIslemleriPageState extends State<IzinIslemleriPage> {
     getData();
     super.initState();
   }
+
   @override
   Widget build(BuildContext context) {
     background _background = background();
@@ -47,15 +49,10 @@ class _IzinIslemleriPageState extends State<IzinIslemleriPage> {
     return Scaffold(
         appBar: AppBar(
           flexibleSpace: appbarContainer(),
-          title: Text("Şehit Furkan Doğan Yurdu"),
+          title: baslikTitle(),
           automaticallyImplyLeading: false,
-          leading: new IconButton(
-            icon: new Icon(Icons.arrow_back, color: Colors.white),
-            onPressed: () => Navigator.pushReplacement(
-              //Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => ProfilGirisPage()),
-            ),
+          leading: backIconButton(
+            page: ProfilGirisPage(),
           ),
         ),
         body: Container(
@@ -78,80 +75,76 @@ class _IzinIslemleriPageState extends State<IzinIslemleriPage> {
                         itemBuilder: (context, index) {
                           DocumentSnapshot mypost =
                               snaphot.data.docs[index] ?? '';
-                              String isim ="${mypost['Ogrenci']}";
+                          String isim = "${mypost['Ogrenci']}";
 
                           Future<void> _showChoiseDialog(
                               BuildContext context) {}
-                              if(isim == name){
-                          return Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: InkWell(
-                              onTap: () {
-                                _showChoiseDialog(context);
-                              },
-                             
-                             child: Container(
-                                decoration: BoxDecoration(
-                                    color: Color(0xFFeeeee0),
-                                    border: Border.all(
-                                        color: Colors.blue, width: 2),
-                                    borderRadius:
-                                        BorderRadius.all(Radius.circular(15))),
-                                        
-                                child: Padding(
-                                  padding: const EdgeInsets.all(8.0),
-                                  child: Column(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
-                                    children: [
-                                      DataTable(columns: [
-                                        DataColumn(
-                                          label: Text('Gidiş'),
-                                        ),
-                                        DataColumn(
-                                          label: Text('Dönüş'),
-                                        ),
-                                        DataColumn(
-                                          label: Text('Şehir'),
-                                        ),
-                                      ], rows: [
-                                        DataRow(cells: [
-                                          DataCell(Container(
-                                            decoration: BoxDecoration(),
-                                            child: Text(
-                                              "${mypost['Gidis']}",
-                                              style: TextStyle(fontSize: 16),
-                                              textAlign: TextAlign.center,
-                                            ),
-                                          )),
-                                          DataCell(Container(
-                                            decoration: BoxDecoration(),
-                                            child: Text(
-                                              "${mypost['Donus']}",
-                                              style: TextStyle(fontSize: 16),
-                                              textAlign: TextAlign.center,
-                                            ),
-                                          )),
-                                          DataCell(Container(
-                                            decoration: BoxDecoration(),
-                                           
-                                            child: Text(
-                                              "${mypost['Sehir']}",
-                                              style: TextStyle(fontSize: 16),
-                                              textAlign: TextAlign.center,
-                                            ),
-                                          )),
+                          if (isim == name) {
+                            return Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: InkWell(
+                                onTap: () {
+                                  _showChoiseDialog(context);
+                                },
+                                child: Container(
+                                  decoration: BoxDecoration(
+                                      color: Color(0xFFeeeee0),
+                                      border: Border.all(
+                                          color: Colors.blue, width: 2),
+                                      borderRadius: BorderRadius.all(
+                                          Radius.circular(15))),
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: Column(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        DataTable(columns: [
+                                          DataColumn(
+                                            label: Text('Gidiş'),
+                                          ),
+                                          DataColumn(
+                                            label: Text('Dönüş'),
+                                          ),
+                                          DataColumn(
+                                            label: Text('Şehir'),
+                                          ),
+                                        ], rows: [
+                                          DataRow(cells: [
+                                            DataCell(Container(
+                                              decoration: BoxDecoration(),
+                                              child: Text(
+                                                "${mypost['Gidis']}",
+                                                style: TextStyle(fontSize: 16),
+                                                textAlign: TextAlign.center,
+                                              ),
+                                            )),
+                                            DataCell(Container(
+                                              decoration: BoxDecoration(),
+                                              child: Text(
+                                                "${mypost['Donus']}",
+                                                style: TextStyle(fontSize: 16),
+                                                textAlign: TextAlign.center,
+                                              ),
+                                            )),
+                                            DataCell(Container(
+                                              decoration: BoxDecoration(),
+                                              child: Text(
+                                                "${mypost['Sehir']}",
+                                                style: TextStyle(fontSize: 16),
+                                                textAlign: TextAlign.center,
+                                              ),
+                                            )),
+                                          ])
                                         ])
-                                      ])
-                                    ],
+                                      ],
+                                    ),
                                   ),
                                 ),
                               ),
-                            ),
-                          );
-                        }
-                        }
-                        );
+                            );
+                          }
+                        });
               },
             )));
   }

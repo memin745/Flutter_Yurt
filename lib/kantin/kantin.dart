@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_3/Duyurular/DuyurularSayfasi.dart';
 import 'package:flutter_application_3/Options/appbarContainer.dart';
+import 'package:flutter_application_3/Options/backIconButton.dart';
 import 'package:flutter_application_3/Options/backgroundimage.dart';
+import 'package:flutter_application_3/Options/baslikContainer.dart';
 import 'package:flutter_application_3/YurtIslemleri/YurtIslemleri.dart';
 import 'package:flutter_application_3/YurtIslemleri/odalar.dart';
 import 'package:flutter_application_3/homepage.dart';
@@ -19,25 +21,25 @@ class KantinPage extends StatefulWidget {
 }
 
 class _KantinPageState extends State<KantinPage> {
-  int _selectedIndex = 0;  
-    static const List<Widget> _widgetOptions = <Widget>[ 
-      HomePage(), 
-      IzinveBasvuruPage(),
-      YurtIslemleriPage(),
-      DuyurularSayfasiPage(),
-      ProfilGirisPage()
-  ]; 
+  int _selectedIndex = 0;
+  static const List<Widget> _widgetOptions = <Widget>[
+    HomePage(),
+    IzinveBasvuruPage(),
+    YurtIslemleriPage(),
+    DuyurularSayfasiPage(),
+    ProfilGirisPage()
+  ];
   @override
   Widget build(BuildContext context) {
     background _background = background();
-    void _onItemTapped(int index) {  
-    setState(() {  
-      _selectedIndex = index;  
-    }); 
+    void _onItemTapped(int index) {
+      setState(() {
+        _selectedIndex = index;
+      });
     }
+
     Size size = MediaQuery.of(context).size;
     return Scaffold(
-      
       appBar: Appbar(context),
       body: bodyContainer(size: size),
     );
@@ -45,15 +47,12 @@ class _KantinPageState extends State<KantinPage> {
 
   AppBar Appbar(BuildContext context) {
     return AppBar(
-       flexibleSpace: appbarContainer(),
-      title: Text("Şehit Furkan Doğan Yurdu"),
+      flexibleSpace: appbarContainer(),
+      title: baslikTitle(),
       automaticallyImplyLeading: false,
       leading: new IconButton(
-        icon: new Icon(Icons.arrow_back, color: Colors.white),
-        onPressed: () => Navigator.pushReplacement(
-          //Navigator.push(
-          context,
-          MaterialPageRoute(builder: (context) => HomePage()),
+        icon: backIconButton(
+          page: HomePage(),
         ),
       ),
     );
@@ -72,7 +71,7 @@ class bodyContainer extends StatelessWidget {
   Widget build(BuildContext context) {
     background _background = background();
     return Container(
-     decoration: BoxDecoration(
+      decoration: BoxDecoration(
         image: DecorationImage(
           image: _background.image,
           fit: BoxFit.cover,
@@ -90,7 +89,7 @@ class bodyContainer extends StatelessWidget {
                 color: Color(0xFFeeeee0),
               ),
               width: 250,
-              height: size.height*0.08,
+              height: size.height * 0.08,
               child: TextButton(
                   onPressed: () => Navigator.pushReplacement(
                         //Navigator.push(
@@ -100,7 +99,7 @@ class bodyContainer extends StatelessWidget {
                       ),
                   child: Text(
                     "Fiyat Listesi",
-                    style: TextStyle(fontSize: 20,color: Colors.black),
+                    style: TextStyle(fontSize: 20, color: Colors.black),
                   ))),
           Padding(
             padding: const EdgeInsets.all(8.0),
@@ -111,7 +110,7 @@ class bodyContainer extends StatelessWidget {
                   color: Color(0xFFeeeee0),
                 ),
                 width: 250,
-                height: size.height*0.08,
+                height: size.height * 0.08,
                 child: TextButton(
                     onPressed: () => Navigator.pushReplacement(
                           //Navigator.push(
@@ -119,7 +118,8 @@ class bodyContainer extends StatelessWidget {
                           MaterialPageRoute(
                               builder: (context) => OdemelerPage()),
                         ),
-                    child: Text("Ödeme Yap", style: TextStyle(fontSize: 20,color: Colors.black)))),
+                    child: Text("Ödeme Yap",
+                        style: TextStyle(fontSize: 20, color: Colors.black)))),
           ),
           Container(
             margin: EdgeInsets.only(top: 10),
@@ -128,20 +128,18 @@ class bodyContainer extends StatelessWidget {
               color: Color(0xFFeeeee0),
             ),
             width: 250,
-            height: size.height*0.08,
+            height: size.height * 0.08,
             child: TextButton(
                 child: TextButton(
-                    onPressed: () => Navigator.pushReplacement(
-                          //Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => BakiyeYuklePage()),
-                        ),
-                    child: Text("Bakiye Yükle",
-                        style: TextStyle(fontSize: 20,color: Colors.black)),)),
+              onPressed: () => Navigator.pushReplacement(
+                //Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => BakiyeYuklePage()),
+              ),
+              child: Text("Bakiye Yükle",
+                  style: TextStyle(fontSize: 20, color: Colors.black)),
+            )),
           ),
-
-
         ],
       ),
     );

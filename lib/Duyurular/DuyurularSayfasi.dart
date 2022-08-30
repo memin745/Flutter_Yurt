@@ -2,7 +2,9 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_3/Duyurular/DuyuruMetni.dart';
 import 'package:flutter_application_3/Options/appbarContainer.dart';
+import 'package:flutter_application_3/Options/backIconButton.dart';
 import 'package:flutter_application_3/Options/backgroundimage.dart';
+import 'package:flutter_application_3/Options/baslikContainer.dart';
 import 'package:flutter_application_3/Options/status_service.dart';
 import 'package:flutter_application_3/homepage.dart';
 import 'package:liquid_pull_to_refresh/liquid_pull_to_refresh.dart';
@@ -29,15 +31,10 @@ class _DuyurularSayfasiPageState extends State<DuyurularSayfasiPage> {
     return Scaffold(
       appBar: AppBar(
         flexibleSpace: appbarContainer(),
-        title: Text("Şehit Furkan Doğan Yurdu"),
+        title: baslikTitle(),
         automaticallyImplyLeading: false,
-        leading: new IconButton(
-          onPressed: () => Navigator.pushReplacement(
-            //Navigator.push(
-            context,
-            MaterialPageRoute(builder: (context) => HomePage()),
-          ),
-          icon: new Icon(Icons.arrow_back, color: Colors.white),
+        leading: backIconButton(
+          page: HomePage(),
         ),
       ),
       body: LiquidPullToRefresh(
@@ -66,7 +63,8 @@ class duyuru extends StatelessWidget {
     Key key,
     @required StatusService statusService,
     @required this.size,
-  }) : _statusService = statusService, super(key: key);
+  })  : _statusService = statusService,
+        super(key: key);
 
   final StatusService _statusService;
   final Size size;
@@ -84,12 +82,10 @@ class duyuru extends StatelessWidget {
               : ListView.builder(
                   itemCount: snaphot.data.docs.length,
                   itemBuilder: (context, index) {
-                    DocumentSnapshot mypost =
-                        snaphot.data.docs[index] ?? '';
+                    DocumentSnapshot mypost = snaphot.data.docs[index] ?? '';
                     String postValue = "${mypost['Metin']}";
 
-                    Future<void> _showChoiseDialog(
-                        BuildContext context) {}
+                    Future<void> _showChoiseDialog(BuildContext context) {}
 
                     return Padding(
                       padding: const EdgeInsets.all(8.0),
@@ -108,8 +104,7 @@ class duyuru extends StatelessWidget {
                                   offset: Offset(0, 4),
                                 )
                               ],
-                              border: Border.all(
-                                  color: Colors.blue, width: 2),
+                              border: Border.all(color: Colors.blue, width: 2),
                               borderRadius:
                                   BorderRadius.all(Radius.circular(20))),
                           child: ListView(
@@ -119,13 +114,11 @@ class duyuru extends StatelessWidget {
                                 padding: const EdgeInsets.all(16.0),
                                 child: Container(
                                   child: TextButton(
-                                    onPressed: () =>
-                                        Navigator.pushReplacement(
+                                    onPressed: () => Navigator.pushReplacement(
                                       //Navigator.push(
                                       context,
                                       MaterialPageRoute(
-                                          builder: (context) =>
-                                              DuyuruMetniPage(
+                                          builder: (context) => DuyuruMetniPage(
                                                 postValue: postValue,
                                               )),
                                     ),
@@ -150,26 +143,4 @@ class duyuru extends StatelessWidget {
       ),
     );
   }
-}
-
-Widget Duyurular(String title, context) {
-  Size size = MediaQuery.of(context).size;
-  return Container(
-    margin: EdgeInsets.only(top: 15, left: 15, right: 15),
-    decoration: BoxDecoration(
-        color: Color(0xFFeeeee0), borderRadius: BorderRadius.circular(15)),
-    width: size.width * 0.70,
-    height: size.height * 0.09,
-    child: TextButton(
-      onPressed: () => Navigator.pushReplacement(
-        //Navigator.push(
-        context,
-        MaterialPageRoute(builder: (context) => DuyuruMetniPage()),
-      ),
-      child: Text(
-        title,
-        style: TextStyle(fontSize: 20, color: Colors.black),
-      ),
-    ),
-  );
 }

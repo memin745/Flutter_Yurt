@@ -3,7 +3,9 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_3/Options/appbarContainer.dart';
+import 'package:flutter_application_3/Options/backIconButton.dart';
 import 'package:flutter_application_3/Options/backgroundimage.dart';
+import 'package:flutter_application_3/Options/baslikContainer.dart';
 import 'package:flutter_application_3/YurtIslemleri/YurtIslemleri.dart';
 import 'package:flutter_application_3/homepage.dart';
 import 'package:fluttertoast/fluttertoast.dart';
@@ -29,15 +31,10 @@ class _YurtArizaPageState extends State<YurtArizaPage> {
     return Scaffold(
         appBar: AppBar(
           flexibleSpace: appbarContainer(),
-          title: Text("Şehit Furkan Doğan Yurdu"),
+          title: baslikTitle(),
           automaticallyImplyLeading: false,
-          leading: new IconButton(
-            onPressed: () => Navigator.pushReplacement(
-              //Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => YurtIslemleriPage()),
-            ),
-            icon: new Icon(Icons.arrow_back, color: Colors.white),
+          leading: backIconButton(
+            page: YurtIslemleriPage(),
           ),
         ),
         body: Container(
@@ -94,11 +91,14 @@ class _YurtArizaPageState extends State<YurtArizaPage> {
                   decoration: BoxDecoration(
                       color: Color.fromARGB(255, 47, 194, 62),
                       borderRadius: BorderRadius.circular(20),
-                      border: Border.all(width: 1),boxShadow: [BoxShadow(
-                        color: Colors.black.withOpacity(0.50),
-                        blurRadius: 20,
-                        offset: Offset(0,4),
-                      )]),
+                      border: Border.all(width: 1),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.black.withOpacity(0.50),
+                          blurRadius: 20,
+                          offset: Offset(0, 4),
+                        )
+                      ]),
                   width: size.width * 0.40,
                   height: size.height * 0.08,
                   child: TextButton(

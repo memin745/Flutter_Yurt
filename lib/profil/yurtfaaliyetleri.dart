@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_3/Options/appbarContainer.dart';
+import 'package:flutter_application_3/Options/backIconButton.dart';
 import 'package:flutter_application_3/Options/backgroundimage.dart';
+import 'package:flutter_application_3/Options/baslikContainer.dart';
 import 'package:flutter_application_3/profil/profilgiris.dart';
 import 'package:liquid_pull_to_refresh/liquid_pull_to_refresh.dart';
 
 class YurtFaaliyetleriPage extends StatefulWidget {
-  const YurtFaaliyetleriPage({ Key key }) : super(key: key);
+  const YurtFaaliyetleriPage({Key key}) : super(key: key);
 
   @override
   State<YurtFaaliyetleriPage> createState() => _YurtFaaliyetleriPageState();
@@ -16,27 +18,23 @@ class _YurtFaaliyetleriPageState extends State<YurtFaaliyetleriPage> {
   Widget build(BuildContext context) {
     background _background = background();
     Future<void> _handleRefresh() async {
-    return await Future.delayed(Duration(seconds: 2));
-  }
+      return await Future.delayed(Duration(seconds: 2));
+    }
+
     int _currentIndex = 0;
     Size size = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(
-         flexibleSpace: appbarContainer(),
-        title: Text("Şehit Furkan Doğan Yurdu"),
+        flexibleSpace: appbarContainer(),
+        title: baslikTitle(),
         automaticallyImplyLeading: false,
-        leading: new IconButton(
-          icon: new Icon(Icons.arrow_back, color: Colors.white),
-          onPressed: () => Navigator.pushReplacement(
-            //Navigator.push(
-            context,
-            MaterialPageRoute(builder: (context) => ProfilGirisPage()),
-          ),
+        leading: backIconButton(
+          page: ProfilGirisPage(),
         ),
       ),
       body: LiquidPullToRefresh(
         color: Colors.blue[400],
-        height: size.height*0.2,
+        height: size.height * 0.2,
         backgroundColor: Colors.black26,
         onRefresh: _handleRefresh,
         animSpeedFactor: 2,
@@ -52,55 +50,52 @@ class _YurtFaaliyetleriPageState extends State<YurtFaaliyetleriPage> {
           height: size.height * 1,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
-            
             children: [
               Container(
                 margin: EdgeInsets.only(top: 20),
-                child: Text("Yurt Faaliyetleri",style: TextStyle(fontSize: 20,color: Colors.white),
-                
+                child: Text(
+                  "Yurt Faaliyetleri",
+                  style: TextStyle(fontSize: 20, color: Colors.white),
                 ),
               ),
-              Expanded( 
-              child: ListView(
+              Expanded(
+                  child: ListView(
                 scrollDirection: Axis.vertical,
                 children: [
                   Padding(
-                  padding: const EdgeInsets.all(8),
-                  child:YurtFaaliyetleri("Faaliyet",context),
-                  
+                    padding: const EdgeInsets.all(8),
+                    child: YurtFaaliyetleri("Faaliyet", context),
                   ),
                   Padding(
-                  padding: const EdgeInsets.all(8),
-                  child:YurtFaaliyetleri("Faaliyet",context),
+                    padding: const EdgeInsets.all(8),
+                    child: YurtFaaliyetleri("Faaliyet", context),
                   ),
                   Padding(
-                  padding: const EdgeInsets.all(8),
-                  child:YurtFaaliyetleri("Faaliyet",context),
+                    padding: const EdgeInsets.all(8),
+                    child: YurtFaaliyetleri("Faaliyet", context),
                   ),
                   Padding(
-                  padding: const EdgeInsets.all(8),
-                  child:YurtFaaliyetleri("Faaliyet",context),
+                    padding: const EdgeInsets.all(8),
+                    child: YurtFaaliyetleri("Faaliyet", context),
                   ),
                   Padding(
-                  padding: const EdgeInsets.all(8),
-                  child:YurtFaaliyetleri("Faaliyet",context),
+                    padding: const EdgeInsets.all(8),
+                    child: YurtFaaliyetleri("Faaliyet", context),
                   ),
                   Padding(
-                  padding: const EdgeInsets.all(8),
-                  child:YurtFaaliyetleri("Faaliyet",context),
+                    padding: const EdgeInsets.all(8),
+                    child: YurtFaaliyetleri("Faaliyet", context),
                   ),
                   Padding(
-                  padding: const EdgeInsets.all(8),
-                  child:YurtFaaliyetleri("Faaliyet",context),
+                    padding: const EdgeInsets.all(8),
+                    child: YurtFaaliyetleri("Faaliyet", context),
                   ),
                   Padding(
-                  padding: const EdgeInsets.all(8),
-                  child:YurtFaaliyetleri("Faaliyet",context),
+                    padding: const EdgeInsets.all(8),
+                    child: YurtFaaliyetleri("Faaliyet", context),
                   ),
                 ],
-              )
-            )
-      
+              ))
             ],
           ),
         ),
@@ -108,38 +103,38 @@ class _YurtFaaliyetleriPageState extends State<YurtFaaliyetleriPage> {
     );
   }
 }
-Widget YurtFaaliyetleri(String title , context){
-  void _showDialog(){
-    showDialog(context: context, builder: (context){
-      return AlertDialog(
-        backgroundColor: Colors.pink[100],
-        title: Text('Yurt Faaliyetleri'),
-        content: Text("His Tekstil Gezisi"),
-        actions: [
-          MaterialButton(
-            onPressed: (){
-              Navigator.pop(context);
-            },
-            child: Text('Ok'),
-          ),
-        ],
-      );
-    });
+
+Widget YurtFaaliyetleri(String title, context) {
+  void _showDialog() {
+    showDialog(
+        context: context,
+        builder: (context) {
+          return AlertDialog(
+            backgroundColor: Colors.pink[100],
+            title: Text('Yurt Faaliyetleri'),
+            content: Text("His Tekstil Gezisi"),
+            actions: [
+              MaterialButton(
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+                child: Text('Ok'),
+              ),
+            ],
+          );
+        });
   }
+
   Size size = MediaQuery.of(context).size;
   return Container(
-    
-
-              margin: EdgeInsets.only(top: 20),
-              decoration: BoxDecoration(borderRadius: BorderRadius.circular(15),color: Color(0xFFeeeee0)),
-              width: 200,
-              height: 50,
-              child: TextButton(onPressed:_showDialog,
-              child: Text(title,style: TextStyle(fontSize: 20,color: Colors.black)
-   ), 
-              ), 
-              
-              
-            );
-  
+    margin: EdgeInsets.only(top: 20),
+    decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(15), color: Color(0xFFeeeee0)),
+    width: 200,
+    height: 50,
+    child: TextButton(
+      onPressed: _showDialog,
+      child: Text(title, style: TextStyle(fontSize: 20, color: Colors.black)),
+    ),
+  );
 }

@@ -1,13 +1,14 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_3/Options/appbarContainer.dart';
+import 'package:flutter_application_3/Options/backIconButton.dart';
 import 'package:flutter_application_3/Options/backgroundimage.dart';
+import 'package:flutter_application_3/Options/baslikContainer.dart';
 import 'package:flutter_application_3/Options/status_service.dart';
 
 import 'package:flutter_application_3/homepage.dart';
 import 'package:flutter_application_3/izinbasvuru/basvurularim.dart';
 import 'package:flutter_application_3/izinbasvuru/izinvebasvuru.dart';
-
 
 class BavurularPage extends StatefulWidget {
   const BavurularPage({Key key}) : super(key: key);
@@ -26,15 +27,10 @@ class _BavurularPageState extends State<BavurularPage> {
     return Scaffold(
       appBar: AppBar(
         flexibleSpace: appbarContainer(),
-        title: Text("Şehit Furkan Doğan Yurdu"),
+        title: baslikTitle(),
         automaticallyImplyLeading: false,
-        leading: new IconButton(
-          onPressed: () => Navigator.pushReplacement(
-            //Navigator.push(
-            context,
-            MaterialPageRoute(builder: (context) => IzinveBasvuruPage()),
-          ),
-          icon: new Icon(Icons.arrow_back, color: Colors.white),
+        leading: backIconButton(
+          page: IzinveBasvuruPage(),
         ),
       ),
       body: Container(

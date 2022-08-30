@@ -4,7 +4,9 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_3/Options/appbarContainer.dart';
+import 'package:flutter_application_3/Options/backIconButton.dart';
 import 'package:flutter_application_3/Options/backgroundimage.dart';
+import 'package:flutter_application_3/Options/baslikContainer.dart';
 import 'package:flutter_application_3/profil/profilgiris.dart';
 import 'package:liquid_pull_to_refresh/liquid_pull_to_refresh.dart';
 
@@ -57,27 +59,23 @@ class _ProfilKullaniciPageState extends State<ProfilKullaniciPage> {
   Widget build(BuildContext context) {
     background _background = background();
     Future<void> _handleRefresh() async {
-    return await Future.delayed(Duration(seconds: 2));
-  }
+      return await Future.delayed(Duration(seconds: 2));
+    }
+
     int _currentIndex = 0;
     Size size = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(
         flexibleSpace: appbarContainer(),
-        title: Text("Şehit Furkan Doğan Yurdu"),
+        title: baslikTitle(),
         automaticallyImplyLeading: false,
-        leading: new IconButton(
-          icon: new Icon(Icons.arrow_back, color: Colors.white),
-          onPressed: () => Navigator.pushReplacement(
-            //Navigator.push(
-            context,
-            MaterialPageRoute(builder: (context) => ProfilGirisPage()),
-          ),
+        leading: backIconButton(
+          page: ProfilGirisPage(),
         ),
       ),
       body: LiquidPullToRefresh(
         color: Colors.blue[400],
-        height: size.height*0.2,
+        height: size.height * 0.2,
         backgroundColor: Colors.black26,
         onRefresh: _handleRefresh,
         animSpeedFactor: 2,
@@ -106,35 +104,30 @@ class _ProfilKullaniciPageState extends State<ProfilKullaniciPage> {
                 child: ListView(
                   scrollDirection: Axis.vertical,
                   children: [
-      
-                     Container(
-                        child: KullaniciProfil( name, context),
-                      ),
-                    
                     Container(
-                      child: KullaniciProfil( Telefon, context),
+                      child: KullaniciProfil(name, context),
                     ),
                     Container(
-                      child: KullaniciProfil( sehir, context),
+                      child: KullaniciProfil(Telefon, context),
+                    ),
+                    Container(
+                      child: KullaniciProfil(sehir, context),
                     ),
                     Container(
                       child: KullaniciProfil(email, context),
                     ),
                     Container(
-                      child:
-                          KullaniciProfil(universite, context),
+                      child: KullaniciProfil(universite, context),
                     ),
                     Container(
                       child: KullaniciProfil(bolum, context),
                     ),
                     Container(
-                      child:
-                          KullaniciProfil(sinif+'. Sınıf', context),
+                      child: KullaniciProfil(sinif + '. Sınıf', context),
                     ),
                     Container(
                       child: KullaniciProfil(oda, context),
                     ),
-                    
                     SizedBox(height: size.height * 0.05),
                   ],
                 ),
@@ -171,12 +164,13 @@ Widget KullaniciProfil(String title, context) {
       borderRadius: BorderRadius.circular(15),
       color: Color(0xFFeeeee0),
       border: Border.all(width: 1),
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.black.withOpacity(0.50),
-                    blurRadius: 20,
-                    offset: Offset(0, 4),
-                  )],
+      boxShadow: [
+        BoxShadow(
+          color: Colors.black.withOpacity(0.50),
+          blurRadius: 20,
+          offset: Offset(0, 4),
+        )
+      ],
     ),
     width: size.width * 1,
     height: size.height * 0.1,

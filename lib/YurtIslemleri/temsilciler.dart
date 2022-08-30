@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_3/Options/appbarContainer.dart';
+import 'package:flutter_application_3/Options/backIconButton.dart';
 import 'package:flutter_application_3/Options/backgroundimage.dart';
+import 'package:flutter_application_3/Options/baslikContainer.dart';
 import 'package:flutter_application_3/YurtIslemleri/YurtIslemleri.dart';
 
 import 'package:flutter_application_3/homepage.dart';
-
 
 class TemsilcilerPage extends StatefulWidget {
   const TemsilcilerPage({Key key}) : super(key: key);
@@ -21,25 +22,20 @@ class _TemsilcilerPageState extends State<TemsilcilerPage> {
     int _currentIndex = 0;
     return Scaffold(
         appBar: AppBar(
-           flexibleSpace: appbarContainer(),
-          title: Text("Şehit Furkan Doğan Yurdu"),
+          flexibleSpace: appbarContainer(),
+          title: baslikTitle(),
           automaticallyImplyLeading: false,
-          leading: new IconButton(
-            onPressed: () => Navigator.pushReplacement(
-              //Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => YurtIslemleriPage()),
-            ),
-            icon: new Icon(Icons.arrow_back, color: Colors.white),
+          leading: backIconButton(
+            page: YurtIslemleriPage(),
           ),
         ),
         body: Container(
           decoration: BoxDecoration(
-          image: DecorationImage(
-            image: _background.image,
-            fit: BoxFit.cover,
+            image: DecorationImage(
+              image: _background.image,
+              fit: BoxFit.cover,
+            ),
           ),
-        ),
           width: size.width * 1,
           height: size.height * 1,
           child: Column(mainAxisAlignment: MainAxisAlignment.start, children: [
@@ -47,60 +43,61 @@ class _TemsilcilerPageState extends State<TemsilcilerPage> {
               padding: EdgeInsets.only(top: 40),
             ),
             Expanded(
-            child: ListView(
+                child: ListView(
               scrollDirection: Axis.vertical,
               children: [
                 Padding(
-                padding: const EdgeInsets.all(8),
-                child:Temsilciler("Muhammet Emin","YAĞMUR","2",context),
+                  padding: const EdgeInsets.all(8),
+                  child: Temsilciler("Muhammet Emin", "YAĞMUR", "2", context),
                 ),
                 Padding(
-                padding: const EdgeInsets.all(8),
-                child:Temsilciler("Ömer Faruk","Işık","3",context),
+                  padding: const EdgeInsets.all(8),
+                  child: Temsilciler("Ömer Faruk", "Işık", "3", context),
                 ),
                 Padding(
-                padding: const EdgeInsets.all(8),
-                child:Temsilciler("Ebu Bekir Talha","İşçimen","6",context),
+                  padding: const EdgeInsets.all(8),
+                  child:
+                      Temsilciler("Ebu Bekir Talha", "İşçimen", "6", context),
                 ),
                 Padding(
-                padding: const EdgeInsets.all(8),
-                child:Temsilciler("Ahmet Hasana","Çelik","2",context),
+                  padding: const EdgeInsets.all(8),
+                  child: Temsilciler("Ahmet Hasana", "Çelik", "2", context),
                 ),
                 Padding(
-                padding: const EdgeInsets.all(8),
-                child:Temsilciler("Muhammet Emin","YAĞMUR","2",context),
+                  padding: const EdgeInsets.all(8),
+                  child: Temsilciler("Muhammet Emin", "YAĞMUR", "2", context),
                 ),
                 Padding(
-                padding: const EdgeInsets.all(8),
-                child:Temsilciler("Ömer Faruk","Işık","3",context),
+                  padding: const EdgeInsets.all(8),
+                  child: Temsilciler("Ömer Faruk", "Işık", "3", context),
                 ),
                 Padding(
-                padding: const EdgeInsets.all(8),
-                child:Temsilciler("Ebu Bekir Talha","İşçimen","6",context),
+                  padding: const EdgeInsets.all(8),
+                  child:
+                      Temsilciler("Ebu Bekir Talha", "İşçimen", "6", context),
                 ),
                 Padding(
-                padding: const EdgeInsets.all(8),
-                child:Temsilciler("Ahmet Hasana","Çelik","2",context),
+                  padding: const EdgeInsets.all(8),
+                  child: Temsilciler("Ahmet Hasana", "Çelik", "2", context),
                 ),
               ],
-            )
-          )
+            ))
           ]),
         ));
   }
 }
 
-Widget Temsilciler(String title,String title2, String title3,context) {
-     Size size = MediaQuery.of(context).size;
+Widget Temsilciler(String title, String title2, String title3, context) {
+  Size size = MediaQuery.of(context).size;
   return Container(
-    width: size.width*0.80,
-    height:size.height * 0.12,
+    width: size.width * 0.80,
+    height: size.height * 0.12,
     decoration: BoxDecoration(
         color: Color(0xFFD9D9D9), borderRadius: BorderRadius.circular(15)),
     child: Row(children: [
       Container(
-        width:size.width * 0.70,
-        height: size.height *0.12,
+        width: size.width * 0.70,
+        height: size.height * 0.12,
         decoration: BoxDecoration(
           color: Colors.blue,
           borderRadius: BorderRadius.only(
@@ -112,28 +109,36 @@ Widget Temsilciler(String title,String title2, String title3,context) {
         child: Column(children: [
           Container(
             padding: EdgeInsets.only(top: 10),
-            width:size.width * 0.60,
-            height: size.height *0.04,
-            child: Text("Adı : " + title,style: TextStyle(fontSize: 15,fontWeight: FontWeight.bold),),
+            width: size.width * 0.60,
+            height: size.height * 0.04,
+            child: Text(
+              "Adı : " + title,
+              style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
+            ),
           ),
           Container(
             padding: EdgeInsets.only(top: 10),
-           width:size.width * 0.60,
-            height: size.height *0.04,
-            child: Text("Soyad : " + title2,style: TextStyle(fontSize: 15,fontWeight: FontWeight.bold),),
+            width: size.width * 0.60,
+            height: size.height * 0.04,
+            child: Text(
+              "Soyad : " + title2,
+              style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
+            ),
           ),
           Container(
             padding: EdgeInsets.only(bottom: 10),
-           width:size.width * 0.60,
-            height: size.height *0.04,
-            child: Text("Katı : " + title3,style: TextStyle(fontSize: 15,fontWeight: FontWeight.bold),),
+            width: size.width * 0.60,
+            height: size.height * 0.04,
+            child: Text(
+              "Katı : " + title3,
+              style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
+            ),
           ),
-
         ]),
       ),
       Container(
-        width:size.width * 0.259,
-        height: size.height *0.12,
+        width: size.width * 0.259,
+        height: size.height * 0.12,
         decoration: BoxDecoration(
           color: Colors.red,
           borderRadius: BorderRadius.only(
@@ -143,9 +148,9 @@ Widget Temsilciler(String title,String title2, String title3,context) {
               bottomRight: Radius.circular(15)),
         ),
         child: Icon(
-            Icons.person,
-            size: 55,
-          ),
+          Icons.person,
+          size: 55,
+        ),
       ),
     ]),
   );

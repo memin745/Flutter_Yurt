@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_3/Options/appbarContainer.dart';
+import 'package:flutter_application_3/Options/backIconButton.dart';
 import 'package:flutter_application_3/Options/backgroundimage.dart';
+import 'package:flutter_application_3/Options/baslikContainer.dart';
 import 'package:flutter_application_3/homepage.dart';
 import 'package:flutter_application_3/yemekhane/yemektablosu.dart';
 
@@ -19,15 +21,12 @@ class _YemekhanePageState extends State<YemekhanePage> {
     Size size = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(
-         flexibleSpace: appbarContainer(),
-        title: Text("Şehit Furkan Doğan Yurdu"),
+        flexibleSpace: appbarContainer(),
+        title: baslikTitle(),
         automaticallyImplyLeading: false,
         leading: new IconButton(
-          icon: new Icon(Icons.arrow_back, color: Colors.white),
-          onPressed: () => Navigator.pushReplacement(
-            //Navigator.push(
-            context,
-            MaterialPageRoute(builder: (context) => HomePage()),
+          icon: backIconButton(
+            page: HomePage(),
           ),
         ),
       ),
@@ -52,23 +51,42 @@ class _YemekhanePageState extends State<YemekhanePage> {
               width: size.width * 0.70,
               height: size.height * 0.20,
               child: Column(
-                                children: [
+                children: [
                   Container(
                     decoration: BoxDecoration(
-                      borderRadius: BorderRadius.only(topLeft: Radius.circular(15),topRight: Radius.circular(15),bottomLeft: Radius.circular(0),bottomRight: Radius.circular(0)),
+                      borderRadius: BorderRadius.only(
+                          topLeft: Radius.circular(15),
+                          topRight: Radius.circular(15),
+                          bottomLeft: Radius.circular(0),
+                          bottomRight: Radius.circular(0)),
                       color: Colors.red,
-                      
                     ),
-                    child: Text("Kahvaltı",textAlign: TextAlign.center,style: TextStyle(fontSize: 20,),  ),
+                    child: Text(
+                      "Kahvaltı",
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        fontSize: 20,
+                      ),
+                    ),
                     width: size.width * 0.70,
                     height: size.height * 0.10,
                   ),
                   Container(
                     decoration: BoxDecoration(
-                      borderRadius: BorderRadius.only(topLeft: Radius.circular(0),topRight: Radius.circular(0),bottomLeft: Radius.circular(15),bottomRight: Radius.circular(15)),
+                      borderRadius: BorderRadius.only(
+                          topLeft: Radius.circular(0),
+                          topRight: Radius.circular(0),
+                          bottomLeft: Radius.circular(15),
+                          bottomRight: Radius.circular(15)),
                       color: Colors.blue,
                     ),
-                    child: Text("Akşam Yemeği",textAlign: TextAlign.center,style: TextStyle(fontSize: 20,),),
+                    child: Text(
+                      "Akşam Yemeği",
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        fontSize: 20,
+                      ),
+                    ),
                     width: size.width * 0.70,
                     height: size.height * 0.10,
                   ),
@@ -76,13 +94,13 @@ class _YemekhanePageState extends State<YemekhanePage> {
               ),
             ),
             Container(
-                margin: EdgeInsets.only(top: size.height*0.08),
+                margin: EdgeInsets.only(top: size.height * 0.08),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(15),
                   color: Colors.white,
                 ),
                 width: 250,
-                height: size.height*0.08,
+                height: size.height * 0.08,
                 child: TextButton(
                     onPressed: () => Navigator.pushReplacement(
                           //Navigator.push(
@@ -90,7 +108,8 @@ class _YemekhanePageState extends State<YemekhanePage> {
                           MaterialPageRoute(
                               builder: (context) => YemekTablosuPage()),
                         ),
-                    child: Text("Aylık Yemek Tablosu", style: TextStyle(fontSize: 20,color: Colors.black)))),
+                    child: Text("Aylık Yemek Tablosu",
+                        style: TextStyle(fontSize: 20, color: Colors.black)))),
           ],
         ),
       ),

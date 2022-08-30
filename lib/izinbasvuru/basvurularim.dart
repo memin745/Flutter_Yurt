@@ -3,7 +3,9 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_3/Options/appbarContainer.dart';
+import 'package:flutter_application_3/Options/backIconButton.dart';
 import 'package:flutter_application_3/Options/backgroundimage.dart';
+import 'package:flutter_application_3/Options/baslikContainer.dart';
 import 'package:flutter_application_3/homepage.dart';
 import 'package:flutter_application_3/izinbasvuru/basvurular.dart';
 
@@ -67,16 +69,11 @@ class _BasvurularimPageState extends State<BasvurularimPage> {
     int _currentIndex = 0;
     return Scaffold(
       appBar: AppBar(
-        flexibleSpace:appbarContainer(),
-        title: Text("Şehit Furkan Doğan Yurdu"),
+        flexibleSpace: appbarContainer(),
+        title: baslikTitle(),
         automaticallyImplyLeading: false,
-        leading: new IconButton(
-          onPressed: () => Navigator.pushReplacement(
-            //Navigator.push(
-            context,
-            MaterialPageRoute(builder: (context) => BavurularPage()),
-          ),
-          icon: new Icon(Icons.arrow_back, color: Colors.white),
+        leading: backIconButton(
+          page: BavurularPage(),
         ),
       ),
       body: Container(
@@ -129,25 +126,34 @@ class _BasvurularimPageState extends State<BasvurularimPage> {
               margin: EdgeInsets.only(
                 top: size.height * 0.05,
               ),
-              decoration:  BoxDecoration(
-                      color: Color.fromARGB(255, 47, 194, 62),
-                      borderRadius: BorderRadius.circular(20),
-                      border: Border.all(width: 1),boxShadow: [BoxShadow(
-                        color: Colors.black.withOpacity(0.50),
-                        blurRadius: 20,
-                        offset: Offset(0,4),
-                      )]),
+              decoration: BoxDecoration(
+                  color: Color.fromARGB(255, 47, 194, 62),
+                  borderRadius: BorderRadius.circular(20),
+                  border: Border.all(width: 1),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.black.withOpacity(0.50),
+                      blurRadius: 20,
+                      offset: Offset(0, 4),
+                    )
+                  ]),
               child: TextButton(
                 onPressed: () async {
                   Map<String, String> movieData = {};
                   FirebaseAuth.instance;
-                  await basvuruRef
-                      .doc(widget.postValue2)
-                      .set({"ogrenci":FieldValue.arrayUnion([name]),"Duyuru Adi":widget.postValue2,"Email":FieldValue.arrayUnion([email]),"Telefon":FieldValue.arrayUnion([Telefon]),},SetOptions(merge: true));
+                  await basvuruRef.doc(widget.postValue2).set({
+                    "ogrenci": FieldValue.arrayUnion([name]),
+                    "Duyuru Adi": widget.postValue2,
+                    "Email": FieldValue.arrayUnion([email]),
+                    "Telefon": FieldValue.arrayUnion([Telefon]),
+                  }, SetOptions(merge: true));
                 },
                 child: Text(
                   "Başvur",
-                  style: TextStyle(fontSize: 24, color: Colors.black,fontWeight: FontWeight.bold),
+                  style: TextStyle(
+                      fontSize: 24,
+                      color: Colors.black,
+                      fontWeight: FontWeight.bold),
                 ),
               ),
             ),

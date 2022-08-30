@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_3/Options/appbarContainer.dart';
+import 'package:flutter_application_3/Options/backIconButton.dart';
 import 'package:flutter_application_3/Options/backgroundimage.dart';
+import 'package:flutter_application_3/Options/baslikContainer.dart';
 import 'package:flutter_application_3/YurtIslemleri/YurtIslemleri.dart';
 import 'package:flutter_application_3/YurtIslemleri/katlar.dart';
 
 import 'package:flutter_application_3/homepage.dart';
-
 
 class OdalarPage extends StatefulWidget {
   const OdalarPage({Key key}) : super(key: key);
@@ -22,16 +23,11 @@ class _OdalarPageState extends State<OdalarPage> {
     int _currentIndex = 0;
     return Scaffold(
       appBar: AppBar(
-         flexibleSpace: appbarContainer(),
-        title: Text("Şehit Furkan Doğan Yurdu"),
+        flexibleSpace: appbarContainer(),
+        title: baslikTitle(),
         automaticallyImplyLeading: false,
-        leading: new IconButton(
-          onPressed: () => Navigator.pushReplacement(
-            //Navigator.push(
-            context,
-            MaterialPageRoute(builder: (context) =>   KatlarPage()),
-          ),
-          icon: new Icon(Icons.arrow_back, color: Colors.white),
+        leading: backIconButton(
+          page: KatlarPage(),
         ),
       ),
       body: Container(
@@ -47,46 +43,44 @@ class _OdalarPageState extends State<OdalarPage> {
           Container(
             padding: EdgeInsets.only(top: 40),
           ),
-          
           Expanded(
-            child: ListView(
-              scrollDirection: Axis.vertical,
-              children: [
-                Padding(
+              child: ListView(
+            scrollDirection: Axis.vertical,
+            children: [
+              Padding(
                 padding: const EdgeInsets.all(8),
-                child:odalar("101 numaralı Oda"),
-                ),
-                Padding(
+                child: odalar("101 numaralı Oda"),
+              ),
+              Padding(
                 padding: const EdgeInsets.all(8),
-                child:odalar("102 numaralı Oda"),
-                ),
-                Padding(
+                child: odalar("102 numaralı Oda"),
+              ),
+              Padding(
                 padding: const EdgeInsets.all(8),
-                child:odalar("103 numaralı Oda"),
-                ),
-                Padding(
+                child: odalar("103 numaralı Oda"),
+              ),
+              Padding(
                 padding: const EdgeInsets.all(8),
-                child:odalar("104 numaralı Oda"),
-                ),
-                Padding(
+                child: odalar("104 numaralı Oda"),
+              ),
+              Padding(
                 padding: const EdgeInsets.all(8),
-                child:odalar("105 numaralı Oda"),
-                ),
-                Padding(
+                child: odalar("105 numaralı Oda"),
+              ),
+              Padding(
                 padding: const EdgeInsets.all(8),
-                child:odalar("106 numaralı Oda"),
-                ),
-                Padding(
+                child: odalar("106 numaralı Oda"),
+              ),
+              Padding(
                 padding: const EdgeInsets.all(8),
-                child:odalar("107 numaralı Oda"),
-                ),
-                Padding(
+                child: odalar("107 numaralı Oda"),
+              ),
+              Padding(
                 padding: const EdgeInsets.all(8),
-                child:odalar("108 numaralı Oda"),
-                ),
-              ],
-            )
-          )
+                child: odalar("108 numaralı Oda"),
+              ),
+            ],
+          ))
         ]),
       ),
     );
@@ -128,7 +122,9 @@ Widget odalar(String title) {
               bottomLeft: Radius.circular(69),
               bottomRight: Radius.circular(69)),
         ),
-        padding: EdgeInsets.only(left: 60,),
+        padding: EdgeInsets.only(
+          left: 60,
+        ),
         child: Row(children: [
           Icon(
             Icons.person,

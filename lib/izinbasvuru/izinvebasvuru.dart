@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_3/Options/appbarContainer.dart';
 import 'package:flutter_application_3/Options/backgroundimage.dart';
+import 'package:flutter_application_3/Options/baslikContainer.dart';
 import 'package:flutter_application_3/Options/buttons.dart';
 import 'package:flutter_application_3/homepage.dart';
 import 'package:flutter_application_3/izinbasvuru/basvurular.dart';
@@ -24,7 +25,7 @@ class _IzinveBasvuruPageState extends State<IzinveBasvuruPage> {
     return Scaffold(
       appBar: AppBar(
          flexibleSpace: appbarContainer(),
-        title: Text("Şehit Furkan Doğan Yurdu"),
+        title: baslikTitle(),
       ),
       body: Container(
         decoration: BoxDecoration(
