@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_3/backgroundimage.dart';
-import 'package:flutter_application_3/buttons.dart';
+import 'package:flutter_application_3/Options/backgroundimage.dart';
+import 'package:flutter_application_3/Options/buttons.dart';
 import 'package:flutter_application_3/homepage.dart';
 import 'package:flutter_application_3/izinbasvuru/basvurular.dart';
 import 'package:flutter_application_3/izinbasvuru/basvurularim.dart';

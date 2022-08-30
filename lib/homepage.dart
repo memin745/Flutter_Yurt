@@ -1,12 +1,10 @@
-import 'package:carousel_pro/carousel_pro.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_3/Duyurular/DuyurularSayfasi.dart';
-import 'package:flutter_application_3/backgroundimage.dart';
+import 'package:flutter_application_3/Options/backgroundimage.dart';
+import 'package:flutter_application_3/Options/slider.dart';
+import 'package:flutter_application_3/Options/status_service.dart';
 import 'package:flutter_application_3/kantin/kantin.dart';
-import 'package:flutter_application_3/status_service.dart';
 import 'package:flutter_application_3/yemekhane/yememkhanesayfa.dart';
-import 'package:liquid_pull_to_refresh/liquid_pull_to_refresh.dart';
 import 'package:shimmer_animation/shimmer_animation.dart';
 
 class HomePage extends StatefulWidget {
@@ -86,25 +84,7 @@ class _HomePageState extends State<HomePage> {
                   child: SizedBox(
                     height: 200.0,
                     width: double.infinity,
-                    child: Carousel(
-                      dotSize: 6.0,
-                      dotSpacing: 15.0,
-                      dotPosition: DotPosition.bottomCenter,
-                      images: [
-                        Image.network('https://picsum.photos/200/300',
-                            fit: BoxFit.cover),
-                        Image.network('https://picsum.photos/200/300',
-                            fit: BoxFit.cover),
-                        Image.network('https://picsum.photos/200/300',
-                            fit: BoxFit.cover),
-                        Image.network('https://picsum.photos/200/300',
-                            fit: BoxFit.cover),
-                        Image.network('https://picsum.photos/200/300',
-                            fit: BoxFit.cover),
-                        Image.network('https://picsum.photos/200/300',
-                            fit: BoxFit.cover),
-                      ],
-                    ),
+                    child: slider(),
                   ),
                 ),
                 Container(
@@ -200,6 +180,4 @@ class _HomePageState extends State<HomePage> {
     );
   }
 }
-Widget bg(){
-  return Image(image: AssetImage('graphics/i4.jpeg'));
-}
+

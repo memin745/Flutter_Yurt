@@ -1,10 +1,12 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_application_3/backgroundimage.dart';
+import 'package:flutter_application_3/Options/backgroundimage.dart';
+import 'package:flutter_application_3/Options/status_service.dart';
+
 import 'package:flutter_application_3/homepage.dart';
 import 'package:flutter_application_3/izinbasvuru/basvurularim.dart';
 import 'package:flutter_application_3/izinbasvuru/izinvebasvuru.dart';
-import 'package:flutter_application_3/status_service.dart';
+
 
 class BavurularPage extends StatefulWidget {
   const BavurularPage({Key key}) : super(key: key);

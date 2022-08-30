@@ -3,8 +3,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_3/LoginPage.dart';
-import 'package:flutter_application_3/backgroundimage.dart';
-import 'package:flutter_application_3/buttons.dart';
+import 'package:flutter_application_3/Options/backgroundimage.dart';
+import 'package:flutter_application_3/Options/buttons.dart';
 import 'package:flutter_application_3/homepage.dart';
 import 'package:flutter_application_3/main.dart';
 import 'package:flutter_application_3/profil/izinislemleri.dart';

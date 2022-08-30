@@ -3,9 +3,10 @@ import 'dart:async';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_application_3/backgroundimage.dart';
+import 'package:flutter_application_3/Options/backgroundimage.dart';
+import 'package:flutter_application_3/Options/status_service.dart';
 import 'package:flutter_application_3/profil/profilgiris.dart';
-import 'package:flutter_application_3/status_service.dart';
+
 
 class IzinIslemleriPage extends StatefulWidget {
   const IzinIslemleriPage({Key key}) : super(key: key);
