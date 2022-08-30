@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_3/YurtIslemleri/YurtIslemleri.dart';
 import 'package:flutter_application_3/YurtIslemleri/odalar.dart';
+import 'package:flutter_application_3/backgroundimage.dart';
 import 'package:flutter_application_3/homepage.dart';
 
 class KatlarPage extends StatefulWidget {
@@ -13,6 +14,7 @@ class KatlarPage extends StatefulWidget {
 class _KatlarPageState extends State<KatlarPage> {
   @override
   Widget build(BuildContext context) {
+    background _background = background();
    Size size = MediaQuery.of(context).size;
     int _currentIndex = 0;
     return Scaffold(
@@ -43,7 +45,7 @@ class _KatlarPageState extends State<KatlarPage> {
       body: Container(
         decoration: BoxDecoration(
           image: DecorationImage(
-            image: AssetImage("assets/i4.jpeg"),
+            image: _background.image,
             fit: BoxFit.cover,
           ),
         ),

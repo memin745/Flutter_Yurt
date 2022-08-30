@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_3/backgroundimage.dart';
 import 'package:flutter_application_3/profil/profilgiris.dart';
 import 'package:liquid_pull_to_refresh/liquid_pull_to_refresh.dart';
 
@@ -12,6 +13,7 @@ class YurtFaaliyetleriPage extends StatefulWidget {
 class _YurtFaaliyetleriPageState extends State<YurtFaaliyetleriPage> {
   @override
   Widget build(BuildContext context) {
+    background _background = background();
     Future<void> _handleRefresh() async {
     return await Future.delayed(Duration(seconds: 2));
   }
@@ -53,7 +55,7 @@ class _YurtFaaliyetleriPageState extends State<YurtFaaliyetleriPage> {
         child: Container(
           decoration: BoxDecoration(
             image: DecorationImage(
-              image: AssetImage("assets/i4.jpeg"),
+              image: _background.image,
               fit: BoxFit.cover,
             ),
           ),

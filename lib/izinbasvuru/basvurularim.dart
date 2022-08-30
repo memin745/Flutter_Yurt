@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_application_3/backgroundimage.dart';
 import 'package:flutter_application_3/homepage.dart';
 import 'package:flutter_application_3/izinbasvuru/basvurular.dart';
 
@@ -59,6 +60,7 @@ class _BasvurularimPageState extends State<BasvurularimPage> {
 
   @override
   Widget build(BuildContext context) {
+    background _background = background();
     CollectionReference basvuruRef = _firestore.collection("AlinanBasvurular");
     Size size = MediaQuery.of(context).size;
     int _currentIndex = 0;
@@ -91,7 +93,7 @@ class _BasvurularimPageState extends State<BasvurularimPage> {
       body: Container(
         decoration: BoxDecoration(
           image: DecorationImage(
-            image: AssetImage("assets/i4.jpeg"),
+            image: _background.image,
             fit: BoxFit.cover,
           ),
         ),
@@ -139,7 +141,7 @@ class _BasvurularimPageState extends State<BasvurularimPage> {
                 top: size.height * 0.05,
               ),
               decoration:  BoxDecoration(
-                      color: Color.fromARGB(255, 194, 45, 45),
+                      color: Color.fromARGB(255, 47, 194, 62),
                       borderRadius: BorderRadius.circular(20),
                       border: Border.all(width: 1),boxShadow: [BoxShadow(
                         color: Colors.black.withOpacity(0.50),

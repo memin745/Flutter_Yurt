@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_application_3/backgroundimage.dart';
 import 'package:flutter_application_3/profil/profilgiris.dart';
 import 'package:flutter_application_3/status_service.dart';
 
@@ -37,6 +38,7 @@ class _IzinIslemleriPageState extends State<IzinIslemleriPage> {
   }
   @override
   Widget build(BuildContext context) {
+    background _background = background();
     StatusServiceIzinler _statusServiceIzinler = StatusServiceIzinler();
     int _currentIndex = 0;
     Size size = MediaQuery.of(context).size;
@@ -68,7 +70,7 @@ class _IzinIslemleriPageState extends State<IzinIslemleriPage> {
         body: Container(
             decoration: BoxDecoration(
               image: DecorationImage(
-                image: AssetImage("assets/i4.jpeg"),
+                image: _background.image,
                 fit: BoxFit.cover,
               ),
             ),

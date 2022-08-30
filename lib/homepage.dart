@@ -2,6 +2,7 @@ import 'package:carousel_pro/carousel_pro.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_3/Duyurular/DuyurularSayfasi.dart';
+import 'package:flutter_application_3/backgroundimage.dart';
 import 'package:flutter_application_3/kantin/kantin.dart';
 import 'package:flutter_application_3/status_service.dart';
 import 'package:flutter_application_3/yemekhane/yememkhanesayfa.dart';
@@ -23,6 +24,8 @@ class _HomePageState extends State<HomePage> {
   ];
   @override
   Widget build(BuildContext context) {
+    background _background = background();
+    duyuru _duyuru = duyuru();
     Future<void> _handleRefresh() async {
       return await Future.delayed(Duration(seconds: 2));
     }
@@ -55,24 +58,17 @@ class _HomePageState extends State<HomePage> {
         title: Text("Şehit Furkan Doğan"),
       ),
       body: Shimmer(
-        duration: Duration(seconds: 3),
+        duration: Duration(seconds: 10),
         interval: Duration(seconds: 5),
-        color: Colors.white,
+        color: Color(0xFFCEEEFF),
         colorOpacity: 0.3,
         enabled: true,
         direction: ShimmerDirection.fromLTRB(),
-        child: LiquidPullToRefresh(
-          color: Colors.blueGrey[400],
-          height: 300,
-          backgroundColor: Colors.black26,
-          onRefresh: _handleRefresh,
-          animSpeedFactor: 2,
-          showChildOpacityTransition: true,
-          child: Container(
+        child: Container(
             padding: EdgeInsets.only(top: size.width * 0.02),
             decoration: BoxDecoration(
               image: DecorationImage(
-                image: AssetImage("assets/i4.jpeg"),
+                image: _background.image,
                 fit: BoxFit.cover,
               ),
             ),
@@ -80,7 +76,7 @@ class _HomePageState extends State<HomePage> {
               children: [
                 Container(
                   margin: EdgeInsets.all(10),
-                  padding: EdgeInsets.all(23),
+                  padding: EdgeInsets.all(25),
                   decoration: BoxDecoration(
                     image: DecorationImage(
                       image: AssetImage('assets/tablet.png'),
@@ -131,72 +127,7 @@ class _HomePageState extends State<HomePage> {
                             ),
                           )),
                       Expanded(
-                        child: Scrollbar(
-                          showTrackOnHover: true,
-                          isAlwaysShown: true,
-                          child: StreamBuilder<QuerySnapshot>(
-                            stream: _statusService.getStatus(),
-                            builder: (context, snaphot) {
-                              return !snaphot.hasData
-                                  ? CircularProgressIndicator()
-                                  : ListView.builder(
-                                      itemCount: snaphot.data.docs.length,
-                                      itemBuilder: (context, index) {
-                                        DocumentSnapshot mypost =
-                                            snaphot.data.docs[index] ?? '';
-
-                                        Future<void> _showChoiseDialog(
-                                            BuildContext context) {}
-
-                                        return Padding(
-                                          padding: const EdgeInsets.all(8.0),
-                                          child: InkWell(
-                                            onTap: () {
-                                              _showChoiseDialog(context);
-                                            },
-                                            child: Container(
-                                              margin: EdgeInsets.only(top: 15),
-                                              decoration: BoxDecoration(
-                                                  color: Colors.white,
-                                                  borderRadius:
-                                                      BorderRadius.circular(15),
-                                                  boxShadow: [
-                                                    BoxShadow(
-                                                      color: Colors.black
-                                                          .withOpacity(0.50),
-                                                      blurRadius: 20,
-                                                      offset: Offset(0, 4),
-                                                    )
-                                                  ]),
-                                              width: size.width * 10,
-                                              height: size.height * 0.10,
-                                              child: ListView(
-                                                scrollDirection: Axis.vertical,
-                                                children: [
-                                                  Padding(
-                                                    padding: const EdgeInsets.all(
-                                                        16.0),
-                                                    child: Container(
-                                                      child: Text(
-                                                        "${mypost['Metin']}",
-                                                        textAlign:
-                                                            TextAlign.center,
-                                                        style: TextStyle(
-                                                            fontSize: 20,
-                                                            fontWeight:
-                                                                FontWeight.w800),
-                                                      ),
-                                                    ),
-                                                  )
-                                                ],
-                                              ),
-                                            ),
-                                          ),
-                                        );
-                                      });
-                            },
-                          ),
-                        ),
+                        child: duyuru(size: size/2, statusService: _statusService,)
                       ),
                     ],
                   ),
@@ -266,7 +197,9 @@ class _HomePageState extends State<HomePage> {
             ),
           ),
         ),
-      ),
     );
   }
+}
+Widget bg(){
+  return Image(image: AssetImage('graphics/i4.jpeg'));
 }

@@ -3,6 +3,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_application_3/backgroundimage.dart';
 import 'package:flutter_application_3/profil/profilgiris.dart';
 import 'package:liquid_pull_to_refresh/liquid_pull_to_refresh.dart';
 
@@ -53,6 +54,7 @@ class _ProfilKullaniciPageState extends State<ProfilKullaniciPage> {
 
   @override
   Widget build(BuildContext context) {
+    background _background = background();
     Future<void> _handleRefresh() async {
     return await Future.delayed(Duration(seconds: 2));
   }
@@ -94,7 +96,7 @@ class _ProfilKullaniciPageState extends State<ProfilKullaniciPage> {
         child: Container(
           decoration: BoxDecoration(
             image: DecorationImage(
-              image: AssetImage("assets/i4.jpeg"),
+              image: _background.image,
               fit: BoxFit.cover,
             ),
           ),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_3/Duyurular/DuyurularSayfasi.dart';
+import 'package:flutter_application_3/backgroundimage.dart';
 import 'package:flutter_application_3/homepage.dart';
 import 'package:liquid_pull_to_refresh/liquid_pull_to_refresh.dart';
 
@@ -16,6 +17,7 @@ class DuyuruMetniPage extends StatefulWidget {
 class _DuyuruMetniPageState extends State<DuyuruMetniPage> {
   @override
   Widget build(BuildContext context) {
+    background _background = background();
     Future<void> _handleRefresh() async {
     return await Future.delayed(Duration(seconds: 2));
   }
@@ -56,7 +58,7 @@ class _DuyuruMetniPageState extends State<DuyuruMetniPage> {
         child: Container(
           decoration: BoxDecoration(
             image: DecorationImage(
-              image: AssetImage("assets/i4.jpeg"),
+              image: _background.image,
               fit: BoxFit.cover,
             ),
         ),

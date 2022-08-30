@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_3/backgroundimage.dart';
+import 'package:flutter_application_3/buttons.dart';
 import 'package:flutter_application_3/homepage.dart';
 import 'package:flutter_application_3/izinbasvuru/basvurular.dart';
+import 'package:flutter_application_3/izinbasvuru/basvurularim.dart';
 import 'package:flutter_application_3/izinbasvuru/izinalma.dart';
+import 'package:flutter_application_3/profil/profilgiris.dart';
 
 class IzinveBasvuruPage extends StatefulWidget {
   const IzinveBasvuruPage({Key key}) : super(key: key);
@@ -13,6 +17,7 @@ class IzinveBasvuruPage extends StatefulWidget {
 class _IzinveBasvuruPageState extends State<IzinveBasvuruPage> {
   @override
   Widget build(BuildContext context) {
+    background _background = background();
     Size size = MediaQuery.of(context).size;
     int _currentIndex = 0;
     return Scaffold(
@@ -35,7 +40,7 @@ class _IzinveBasvuruPageState extends State<IzinveBasvuruPage> {
       body: Container(
         decoration: BoxDecoration(
           image: DecorationImage(
-            image: AssetImage("assets/i4.jpeg"),
+            image: _background.image,
             fit: BoxFit.cover,
           ),
         ),
@@ -44,61 +49,8 @@ class _IzinveBasvuruPageState extends State<IzinveBasvuruPage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Container(
-                margin: EdgeInsets.only(top: 25),
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(15),
-                  color: Color(
-                    0xFFeeeee0,
-                  ),boxShadow: [
-                  BoxShadow(
-                    color: Colors.black.withOpacity(0.50),
-                    blurRadius: 20,
-                    offset: Offset(0, 4),
-                  )
-                ]
-                ),
-                width: 250,
-                height: size.height * 0.08,
-                child: TextButton(
-                    onPressed: () => Navigator.pushReplacement(
-                          //Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => BavurularPage()),
-                        ),
-                    child: Text(
-                      "Başvurular",
-                      style: TextStyle(
-                        fontSize: 20,
-                        color: Colors.black,
-                      ),
-                    ))),
-            Container(
-                margin: EdgeInsets.only(top: 10),
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(15),
-                  color: Color(
-                    0xFFeeeee0,
-                  ),boxShadow: [
-                  BoxShadow(
-                    color: Colors.black.withOpacity(0.50),
-                    blurRadius: 20,
-                    offset: Offset(0, 4),
-                  )
-                ]
-                ),
-                width: 250,
-                height: size.height * 0.08,
-                child: TextButton(
-                    onPressed: () => Navigator.pushReplacement(
-                          //Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => IzinAlmaPage()),
-                        ),
-                    child: Text("İzin İşlemleri",
-                        style: TextStyle(fontSize: 20, color: Colors.black)))),
+            buttons(size: size/1.1, page: BavurularPage(), title: "Başvurular"),
+            buttons(size: size/1.1, page: IzinAlmaPage(), title: "İzin İşlemleri")
           ],
         ),
       ),

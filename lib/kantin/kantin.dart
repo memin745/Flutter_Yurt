@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application_3/Duyurular/DuyurularSayfasi.dart';
 import 'package:flutter_application_3/YurtIslemleri/YurtIslemleri.dart';
 import 'package:flutter_application_3/YurtIslemleri/odalar.dart';
+import 'package:flutter_application_3/backgroundimage.dart';
 import 'package:flutter_application_3/homepage.dart';
 import 'package:flutter_application_3/izinbasvuru/izinvebasvuru.dart';
 import 'package:flutter_application_3/kantin/%C3%B6demeyap.dart';
@@ -27,6 +28,7 @@ class _KantinPageState extends State<KantinPage> {
   ]; 
   @override
   Widget build(BuildContext context) {
+    background _background = background();
     void _onItemTapped(int index) {  
     setState(() {  
       _selectedIndex = index;  
@@ -79,10 +81,11 @@ class bodyContainer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    background _background = background();
     return Container(
      decoration: BoxDecoration(
         image: DecorationImage(
-          image: AssetImage("assets/i4.jpeg"),
+          image: _background.image,
           fit: BoxFit.cover,
         ),
       ),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_3/backgroundimage.dart';
 import 'package:flutter_application_3/kantin/kantin.dart';
 
 class OdemelerPage extends StatefulWidget {
@@ -11,6 +12,7 @@ class OdemelerPage extends StatefulWidget {
 class _OdemelerPageState extends State<OdemelerPage> {
   @override
   Widget build(BuildContext context) {
+    background _background = background();
    Size size = MediaQuery.of(context).size;
     int _currentIndex = 0;
     return Scaffold(
@@ -42,7 +44,7 @@ class _OdemelerPageState extends State<OdemelerPage> {
       body: Container(
        decoration: BoxDecoration(
           image: DecorationImage(
-            image: AssetImage("assets/i4.jpeg"),
+            image: _background.image,
             fit: BoxFit.cover,
           ),
         ),

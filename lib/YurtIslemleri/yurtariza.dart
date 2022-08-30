@@ -3,6 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_3/YurtIslemleri/YurtIslemleri.dart';
+import 'package:flutter_application_3/backgroundimage.dart';
 import 'package:flutter_application_3/homepage.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
@@ -20,6 +21,7 @@ class _YurtArizaPageState extends State<YurtArizaPage> {
   String email;
   @override
   Widget build(BuildContext context) {
+    background _background = background();
     CollectionReference arizaRef = _firestore.collection('Ariza');
     Size size = MediaQuery.of(context).size;
     int _currentIndex = 0;
@@ -52,7 +54,7 @@ class _YurtArizaPageState extends State<YurtArizaPage> {
             padding: EdgeInsets.only(top: size.width * 0.02),
             decoration: BoxDecoration(
               image: DecorationImage(
-                image: AssetImage("assets/i4.jpeg"),
+                image: _background.image,
                 fit: BoxFit.cover,
               ),
             ),

@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_application_3/backgroundimage.dart';
 import 'package:flutter_application_3/homepage.dart';
 import 'package:flutter_application_3/izinbasvuru/izinvebasvuru.dart';
 import 'package:fluttertoast/fluttertoast.dart';
@@ -74,6 +75,7 @@ class _IzinAlmaPageState extends State<IzinAlmaPage> {
 
   @override
   Widget build(BuildContext context) {
+    background _background = background();
     CollectionReference izinRef = _firestore.collection('Izinler');
 
     Size size = MediaQuery.of(context).size;
@@ -106,7 +108,7 @@ class _IzinAlmaPageState extends State<IzinAlmaPage> {
       body: Container(
         decoration: BoxDecoration(
           image: DecorationImage(
-            image: AssetImage("assets/i4.jpeg"),
+            image: _background.image,
             fit: BoxFit.cover,
           ),
         ),

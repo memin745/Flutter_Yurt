@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_3/backgroundimage.dart';
 import 'package:flutter_application_3/homepage.dart';
 import 'package:flutter_application_3/yemekhane/yemektablosu.dart';
 
@@ -12,6 +13,7 @@ class YemekhanePage extends StatefulWidget {
 class _YemekhanePageState extends State<YemekhanePage> {
   @override
   Widget build(BuildContext context) {
+    background _background = background();
     int _currentIndex = 0;
     Size size = MediaQuery.of(context).size;
     return Scaffold(
@@ -43,7 +45,7 @@ class _YemekhanePageState extends State<YemekhanePage> {
       body: Container(
         decoration: BoxDecoration(
           image: DecorationImage(
-            image: AssetImage("assets/i4.jpeg"),
+            image: _background.image,
             fit: BoxFit.cover,
           ),
         ),
