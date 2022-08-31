@@ -80,7 +80,7 @@ class _IzinIslemleriPageState extends State<IzinIslemleriPage> {
 
                           Future<void> _showChoiseDialog(
                               BuildContext context) {}
-                          if (mypost['Ogrenci'] == name) {
+                          if (mypost['Email'] == FirebaseAuth.instance.currentUser.email) {
                             return Padding(
                               padding: const EdgeInsets.all(8.0),
                               child: InkWell(
