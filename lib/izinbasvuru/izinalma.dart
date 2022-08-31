@@ -13,6 +13,7 @@ import 'package:fluttertoast/fluttertoast.dart';
 
 class IzinAlmaPage extends StatefulWidget {
   const IzinAlmaPage({Key key}) : super(key: key);
+  
 
   @override
   State<IzinAlmaPage> createState() => _IzinAlmaPageState();
