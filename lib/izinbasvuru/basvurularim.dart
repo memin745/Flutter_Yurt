@@ -2,6 +2,10 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_application_3/Options/appbarContainer.dart';
+import 'package:flutter_application_3/Options/backIconButton.dart';
+import 'package:flutter_application_3/Options/backgroundimage.dart';
+import 'package:flutter_application_3/Options/baslikContainer.dart';
 import 'package:flutter_application_3/homepage.dart';
 import 'package:flutter_application_3/izinbasvuru/basvurular.dart';
 
@@ -59,27 +63,23 @@ class _BasvurularimPageState extends State<BasvurularimPage> {
 
   @override
   Widget build(BuildContext context) {
+    background _background = background();
     CollectionReference basvuruRef = _firestore.collection("AlinanBasvurular");
     Size size = MediaQuery.of(context).size;
     int _currentIndex = 0;
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Color(0xFF808080),
-        title: Text("Şehit Furkan Doğan Yurdu"),
+        flexibleSpace: appbarContainer(),
+        title: baslikTitle(),
         automaticallyImplyLeading: false,
-        leading: new IconButton(
-          onPressed: () => Navigator.pushReplacement(
-            //Navigator.push(
-            context,
-            MaterialPageRoute(builder: (context) => BavurularPage()),
-          ),
-          icon: new Icon(Icons.arrow_back, color: Colors.white),
+        leading: backIconButton(
+          page: BavurularPage(),
         ),
       ),
       body: Container(
         decoration: BoxDecoration(
           image: DecorationImage(
-            image: AssetImage("assets/i4.jpeg"),
+            image: _background.image,
             fit: BoxFit.cover,
           ),
         ),
@@ -121,13 +121,22 @@ class _BasvurularimPageState extends State<BasvurularimPage> {
               ]),
             ),
             Container(
-              width: size.width * 0.35,
-              height: size.height * 0.06,
+              width: size.width * 0.45,
+              height: size.height * 0.08,
               margin: EdgeInsets.only(
                 top: size.height * 0.05,
               ),
               decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(20), color: Colors.white),
+                  color: Color.fromARGB(255, 47, 194, 62),
+                  borderRadius: BorderRadius.circular(20),
+                  border: Border.all(width: 1),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.black.withOpacity(0.50),
+                      blurRadius: 20,
+                      offset: Offset(0, 4),
+                    )
+                  ]),
               child: TextButton(
                 onPressed: () async {
                   Map<String, String> movieData = {};
@@ -141,7 +150,10 @@ class _BasvurularimPageState extends State<BasvurularimPage> {
                 },
                 child: Text(
                   "Başvur",
-                  style: TextStyle(fontSize: 20, color: Colors.black),
+                  style: TextStyle(
+                      fontSize: 24,
+                      color: Colors.black,
+                      fontWeight: FontWeight.bold),
                 ),
               ),
             ),

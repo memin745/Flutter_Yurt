@@ -4,6 +4,10 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_application_3/Options/appbarContainer.dart';
+import 'package:flutter_application_3/Options/backIconButton.dart';
+import 'package:flutter_application_3/Options/backgroundimage.dart';
+import 'package:flutter_application_3/Options/baslikContainer.dart';
 import 'package:flutter_application_3/kantin/kantin.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:photo_view/photo_view.dart';
@@ -18,20 +22,16 @@ class BakiyeYuklePage extends StatefulWidget {
 class _BakiyeYuklePageState extends State<BakiyeYuklePage> {
   @override
   Widget build(BuildContext context) {
+    background _background = background();
     Size size = MediaQuery.of(context).size;
     int _currentIndex = 0;
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Color(0xFF808080),
-        title: Text("Şehit Furkan Doğan Yurdu"),
+        flexibleSpace: appbarContainer(),
+        title: baslikTitle(),
         automaticallyImplyLeading: false,
-        leading: new IconButton(
-          icon: new Icon(Icons.arrow_back, color: Colors.white),
-          onPressed: () => Navigator.pushReplacement(
-            //Navigator.push(
-            context,
-            MaterialPageRoute(builder: (context) => KantinPage()),
-          ),
+        leading: backIconButton(
+          page: KantinPage(),
         ),
       ),
       body: ProfilTasarimiPage(),
@@ -60,20 +60,21 @@ class _ProfilTasarimiPageState extends State<ProfilTasarimiPage> {
         .ref()
         .child("profilresimleri")
         .child("profilResmi.png");
-        // ignore: unused_local_variable
-        UploadTask yuklemeGorevi = referansYol.putFile(yuklenecekDosya);
-        String url = await(await yuklemeGorevi).ref.getDownloadURL();
-        setState(() {
-          indermeBaglantisi = url;
-        });
+    // ignore: unused_local_variable
+    UploadTask yuklemeGorevi = referansYol.putFile(yuklenecekDosya);
+    String url = await (await yuklemeGorevi).ref.getDownloadURL();
+    setState(() {
+      indermeBaglantisi = url;
+    });
   }
-  
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: TextButton(onPressed: () => kameradanYukle(),child: Text("YÜKLE"),),
-      
+      child: TextButton(
+        onPressed: () => kameradanYukle(),
+        child: Text("YÜKLE"),
+      ),
     );
   }
 }

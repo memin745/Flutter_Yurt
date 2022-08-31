@@ -1,9 +1,14 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_application_3/Options/appbarContainer.dart';
+import 'package:flutter_application_3/Options/backIconButton.dart';
+import 'package:flutter_application_3/Options/backgroundimage.dart';
+import 'package:flutter_application_3/Options/baslikContainer.dart';
+import 'package:flutter_application_3/Options/status_service.dart';
+
 import 'package:flutter_application_3/homepage.dart';
 import 'package:flutter_application_3/izinbasvuru/basvurularim.dart';
 import 'package:flutter_application_3/izinbasvuru/izinvebasvuru.dart';
-import 'package:flutter_application_3/status_service.dart';
 
 class BavurularPage extends StatefulWidget {
   const BavurularPage({Key key}) : super(key: key);
@@ -16,26 +21,22 @@ class _BavurularPageState extends State<BavurularPage> {
   StatusServicebasvurular _statusServicebasvurular = StatusServicebasvurular();
   @override
   Widget build(BuildContext context) {
+    background _background = background();
     Size size = MediaQuery.of(context).size;
     int _currentIndex = 0;
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Color(0xFF808080),
-        title: Text("Şehit Furkan Doğan Yurdu"),
+        flexibleSpace: appbarContainer(),
+        title: baslikTitle(),
         automaticallyImplyLeading: false,
-        leading: new IconButton(
-          onPressed: () => Navigator.pushReplacement(
-            //Navigator.push(
-            context,
-            MaterialPageRoute(builder: (context) => IzinveBasvuruPage()),
-          ),
-          icon: new Icon(Icons.arrow_back, color: Colors.white),
+        leading: backIconButton(
+          page: IzinveBasvuruPage(),
         ),
       ),
       body: Container(
         decoration: BoxDecoration(
           image: DecorationImage(
-            image: AssetImage("assets/i4.jpeg"),
+            image: _background.image,
             fit: BoxFit.cover,
           ),
         ),
@@ -96,10 +97,8 @@ class _BavurularPageState extends State<BavurularPage> {
                                               fontSize: 20,
                                               fontWeight: FontWeight.w800),
                                         ),
-                                        
                                       ),
                                     ),
-                                    
                                   ),
                                   Padding(
                                     padding: const EdgeInsets.all(16.0),
@@ -121,13 +120,12 @@ class _BavurularPageState extends State<BavurularPage> {
                                           "${mypost['Tarih']}",
                                           textAlign: TextAlign.center,
                                           style: TextStyle(
-                                              fontSize: 20,color: Colors.black,
+                                              fontSize: 20,
+                                              color: Colors.black,
                                               fontWeight: FontWeight.w800),
                                         ),
-                                        
                                       ),
                                     ),
-                                    
                                   ),
                                 ],
                               ),

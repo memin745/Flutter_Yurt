@@ -2,8 +2,8 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter_application_3/Options/storage_servis.dart';
 import 'package:flutter_application_3/skeleton.dart';
-import 'package:flutter_application_3/storage_servis.dart';
 import 'package:image_picker/image_picker.dart';
 
 class StatusService{
@@ -26,6 +26,15 @@ class StatusServicebasvurular{
     return ref;
   }
 }
+class StatusServiceIzinler{
+  final FirebaseFirestore _firestore = FirebaseFirestore.instance;
+
+
+
+  Stream<QuerySnapshot>getStatus(){
+    var ref = _firestore.collection("Izinler").snapshots();
+    return ref;
+  }}
 class StatusServiceResim {
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
   StorageService _storageService = StorageService();

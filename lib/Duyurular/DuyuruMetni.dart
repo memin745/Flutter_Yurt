@@ -1,80 +1,113 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_3/Duyurular/DuyurularSayfasi.dart';
+import 'package:flutter_application_3/Options/appbarContainer.dart';
+import 'package:flutter_application_3/Options/backIconButton.dart';
+import 'package:flutter_application_3/Options/backgroundimage.dart';
+import 'package:flutter_application_3/Options/baslikContainer.dart';
 import 'package:flutter_application_3/homepage.dart';
-
+import 'package:liquid_pull_to_refresh/liquid_pull_to_refresh.dart';
 
 class DuyuruMetniPage extends StatefulWidget {
-  const DuyuruMetniPage({ Key key }) : super(key: key);
+  final String postValue;
+  const DuyuruMetniPage({Key key, this.postValue}) : super(key: key);
 
   @override
   State<DuyuruMetniPage> createState() => _DuyuruMetniPageState();
-  
 }
 
 class _DuyuruMetniPageState extends State<DuyuruMetniPage> {
   @override
   Widget build(BuildContext context) {
-      Size size = MediaQuery.of(context).size;
+    background _background = background();
+    Future<void> _handleRefresh() async {
+      return await Future.delayed(Duration(seconds: 2));
+    }
+
+    Size size = MediaQuery.of(context).size;
     int _currentIndex = 0;
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Color(0xFF808080),
-        title: Text("Şehit Furkan Doğan Yurdu"),
+        flexibleSpace: appbarContainer(),
+        title: baslikTitle(),
         automaticallyImplyLeading: false,
-        leading: new IconButton(onPressed: () => Navigator.pushReplacement(
-            //Navigator.push(
-            context,
-            MaterialPageRoute(builder: (context) => DuyurularSayfasiPage()),
-        ),
-          icon: new Icon(Icons.arrow_back, color: Colors.white),
+        leading: backIconButton(
+          page: DuyurularSayfasiPage(),
         ),
       ),
-      body: Container(
-        decoration: BoxDecoration(
-          image: DecorationImage(
-            image: AssetImage("assets/i4.jpeg"),
-            fit: BoxFit.cover,
-          ),
-      ),
-        width: size.width * 1,
-        height: size.height * 1,
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: [
-            Container(
-              padding: EdgeInsets.only(top: 15),
-              child: Text("Duyurular",style: TextStyle(fontSize: 25,fontWeight: FontWeight.bold,color: Colors.white),),
+      body: LiquidPullToRefresh(
+        color: Colors.blue[400],
+        height: size.height * 0.2,
+        backgroundColor: Colors.black26,
+        onRefresh: _handleRefresh,
+        animSpeedFactor: 2,
+        showChildOpacityTransition: true,
+        child: Container(
+          decoration: BoxDecoration(
+            image: DecorationImage(
+              image: _background.image,
+              fit: BoxFit.cover,
             ),
-            Container(
-            margin: EdgeInsets.only(top:size.height *0.02),
-            decoration: BoxDecoration(color: Colors.black,borderRadius: BorderRadius.circular(15),image: DecorationImage(
-          image: AssetImage(
-              'assets/test.png'),
-          fit: BoxFit.fill,),
-            ),
-            width: size.width * 0.60,
-            height: size.height *0.30,
           ),
-            
+          width: size.width * 1,
+          height: size.height * 1,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              Container(
+                padding: EdgeInsets.only(top: 15),
+                child: Text(
+                  "Duyurular",
+                  style: TextStyle(
+                      fontSize: 25,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white),
+                ),
+              ),
+              Container(
+                margin: EdgeInsets.only(top: size.height * 0.02),
+                decoration: BoxDecoration(
+                  color: Colors.black,
+                  borderRadius: BorderRadius.circular(15),
+                  image: DecorationImage(
+                    image: AssetImage('assets/test.png'),
+                    fit: BoxFit.fill,
+                  ),
+                ),
+                width: size.width * 0.60,
+                height: size.height * 0.30,
+              ),
               Container(
                 margin: EdgeInsets.only(top: 15),
-                decoration: BoxDecoration(color: Colors.white,borderRadius: BorderRadius.circular(15)),
-                width: size.width * 10,
-                height: size.height * 0.40,
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(15),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.black.withOpacity(1),
+                      blurRadius: 50,
+                      offset: Offset(10, 10),
+                    )
+                  ],
+                ),
+                width: size.width * 0.80,
+                height: size.height * 0.30,
                 child: ListView(
                   scrollDirection: Axis.vertical,
                   children: [
-                    Container(child: Text("Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",textAlign: TextAlign.center, style:TextStyle(fontSize: 20,fontWeight: FontWeight.w800),),)
+                    Container(
+                      child: Text(
+                        widget.postValue,
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                            fontSize: 20, fontWeight: FontWeight.w800),
+                      ),
+                    )
                   ],
                 ),
-              
-              
               ),
-            
-            
-          ],
+            ],
+          ),
         ),
-        
       ),
     );
   }
