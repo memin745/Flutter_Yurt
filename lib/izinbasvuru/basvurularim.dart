@@ -132,9 +132,12 @@ class _BasvurularimPageState extends State<BasvurularimPage> {
                 onPressed: () async {
                   Map<String, String> movieData = {};
                   FirebaseAuth.instance;
-                  await basvuruRef
-                      .doc(widget.postValue2)
-                      .set({"ogrenci":FieldValue.arrayUnion([name]),"Duyuru Adi":widget.postValue2,"Email":FieldValue.arrayUnion([email]),"Telefon":FieldValue.arrayUnion([Telefon]),},SetOptions(merge: true));
+                  await basvuruRef.doc(widget.postValue2).set({
+                    "ogrenci": FieldValue.arrayUnion([name]),
+                    "Duyuru Adi": widget.postValue2,
+                    "Email": FieldValue.arrayUnion([email]),
+                    "Telefon": FieldValue.arrayUnion([Telefon]),
+                  }, SetOptions(merge: true));
                 },
                 child: Text(
                   "Başvur",
