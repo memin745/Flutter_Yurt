@@ -9,7 +9,8 @@ import 'package:liquid_pull_to_refresh/liquid_pull_to_refresh.dart';
 
 class DuyuruMetniPage extends StatefulWidget {
   final String postValue;
-  const DuyuruMetniPage({Key key, this.postValue}) : super(key: key);
+
+  const DuyuruMetniPage({Key key, this.postValue,}) : super(key: key);
 
   @override
   State<DuyuruMetniPage> createState() => _DuyuruMetniPageState();
@@ -53,16 +54,7 @@ class _DuyuruMetniPageState extends State<DuyuruMetniPage> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              Container(
-                padding: EdgeInsets.only(top: 15),
-                child: Text(
-                  "Duyurular",
-                  style: TextStyle(
-                      fontSize: 25,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.white),
-                ),
-              ),
+              baslikContainer(title: "Duyuru",size: 25,),
               Container(
                 margin: EdgeInsets.only(top: size.height * 0.02),
                 decoration: BoxDecoration(

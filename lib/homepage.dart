@@ -3,6 +3,7 @@ import 'package:flutter_application_3/Duyurular/DuyurularSayfasi.dart';
 import 'package:flutter_application_3/Options/appbarContainer.dart';
 import 'package:flutter_application_3/Options/backgroundimage.dart';
 import 'package:flutter_application_3/Options/baslikContainer.dart';
+import 'package:flutter_application_3/Options/duyuruClass.dart';
 import 'package:flutter_application_3/Options/homePageButton.dart';
 import 'package:flutter_application_3/Options/slider.dart';
 import 'package:flutter_application_3/Options/status_service.dart';
