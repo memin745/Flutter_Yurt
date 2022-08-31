@@ -56,6 +56,8 @@ class _IzinAlmaPageState extends State<IzinAlmaPage> {
       initialDate: DateTime.now(),
       firstDate: DateTime(1950),
       lastDate: DateTime(2050),
+      cancelText: "Vazgeç",
+      confirmText: "Onayla",
     ).then((value) {
       setState(() {
         _dateTime = value;
@@ -69,6 +71,8 @@ class _IzinAlmaPageState extends State<IzinAlmaPage> {
       initialDate: DateTime.now(),
       firstDate: DateTime(1950),
       lastDate: DateTime(2050),
+       cancelText: "Vazgeç",
+      confirmText: "Onayla",
     ).then((value) {
       setState(() {
         _dateTime2 = value;
@@ -107,73 +111,14 @@ class _IzinAlmaPageState extends State<IzinAlmaPage> {
             height: size.height * 0.07,
             child: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
               IzinAlma("Gidiş Tarihi", context, 0),
-              Container(
-                padding: EdgeInsets.only(left: size.width * 0.02),
-                margin: EdgeInsets.only(left: size.width * 0.08),
-                decoration: BoxDecoration(
-                    color: Color(
-                      0xFFeeeee0,
-                    ),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.black.withOpacity(0.50),
-                        blurRadius: 20,
-                        offset: Offset(0, 4),
-                      )
-                    ],
-                    borderRadius: BorderRadius.circular(20)),
-                width: size.width * 0.35,
-                height: size.height * 0.05,
-                child: TextButton(
-                  child: Text(
-                    _dateTime.day.toString() +
-                        '-' +
-                        _dateTime.month.toString() +
-                        '-' +
-                        _dateTime.year.toString(),
-                    textAlign: TextAlign.center,
-                    style: TextStyle(fontSize: 20, color: Colors.black),
-                  ),
-                  onPressed: _showDatePicker,
-                ),
-              ),
+              gidis(size),
             ]),
           ),
           Container(
             margin: EdgeInsets.only(top: 30),
             child: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
               IzinAlma("Dönüş Tarihi", context, 0),
-              Container(
-                padding: EdgeInsets.only(left: size.width * 0.02),
-                margin: EdgeInsets.only(left: size.width * 0.08),
-                decoration: BoxDecoration(
-                  color: Color(
-                    0xFFeeeee0,
-                  ),
-                  borderRadius: BorderRadius.circular(20),
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.black.withOpacity(0.50),
-                      blurRadius: 20,
-                      offset: Offset(0, 4),
-                    )
-                  ],
-                ),
-                width: size.width * 0.35,
-                height: size.height * 0.05,
-                child: TextButton(
-                  child: Text(
-                    _dateTime2.day.toString() +
-                        '-' +
-                        _dateTime2.month.toString() +
-                        '-' +
-                        _dateTime2.year.toString(),
-                    textAlign: TextAlign.center,
-                    style: TextStyle(fontSize: 20, color: Colors.black),
-                  ),
-                  onPressed: _showDatePicker2,
-                ),
-              ),
+              gelis(size),
             ]),
           ),
           Container(
@@ -248,7 +193,8 @@ class _IzinAlmaPageState extends State<IzinAlmaPage> {
                   'Sehir': '$sehir',
                   'Gidis': '$gidis',
                   'Donus': '$donus',
-                  'Ogrenci': name
+                  'Ogrenci': name,
+                  'Email':FirebaseAuth.instance.currentUser.email,
                 });
                 Fluttertoast.showToast(
                     msg: "İzin Gönderildi",
@@ -272,6 +218,73 @@ class _IzinAlmaPageState extends State<IzinAlmaPage> {
         ]),
       ),
     );
+  }
+
+  Container gelis(Size size) {
+    return Container(
+              padding: EdgeInsets.only(left: size.width * 0.02),
+              margin: EdgeInsets.only(left: size.width * 0.08),
+              decoration: BoxDecoration(
+                color: Color(
+                  0xFFeeeee0,
+                ),
+                borderRadius: BorderRadius.circular(20),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.black.withOpacity(0.50),
+                    blurRadius: 20,
+                    offset: Offset(0, 4),
+                  )
+                ],
+              ),
+              width: size.width * 0.35,
+              height: size.height * 0.05,
+              child: TextButton(
+                child: Text(
+                  _dateTime2.day.toString() +
+                      '-' +
+                      _dateTime2.month.toString() +
+                      '-' +
+                      _dateTime2.year.toString(),
+                  textAlign: TextAlign.center,
+                  style: TextStyle(fontSize: 20, color: Colors.black),
+                ),
+                onPressed: _showDatePicker2,
+              ),
+            );
+  }
+
+  Container gidis(Size size) {
+    return Container(
+              padding: EdgeInsets.only(left: size.width * 0.02),
+              margin: EdgeInsets.only(left: size.width * 0.08),
+              decoration: BoxDecoration(
+                  color: Color(
+                    0xFFeeeee0,
+                  ),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.black.withOpacity(0.50),
+                      blurRadius: 20,
+                      offset: Offset(0, 4),
+                    )
+                  ],
+                  borderRadius: BorderRadius.circular(20)),
+              width: size.width * 0.35,
+              height: size.height * 0.05,
+              child: TextButton(
+                child: Text(
+                  _dateTime.day.toString() +
+                      '-' +
+                      _dateTime.month.toString() +
+                      '-' +
+                      _dateTime.year.toString(),
+                  textAlign: TextAlign.center,
+                  style: TextStyle(fontSize: 20, color: Colors.black),
+                ),
+                onPressed: _showDatePicker,
+              ),
+            );
   }
 }
 

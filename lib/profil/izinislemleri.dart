@@ -18,7 +18,11 @@ class IzinIslemleriPage extends StatefulWidget {
 }
 
 class _IzinIslemleriPageState extends State<IzinIslemleriPage> {
-  String name;
+  
+
+  @override
+  Widget build(BuildContext context) {
+    String name;
 
   void getData() async {
     User user = await FirebaseAuth.instance.currentUser;
@@ -39,9 +43,6 @@ class _IzinIslemleriPageState extends State<IzinIslemleriPage> {
     getData();
     super.initState();
   }
-
-  @override
-  Widget build(BuildContext context) {
     background _background = background();
     StatusServiceIzinler _statusServiceIzinler = StatusServiceIzinler();
     int _currentIndex = 0;
@@ -79,7 +80,7 @@ class _IzinIslemleriPageState extends State<IzinIslemleriPage> {
 
                           Future<void> _showChoiseDialog(
                               BuildContext context) {}
-                          if (isim == name) {
+                          if (mypost['Ogrenci'] == name) {
                             return Padding(
                               padding: const EdgeInsets.all(8.0),
                               child: InkWell(

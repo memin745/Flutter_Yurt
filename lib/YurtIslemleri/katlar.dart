@@ -3,6 +3,7 @@ import 'package:flutter_application_3/Options/appbarContainer.dart';
 import 'package:flutter_application_3/Options/backIconButton.dart';
 import 'package:flutter_application_3/Options/backgroundimage.dart';
 import 'package:flutter_application_3/Options/baslikContainer.dart';
+import 'package:flutter_application_3/Options/katwidgetContainer.dart';
 import 'package:flutter_application_3/YurtIslemleri/YurtIslemleri.dart';
 import 'package:flutter_application_3/YurtIslemleri/odalar.dart';
 import 'package:flutter_application_3/homepage.dart';
@@ -94,27 +95,3 @@ class _KatlarPageState extends State<KatlarPage> {
   }
 }
 
-Widget Katlar(String title, context) {
-  return Column(
-    children: [
-      Container(
-        margin: EdgeInsets.only(top: 15),
-        decoration: BoxDecoration(
-            color: Color(0xFFeeeee0), borderRadius: BorderRadius.circular(15)),
-        width: 336,
-        height: 71,
-        child: TextButton(
-          onPressed: () => Navigator.pushReplacement(
-            //Navigator.push(
-            context,
-            MaterialPageRoute(builder: (context) => OdalarPage()),
-          ),
-          child: Text(
-            title,
-            style: TextStyle(fontSize: 20, color: Colors.black),
-          ),
-        ),
-      ),
-    ],
-  );
-}
