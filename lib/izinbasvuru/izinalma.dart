@@ -20,7 +20,14 @@ class IzinAlmaPage extends StatefulWidget {
 
 class _IzinAlmaPageState extends State<IzinAlmaPage> {
   String name = "Name Loading...";
-
+  String email = "Email Loading...";
+  String Telefon = "Telefon Loading...";
+  String bolum = "Bölüm Loading...";
+  String universite = "Universite Loading...";
+  String oda = "Email Loading...";
+  String sehir = "Şehir Loading...";
+  String sinif = "Sınıf Loading...";
+  String Tc = "Tc Loading...";
   void getData() async {
     User user = await FirebaseAuth.instance.currentUser;
     var vari = FirebaseFirestore.instance
@@ -29,11 +36,16 @@ class _IzinAlmaPageState extends State<IzinAlmaPage> {
         .get()
         .then((vari) => setState(() {
               name = vari.data()['İsim Soyisim'];
+              email = vari.data()['Email'];
+              Telefon = vari.data()['Telefon'];
+              Tc = vari.data()['T.C'];
+              universite = vari.data()['Üniversite'];
+              oda = vari.data()['Oda'];
+              sehir = vari.data()['Şehir'];
+              sinif = vari.data()['Sınıf'];
+              bolum = vari.data()['Bölüm'];
             }));
   }
-
-  String myEmail;
-  List<String> docIds = [];
 
   @override
   void initState() {
@@ -71,7 +83,7 @@ class _IzinAlmaPageState extends State<IzinAlmaPage> {
       initialDate: DateTime.now(),
       firstDate: DateTime(1950),
       lastDate: DateTime(2050),
-       cancelText: "Vazgeç",
+      cancelText: "Vazgeç",
       confirmText: "Onayla",
     ).then((value) {
       setState(() {
@@ -79,7 +91,6 @@ class _IzinAlmaPageState extends State<IzinAlmaPage> {
       });
     });
   }
-  
 
   @override
   Widget build(BuildContext context) {
@@ -195,7 +206,14 @@ class _IzinAlmaPageState extends State<IzinAlmaPage> {
                   'Gidis': '$gidis',
                   'Donus': '$donus',
                   'Ogrenci': name,
-                  'Email':FirebaseAuth.instance.currentUser.email,
+                  'Email': FirebaseAuth.instance.currentUser.email,
+                  'uid': FirebaseAuth.instance.currentUser.uid,
+                  'Telefon': Telefon,
+                  'Üniversite': universite,
+                  'Oda': oda,
+                  'Şehir': sehir,
+                  'Sınıf': sinif,
+                  'Bölüm': bolum,
                 });
                 Fluttertoast.showToast(
                     msg: "İzin Gönderildi",
@@ -223,69 +241,69 @@ class _IzinAlmaPageState extends State<IzinAlmaPage> {
 
   Container gelis(Size size) {
     return Container(
-              padding: EdgeInsets.only(left: size.width * 0.02),
-              margin: EdgeInsets.only(left: size.width * 0.08),
-              decoration: BoxDecoration(
-                color: Color(
-                  0xFFeeeee0,
-                ),
-                borderRadius: BorderRadius.circular(20),
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.black.withOpacity(0.50),
-                    blurRadius: 20,
-                    offset: Offset(0, 4),
-                  )
-                ],
-              ),
-              width: size.width * 0.35,
-              height: size.height * 0.05,
-              child: TextButton(
-                child: Text(
-                  _dateTime2.day.toString() +
-                      '-' +
-                      _dateTime2.month.toString() +
-                      '-' +
-                      _dateTime2.year.toString(),
-                  textAlign: TextAlign.center,
-                  style: TextStyle(fontSize: 20, color: Colors.black),
-                ),
-                onPressed: _showDatePicker2,
-              ),
-            );
+      padding: EdgeInsets.only(left: size.width * 0.02),
+      margin: EdgeInsets.only(left: size.width * 0.08),
+      decoration: BoxDecoration(
+        color: Color(
+          0xFFeeeee0,
+        ),
+        borderRadius: BorderRadius.circular(20),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withOpacity(0.50),
+            blurRadius: 20,
+            offset: Offset(0, 4),
+          )
+        ],
+      ),
+      width: size.width * 0.35,
+      height: size.height * 0.05,
+      child: TextButton(
+        child: Text(
+          _dateTime2.day.toString() +
+              '-' +
+              _dateTime2.month.toString() +
+              '-' +
+              _dateTime2.year.toString(),
+          textAlign: TextAlign.center,
+          style: TextStyle(fontSize: 20, color: Colors.black),
+        ),
+        onPressed: _showDatePicker2,
+      ),
+    );
   }
 
   Container gidis(Size size) {
     return Container(
-              padding: EdgeInsets.only(left: size.width * 0.02),
-              margin: EdgeInsets.only(left: size.width * 0.08),
-              decoration: BoxDecoration(
-                  color: Color(
-                    0xFFeeeee0,
-                  ),
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.black.withOpacity(0.50),
-                      blurRadius: 20,
-                      offset: Offset(0, 4),
-                    )
-                  ],
-                  borderRadius: BorderRadius.circular(20)),
-              width: size.width * 0.35,
-              height: size.height * 0.05,
-              child: TextButton(
-                child: Text(
-                  _dateTime.day.toString() +
-                      '-' +
-                      _dateTime.month.toString() +
-                      '-' +
-                      _dateTime.year.toString(),
-                  textAlign: TextAlign.center,
-                  style: TextStyle(fontSize: 20, color: Colors.black),
-                ),
-                onPressed: _showDatePicker,
-              ),
-            );
+      padding: EdgeInsets.only(left: size.width * 0.02),
+      margin: EdgeInsets.only(left: size.width * 0.08),
+      decoration: BoxDecoration(
+          color: Color(
+            0xFFeeeee0,
+          ),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black.withOpacity(0.50),
+              blurRadius: 20,
+              offset: Offset(0, 4),
+            )
+          ],
+          borderRadius: BorderRadius.circular(20)),
+      width: size.width * 0.35,
+      height: size.height * 0.05,
+      child: TextButton(
+        child: Text(
+          _dateTime.day.toString() +
+              '-' +
+              _dateTime.month.toString() +
+              '-' +
+              _dateTime.year.toString(),
+          textAlign: TextAlign.center,
+          style: TextStyle(fontSize: 20, color: Colors.black),
+        ),
+        onPressed: _showDatePicker,
+      ),
+    );
   }
 }
 
