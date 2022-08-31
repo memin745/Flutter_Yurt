@@ -79,6 +79,7 @@ class _IzinAlmaPageState extends State<IzinAlmaPage> {
       });
     });
   }
+  
 
   @override
   Widget build(BuildContext context) {

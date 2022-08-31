@@ -18,31 +18,30 @@ class IzinIslemleriPage extends StatefulWidget {
 }
 
 class _IzinIslemleriPageState extends State<IzinIslemleriPage> {
-  
-
   @override
   Widget build(BuildContext context) {
     String name;
 
-  void getData() async {
-    User user = await FirebaseAuth.instance.currentUser;
-    var vari = FirebaseFirestore.instance
-        .collection('users')
-        .doc(user.uid)
-        .get()
-        .then((vari) => setState(() {
-              name = vari.data()['İsim Soyisim'];
-            }));
-  }
+    void getData() async {
+      User user = await FirebaseAuth.instance.currentUser;
+      var vari = FirebaseFirestore.instance
+          .collection('users')
+          .doc(user.uid)
+          .get()
+          .then((vari) => setState(() {
+                name = vari.data()['İsim Soyisim'];
+              }));
+    }
 
-  String myEmail;
-  List<String> docIds = [];
+    String myEmail;
+    List<String> docIds = [];
 
-  @override
-  void initState() {
-    getData();
-    super.initState();
-  }
+    @override
+    void initState() {
+      getData();
+      super.initState();
+    }
+
     background _background = background();
     StatusServiceIzinler _statusServiceIzinler = StatusServiceIzinler();
     int _currentIndex = 0;
@@ -80,7 +79,9 @@ class _IzinIslemleriPageState extends State<IzinIslemleriPage> {
 
                           Future<void> _showChoiseDialog(
                               BuildContext context) {}
-                          if (mypost['Email'] == FirebaseAuth.instance.currentUser.email) {
+                          if (mypost['Email'] ==
+                              FirebaseAuth.instance.currentUser.email || mypost['Email'] ==
+                              FirebaseAuth.instance.currentUser.email ) {
                             return Padding(
                               padding: const EdgeInsets.all(8.0),
                               child: InkWell(
