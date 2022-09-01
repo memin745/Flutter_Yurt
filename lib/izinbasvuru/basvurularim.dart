@@ -8,6 +8,7 @@ import 'package:flutter_application_3/Options/backgroundimage.dart';
 import 'package:flutter_application_3/Options/baslikContainer.dart';
 import 'package:flutter_application_3/homepage.dart';
 import 'package:flutter_application_3/izinbasvuru/basvurular.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 class BasvurularimPage extends StatefulWidget {
   final String takenvalue;
@@ -146,7 +147,18 @@ class _BasvurularimPageState extends State<BasvurularimPage> {
                     "Duyuru Adi": widget.postValue2,
                     "Email": FieldValue.arrayUnion([email]),
                     "Telefon": FieldValue.arrayUnion([Telefon]),
+                    'Email': FirebaseAuth.instance.currentUser.email,
+                    'uid': FirebaseAuth.instance.currentUser.uid,
+                    'Telefon': Telefon,
                   }, SetOptions(merge: true));
+                  Fluttertoast.showToast(
+                    msg: "Başvuru Yapıldı",
+                    toastLength: Toast.LENGTH_SHORT,
+                    gravity: ToastGravity.BOTTOM,
+                    timeInSecForIosWeb: 5,
+                    backgroundColor: Colors.amber,
+                    textColor: Colors.white,
+                    fontSize: 15);
                 },
                 child: Text(
                   "Başvur",

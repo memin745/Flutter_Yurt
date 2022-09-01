@@ -35,6 +35,15 @@ class StatusServiceIzinler{
     var ref = _firestore.collection("Izinler").snapshots();
     return ref;
   }}
+  class StatusServiceBasvuru{
+  final FirebaseFirestore _firestore = FirebaseFirestore.instance;
+
+
+
+  Stream<QuerySnapshot>getStatus(){
+    var ref = _firestore.collection("Basvurular").snapshots();
+    return ref;
+  }}
 class StatusServiceResim {
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
   StorageService _storageService = StorageService();

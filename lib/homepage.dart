@@ -1,3 +1,5 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_3/Duyurular/DuyurularSayfasi.dart';
 import 'package:flutter_application_3/Options/appbarContainer.dart';
@@ -21,12 +23,50 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
+    String name = "Name Loading...";
+    String email = "Email Loading...";
+    String Telefon = "Telefon Loading...";
+    String bolum = "Bölüm Loading...";
+    String universite = "Universite Loading...";
+    String oda = "Email Loading...";
+    String sehir = "Şehir Loading...";
+    String sinif = "Sınıf Loading...";
+    String Tc = "Tc Loading...";
+    void getData() async {
+      User user = await FirebaseAuth.instance.currentUser;
+      var vari = FirebaseFirestore.instance
+          .collection('users')
+          .doc(user.uid)
+          .get()
+          .then((vari) => setState(() {
+                name = vari.data()['İsim Soyisim'];
+                email = vari.data()['Email'];
+                Telefon = vari.data()['Telefon'];
+                Tc = vari.data()['T.C'];
+                universite = vari.data()['Üniversite'];
+                oda = vari.data()['Oda'];
+                sehir = vari.data()['Şehir'];
+                sinif = vari.data()['Sınıf'];
+                bolum = vari.data()['Bölüm'];
+              }));
+    }
+
+    @override
+    void initState() {
+      getData();
+      
+      super.initState();
+    }
+
     background _background = background();
     duyuru _duyuru = duyuru();
     Future<void> _handleRefresh() async {
       return await Future.delayed(Duration(seconds: 2));
     }
 
+    
+  print(
+        name + Telefon + email + Tc + universite + oda + sehir + sinif + bolum);
     StatusService _statusService = StatusService();
 
     Size size = MediaQuery.of(context).size;
@@ -36,7 +76,7 @@ class _HomePageState extends State<HomePage> {
         centerTitle: true,
         leading: Container(
             width: 200,
-            height: 50,
+            height: 50, 
             child: Image(
               image: AssetImage("assets/iycc.png"),
             )),

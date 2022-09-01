@@ -1,8 +1,11 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_3/Options/appbarContainer.dart';
 import 'package:flutter_application_3/Options/backIconButton.dart';
 import 'package:flutter_application_3/Options/backgroundimage.dart';
 import 'package:flutter_application_3/Options/baslikContainer.dart';
+import 'package:flutter_application_3/Options/status_service.dart';
 import 'package:flutter_application_3/profil/profilgiris.dart';
 import 'package:liquid_pull_to_refresh/liquid_pull_to_refresh.dart';
 
@@ -16,6 +19,40 @@ class YurtFaaliyetleriPage extends StatefulWidget {
 class _YurtFaaliyetleriPageState extends State<YurtFaaliyetleriPage> {
   @override
   Widget build(BuildContext context) {
+    String name = "Name Loading...";
+  String email = "Email Loading...";
+  String Telefon = "Telefon Loading...";
+  String bolum = "Bölüm Loading...";
+  String universite = "Universite Loading...";
+  String oda = "Email Loading...";
+  String sehir = "Şehir Loading...";
+  String sinif = "Sınıf Loading...";
+  String Tc = "Tc Loading...";
+  void getData() async {
+    User user = await FirebaseAuth.instance.currentUser;
+    var vari = FirebaseFirestore.instance
+        .collection('users')
+        .doc(user.uid)
+        .get()
+        .then((vari) => setState(() {
+              name = vari.data()['İsim Soyisim'];
+              email = vari.data()['Email'];
+              Telefon = vari.data()['Telefon'];
+              Tc = vari.data()['T.C'];
+              universite = vari.data()['Üniversite'];
+              oda = vari.data()['Oda'];
+              sehir = vari.data()['Şehir'];
+              sinif = vari.data()['Sınıf'];
+              bolum = vari.data()['Bölüm'];
+            }));
+  }
+
+  @override
+  void initState() {
+    getData();
+    super.initState();
+  }
+    StatusServiceBasvuru _statusServiceBasvuru =StatusServiceBasvuru();
     background _background = background();
     Future<void> _handleRefresh() async {
       return await Future.delayed(Duration(seconds: 2));
@@ -48,93 +85,73 @@ class _YurtFaaliyetleriPageState extends State<YurtFaaliyetleriPage> {
           ),
           width: size.width * 1,
           height: size.height * 1,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              Container(
-                margin: EdgeInsets.only(top: 20),
-                child: Text(
-                  "Yurt Faaliyetleri",
-                  style: TextStyle(fontSize: 20, color: Colors.white),
-                ),
-              ),
-              Expanded(
-                  child: ListView(
-                scrollDirection: Axis.vertical,
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.all(8),
-                    child: YurtFaaliyetleri("Faaliyet", context),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.all(8),
-                    child: YurtFaaliyetleri("Faaliyet", context),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.all(8),
-                    child: YurtFaaliyetleri("Faaliyet", context),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.all(8),
-                    child: YurtFaaliyetleri("Faaliyet", context),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.all(8),
-                    child: YurtFaaliyetleri("Faaliyet", context),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.all(8),
-                    child: YurtFaaliyetleri("Faaliyet", context),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.all(8),
-                    child: YurtFaaliyetleri("Faaliyet", context),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.all(8),
-                    child: YurtFaaliyetleri("Faaliyet", context),
-                  ),
-                ],
-              ))
-            ],
+          child:  StreamBuilder<QuerySnapshot>(
+            stream: _statusServiceBasvuru.getStatus(),
+            builder: (context, snaphot) {
+              return !snaphot.hasData
+                  ? CircularProgressIndicator()
+                  : ListView.builder(
+                      itemCount: snaphot.data.docs.length,
+                      // ignore: missing_return
+                      itemBuilder: (context, index) {
+                        DocumentSnapshot mypost =
+                            snaphot.data.docs[index] ?? '';
+
+                        Future<void> _showChoiseDialog(BuildContext context) {}
+                        if (mypost['Email'] ==
+                                  FirebaseAuth.instance.currentUser.email ||
+                              mypost['ogrenci'] == name ||
+                              mypost['uid'] ==
+                                  FirebaseAuth.instance.currentUser.uid ||
+                              mypost['Telefon'] == Telefon) {
+
+                        return Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: InkWell(
+                            onTap: () {
+                              _showChoiseDialog(context);
+                            },
+                            child: Container(
+                              decoration: BoxDecoration(
+                                  color: Color(0xFFeeeee0),
+                                  border:
+                                      Border.all(color: Colors.blue, width: 2),
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(15))),
+                              child: Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Column(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    DataTable(columns: [
+                                      DataColumn(
+                                        label: Text("${mypost['Duyuru Adi']}"),
+                                      ),
+                                      
+                                     
+                                    ], rows: [
+                                      DataRow(cells: [
+                                        DataCell(Container(
+                                          child: Text(
+                                            "${mypost['ogrenci']}",
+                                            style: TextStyle(fontSize: 16),
+                                            textAlign: TextAlign.start,
+                                          ),
+                                        )),
+                                        
+                                      ])
+                                    ])
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ),
+                        );
+                              };
+                      });
+            },
           ),
-        ),
-      ),
-    );
+        )));
   }
-}
-
-Widget YurtFaaliyetleri(String title, context) {
-  void _showDialog() {
-    showDialog(
-        context: context,
-        builder: (context) {
-          return AlertDialog(
-            backgroundColor: Colors.pink[100],
-            title: Text('Yurt Faaliyetleri'),
-            content: Text("His Tekstil Gezisi"),
-            actions: [
-              MaterialButton(
-                onPressed: () {
-                  Navigator.pop(context);
-                },
-                child: Text('Ok'),
-              ),
-            ],
-          );
-        });
-  }
-
-  Size size = MediaQuery.of(context).size;
-  return Container(
-    margin: EdgeInsets.only(top: 20),
-    decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(15), color: Color(0xFFeeeee0)),
-    width: 200,
-    height: 50,
-    child: TextButton(
-      onPressed: _showDialog,
-      child: Text(title, style: TextStyle(fontSize: 20, color: Colors.black)),
-    ),
-  );
 }
