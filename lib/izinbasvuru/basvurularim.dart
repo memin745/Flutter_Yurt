@@ -148,8 +148,8 @@ class _BasvurularimPageState extends State<BasvurularimPage> {
                     "Email": FieldValue.arrayUnion([email]),
                     "Telefon": FieldValue.arrayUnion([Telefon]),
                     'Email': FirebaseAuth.instance.currentUser.email,
-                    'uid': FirebaseAuth.instance.currentUser.uid,
-                    'Telefon': Telefon,
+                    
+                    
                   }, SetOptions(merge: true));
                   Fluttertoast.showToast(
                     msg: "Başvuru Yapıldı",

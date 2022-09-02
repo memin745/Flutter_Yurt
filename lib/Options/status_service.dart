@@ -41,7 +41,7 @@ class StatusServiceIzinler{
 
 
   Stream<QuerySnapshot>getStatus(){
-    var ref = _firestore.collection("Basvurular").snapshots();
+    var ref = _firestore.collection("AlinanBasvurular").snapshots();
     return ref;
   }}
 class StatusServiceResim {
