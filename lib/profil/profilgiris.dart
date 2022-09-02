@@ -1,5 +1,7 @@
 // ignore_for_file: deprecated_member_use
 
+import 'dart:io';
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_3/LoginPage.dart';
@@ -26,12 +28,8 @@ final FirebaseAuth _auth = FirebaseAuth.instance;
 Future<void> _signOut() async {
   await _auth.signOut();
   await FirebaseAuth.instance.signOut();
-  runApp(
-    MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: SignInScreen(),
-    ),
-  );
+  
+  exit(0);
 }
 
 class _ProfilGirisPageState extends State<ProfilGirisPage> {
