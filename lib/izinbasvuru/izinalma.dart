@@ -9,11 +9,11 @@ import 'package:flutter_application_3/Options/backgroundimage.dart';
 import 'package:flutter_application_3/Options/baslikContainer.dart';
 import 'package:flutter_application_3/homepage.dart';
 import 'package:flutter_application_3/izinbasvuru/izinvebasvuru.dart';
+import 'package:flutter_application_3/main.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
 class IzinAlmaPage extends StatefulWidget {
   const IzinAlmaPage({Key key}) : super(key: key);
-  
 
   @override
   State<IzinAlmaPage> createState() => _IzinAlmaPageState();
@@ -95,8 +95,100 @@ class _IzinAlmaPageState extends State<IzinAlmaPage> {
 
   @override
   Widget build(BuildContext context) {
+    Future<void> _showChoiseDialog(BuildContext context) {
+      return showDialog(
+          context: context,
+          builder: (BuildContext context) {
+            return AlertDialog(
+                title: Text(
+                  "İzin almak istediğinize emin misiniz?",
+                  textAlign: TextAlign.center,
+                ),
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.all(Radius.circular(8.0))),
+                content: Container(
+                    height: 30,
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: <Widget>[
+                        GestureDetector(
+                          onTap: () async {
+                            print(gidisController.text);
+                            print(donusController.text);
+                            print(izinSehirController.text);
+
+                            Map<String, String> movieData = {
+                              'gidis': gidisController.text,
+                              'donus': donusController.text,
+                            };
+                            String sehir = izinSehirController.text;
+                            String gidis = _dateTime.day.toString() +
+                                '-' +
+                                _dateTime.month.toString() +
+                                '-' +
+                                _dateTime.year.toString();
+                            String donus = _dateTime2.day.toString() +
+                                '-' +
+                                _dateTime2.month.toString() +
+                                '-' +
+                                _dateTime2.year.toString();
+                            await _firestore.collection('Izinler').doc().set({
+                              'Sehir': '$sehir',
+                              'Gidis': '$gidis',
+                              'Donus': '$donus',
+                              'Ogrenci': name,
+                              'Email': FirebaseAuth.instance.currentUser.email,
+                              'uid': FirebaseAuth.instance.currentUser.uid,
+                              'Telefon': Telefon,
+                              'Üniversite': universite,
+                              'Oda': oda,
+                              'Şehir': sehir,
+                              'Sınıf': sinif,
+                              'Bölüm': bolum,
+                            });
+                            Fluttertoast.showToast(
+                                msg: "İzin Gönderildi",
+                                toastLength: Toast.LENGTH_SHORT,
+                                gravity: ToastGravity.BOTTOM,
+                                timeInSecForIosWeb: 5,
+                                backgroundColor: Colors.amber,
+                                textColor: Colors.white,
+                                fontSize: 15);
+                            Navigator.pushReplacement(
+                              //Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => MainLayout()),
+                            );
+                          },
+                          child: Text(
+                            "Evet",
+                            style: TextStyle(
+                                color: Colors.blue,
+                                fontWeight: FontWeight.bold),
+                          ),
+                        ),
+                        GestureDetector(
+                          onTap: () {
+                            Navigator.pop(context);
+                          },
+                          child: Text(
+                            "Vazgeç",
+                            style: TextStyle(
+                                color: Colors.blue,
+                                fontWeight: FontWeight.bold),
+                          ),
+                        ),
+                      ],
+                    )));
+          });
+    }
+
+    ;
     background _background = background();
-    CollectionReference izinRef = _firestore.collection('Izinler');
 
     Size size = MediaQuery.of(context).size;
     int _currentIndex = 0;
@@ -183,51 +275,7 @@ class _IzinAlmaPageState extends State<IzinAlmaPage> {
             height: size.height * 0.08,
             child: TextButton(
               onPressed: () async {
-                print(gidisController.text);
-                print(donusController.text);
-                print(izinSehirController.text);
-
-                Map<String, String> movieData = {
-                  'gidis': gidisController.text,
-                  'donus': donusController.text,
-                };
-                String sehir = izinSehirController.text;
-                String gidis = _dateTime.day.toString() +
-                    '-' +
-                    _dateTime.month.toString() +
-                    '-' +
-                    _dateTime.year.toString();
-                String donus = _dateTime2.day.toString() +
-                    '-' +
-                    _dateTime2.month.toString() +
-                    '-' +
-                    _dateTime2.year.toString();
-                await izinRef.doc().set({
-                  'Sehir': '$sehir',
-                  'Gidis': '$gidis',
-                  'Donus': '$donus',
-                  'Ogrenci': name,
-                  'Email': FirebaseAuth.instance.currentUser.email,
-                  'uid': FirebaseAuth.instance.currentUser.uid,
-                  'Telefon': Telefon,
-                  'Üniversite': universite,
-                  'Oda': oda,
-                  'Şehir': sehir,
-                  'Sınıf': sinif,
-                  'Bölüm': bolum,
-                });
-                Fluttertoast.showToast(
-                    msg: "İzin Gönderildi",
-                    toastLength: Toast.LENGTH_SHORT,
-                    gravity: ToastGravity.BOTTOM,
-                    timeInSecForIosWeb: 5,
-                    backgroundColor: Colors.amber,
-                    textColor: Colors.white,
-                    fontSize: 15);
-                Navigator.pushReplacement(
-                    //Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => IzinAlmaPage()));
+                _showChoiseDialog(context);
               },
               child: Text(
                 "Bildir",

@@ -8,6 +8,7 @@ import 'package:flutter_application_3/Options/backgroundimage.dart';
 import 'package:flutter_application_3/Options/baslikContainer.dart';
 import 'package:flutter_application_3/homepage.dart';
 import 'package:flutter_application_3/izinbasvuru/basvurular.dart';
+import 'package:flutter_application_3/main.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
 class BasvurularimPage extends StatefulWidget {
@@ -64,8 +65,76 @@ class _BasvurularimPageState extends State<BasvurularimPage> {
 
   @override
   Widget build(BuildContext context) {
+    Future<void> _showChoiseDialog(BuildContext context) {
+      return showDialog(
+          context: context,
+          builder: (BuildContext context) {
+            return AlertDialog(
+                title: Text(
+                  "Başvuru yapmak istediğinize emin misiniz?",
+                  textAlign: TextAlign.center,
+                ),
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.all(Radius.circular(8.0))),
+                content: Container(
+                    height: 30,
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: <Widget>[
+                        GestureDetector(
+                          onTap: () async {
+                            Map<String, String> movieData = {};
+                  FirebaseAuth.instance;
+                  await _firestore.collection("AlinanBasvurular").doc(widget.postValue2).set({
+                    "ogrenci": FieldValue.arrayUnion([name]),
+                    "Duyuru Adi": widget.postValue2,
+                    "Email": FieldValue.arrayUnion([email]),
+                    "Telefon": FieldValue.arrayUnion([Telefon]),
+                    'Email': FirebaseAuth.instance.currentUser.email,
+                    
+                    
+                  }, SetOptions(merge: true));
+                  Fluttertoast.showToast(
+                    msg: "Başvuru Yapıldı",
+                    toastLength: Toast.LENGTH_SHORT,
+                    gravity: ToastGravity.BOTTOM,
+                    timeInSecForIosWeb: 5,
+                    backgroundColor: Colors.amber,
+                    textColor: Colors.white,
+                    fontSize: 15);
+                            Navigator.pushReplacement(
+                              //Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => MainLayout()),
+                            );
+                          },
+                          child: Text(
+                            "Evet",
+                            style: TextStyle(
+                                color: Colors.blue,
+                                fontWeight: FontWeight.bold),
+                          ),
+                        ),
+                        GestureDetector(
+                          onTap: () {
+                            Navigator.pop(context);
+                          },
+                          child: Text(
+                            "Vazgeç",
+                            style: TextStyle(
+                                color: Colors.blue,
+                                fontWeight: FontWeight.bold),
+                          ),
+                        ),
+                      ],
+                    )));
+          });
+    }
     background _background = background();
-    CollectionReference basvuruRef = _firestore.collection("AlinanBasvurular");
     Size size = MediaQuery.of(context).size;
     int _currentIndex = 0;
     return Scaffold(
@@ -140,25 +209,7 @@ class _BasvurularimPageState extends State<BasvurularimPage> {
                   ]),
               child: TextButton(
                 onPressed: () async {
-                  Map<String, String> movieData = {};
-                  FirebaseAuth.instance;
-                  await basvuruRef.doc(widget.postValue2).set({
-                    "ogrenci": FieldValue.arrayUnion([name]),
-                    "Duyuru Adi": widget.postValue2,
-                    "Email": FieldValue.arrayUnion([email]),
-                    "Telefon": FieldValue.arrayUnion([Telefon]),
-                    'Email': FirebaseAuth.instance.currentUser.email,
-                    
-                    
-                  }, SetOptions(merge: true));
-                  Fluttertoast.showToast(
-                    msg: "Başvuru Yapıldı",
-                    toastLength: Toast.LENGTH_SHORT,
-                    gravity: ToastGravity.BOTTOM,
-                    timeInSecForIosWeb: 5,
-                    backgroundColor: Colors.amber,
-                    textColor: Colors.white,
-                    fontSize: 15);
+                  _showChoiseDialog(context);
                 },
                 child: Text(
                   "Başvur",
