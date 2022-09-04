@@ -69,11 +69,13 @@ class _IzinAlmaPageState extends State<IzinAlmaPage> {
       initialDate: DateTime.now(),
       firstDate: DateTime(1950),
       lastDate: DateTime(2050),
-      cancelText: "Vazgeç",
+      helpText: "İzin seçin",
+      cancelText: "",
       confirmText: "Onayla",
     ).then((value) {
       setState(() {
         _dateTime = value;
+        
       });
     });
   }
@@ -83,8 +85,10 @@ class _IzinAlmaPageState extends State<IzinAlmaPage> {
       context: context,
       initialDate: DateTime.now(),
       firstDate: DateTime(1950),
+      useRootNavigator: true,
       lastDate: DateTime(2050),
-      cancelText: "Vazgeç",
+      cancelText: "",
+      fieldLabelText: "Tarih Seçin",
       confirmText: "Onayla",
     ).then((value) {
       setState(() {

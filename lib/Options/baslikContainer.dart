@@ -1,7 +1,11 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class baslikContainer extends StatelessWidget {
+  
   const baslikContainer({
+    
     Key key,
     @required this.title,
     @required this.size,
@@ -10,6 +14,7 @@ class baslikContainer extends StatelessWidget {
   final double size;
   @override
   Widget build(BuildContext context) {
+    
     return Container(
         margin: EdgeInsets.only(top: 10),
         child: Text(
@@ -23,13 +28,15 @@ class baslikContainer extends StatelessWidget {
   }
 }
 class baslikTitle extends StatelessWidget {
+  
     const baslikTitle({
       Key key,
     }) : super(key: key);
   
     @override
     Widget build(BuildContext context) {
-      return Text("Şehit Furkan Doğan Yurdu");
+      
+      return Text(FirebaseAuth.instance.currentUser.email);
     }
   }
   

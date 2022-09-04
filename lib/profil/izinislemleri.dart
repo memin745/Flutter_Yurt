@@ -88,16 +88,17 @@ class _IzinIslemleriPageState extends State<IzinIslemleriPage> {
                           DocumentSnapshot mypost =
                               snaphot.data.docs[index] ?? '';
                           String isim = "${mypost['Ogrenci']}";
+                          final isimesit = "${mypost['Ogrenci']}" == name;
+                          final emailesit = mypost['Email'] ==
+                              FirebaseAuth.instance.currentUser.email;
+                          final telefonesit = mypost['Telefon'] == Telefon;
+                          final uidesit = mypost['uid'] ==
+                              FirebaseAuth.instance.currentUser.uid;
                           print(name);
                           print(FirebaseAuth.instance.currentUser.uid);
                           Future<void> _showChoiseDialog(
                               BuildContext context) {}
-                          if (mypost['Email'] ==
-                                  FirebaseAuth.instance.currentUser.email ||
-                              mypost['Ogrenci'] == name ||
-                              mypost['uid'] ==
-                                  FirebaseAuth.instance.currentUser.uid ||
-                              mypost['Telefon'] == Telefon) {
+                          if (emailesit || isimesit || uidesit || telefonesit) {
                             return Padding(
                               padding: const EdgeInsets.all(8.0),
                               child: InkWell(
