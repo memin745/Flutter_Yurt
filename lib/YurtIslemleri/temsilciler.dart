@@ -54,6 +54,7 @@ class _TemsilcilerPageState extends State<TemsilcilerPage> {
                         itemBuilder: (context, index) {
                           DocumentSnapshot mypost =
                               snaphot.data.docs[index] ?? '';
+                              
                          
                          
                           print(FirebaseAuth.instance.currentUser.uid);
@@ -69,8 +70,8 @@ class _TemsilcilerPageState extends State<TemsilcilerPage> {
                             
                         }
                         else{
-                          mypost['Temsilci'] == true;
-                          return Text("");
+                          mypost['Temsilci']== true;
+                          return Text("",style: TextStyle(fontSize: 1),);
                           
                         }
                       

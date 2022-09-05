@@ -100,7 +100,7 @@ class _YurtFaaliyetleriPageState extends State<YurtFaaliyetleriPage> {
 
                             Future<void> _showChoiseDialog(
                                 BuildContext context) {}
-                          
+                          if(name == mypost['ogrenci']){
                               return Padding(
                                 padding: const EdgeInsets.all(8.0),
                                 child: InkWell(
@@ -130,7 +130,7 @@ class _YurtFaaliyetleriPageState extends State<YurtFaaliyetleriPage> {
                                             DataRow(cells: [
                                               DataCell(Container(
                                                 child: Text(
-                                                  "${mypost['Duyuru Adi']}",
+                                                  "${mypost['ogrenci']}",
                                                   style:
                                                       TextStyle(fontSize: 16),
                                                   textAlign: TextAlign.start,
@@ -145,7 +145,11 @@ class _YurtFaaliyetleriPageState extends State<YurtFaaliyetleriPage> {
                                   ),
                                 ),
                               );
-                            
+                          }
+                          else{
+                            name == mypost['ogrenci'];
+                            return Text("");
+                          }
                           });
                 },
               ),
