@@ -34,7 +34,7 @@ Widget Temsilciler(String title, String title2, String title3, context) {
             width: size.width * 0.60,
             height: size.height * 0.04,
             child: Text(
-              "Soyad : " + title2,
+              "Katı : " + title2,
               style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
             ),
           ),
@@ -43,7 +43,7 @@ Widget Temsilciler(String title, String title2, String title3, context) {
             width: size.width * 0.60,
             height: size.height * 0.04,
             child: Text(
-              "Katı : " + title3,
+              "Telefon : " + title3,
               style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
             ),
           ),
