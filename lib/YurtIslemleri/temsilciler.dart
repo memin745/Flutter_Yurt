@@ -59,12 +59,20 @@ class _TemsilcilerPageState extends State<TemsilcilerPage> {
                           print(FirebaseAuth.instance.currentUser.uid);
                           Future<void> _showChoiseDialog(
                               BuildContext context) {}
-                       
+                        if(mypost['Temsilci'] == true){
+                          
                             return Padding(
                               padding: const EdgeInsets.all(8.0),
                               child: Temsilciler(mypost["İsim Soyisim"], mypost["Oda"], mypost["Telefon"], context),
+                              
                             );
+                            
+                        }
+                        else{
+                          mypost['Temsilci'] == true;
+                          return Text("");
                           
+                        }
                       
                         });
               },

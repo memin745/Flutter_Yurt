@@ -164,7 +164,8 @@ class _IzinIslemleriPageState extends State<IzinIslemleriPage> {
                             );
                           }
                           else{
-                            print("Boş");
+                            emailesit || isimesit || uidesit || telefonesit;
+                            return Text("");
                           }
                         });
               },
