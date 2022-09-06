@@ -44,7 +44,13 @@ class StatusServiceIzinler{
   Stream<QuerySnapshot>getStatus(){
     var ref = _firestore.collection("Izinler").snapshots();
     return ref;
-  }}
+  }
+  Future<void> removeStatus(String docId) {
+    var ref = _firestore.collection("Izinler").doc(docId).delete();
+
+    return ref;
+  }
+  }
   class StatusServiceBasvuru{
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
 

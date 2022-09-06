@@ -6,6 +6,7 @@ import 'package:flutter_application_3/Options/baslikContainer.dart';
 import 'package:flutter_application_3/Options/storage_servis.dart';
 import 'package:flutter_application_3/homepage.dart';
 import 'package:flutter_application_3/yemekhane/yememkhanesayfa.dart';
+import 'package:photo_view/photo_view.dart';
 
 class YemekTablosuPage extends StatefulWidget {
   const YemekTablosuPage({Key key}) : super(key: key);
@@ -41,28 +42,31 @@ class _YemekTablosuPageState extends State<YemekTablosuPage> {
         height: size.height * 1,
         child: Column(children: [
           FutureBuilder(
-                future: storage.downloadURL("test.png"),
-                builder:
-                    (BuildContext context, AsyncSnapshot<String> snapshot) {
-                  if (snapshot.connectionState == ConnectionState.done &&
-                      snapshot.hasData) {
-                    return Container(
-                        width: size.width*1,
-                        height: size.height*0.8,
-                        child: Image.network(
-                          snapshot.data,
-                          fit: BoxFit.cover,
-                        ));
-                  }
-                  if (snapshot.connectionState == ConnectionState.waiting ||
-                      !snapshot.hasData) {
-                    return CircularProgressIndicator();
-                  }
-                  return Container();
-                },
-              )
+            future: storage.downloadURL("test.png"),
+            builder: (BuildContext context, AsyncSnapshot<String> snapshot) {
+              if (snapshot.connectionState == ConnectionState.done &&
+                  snapshot.hasData) {
+                return Container(
+                    width: size.width * 1,
+                    height: size.height * 0.8,
+                    child: PhotoView(
+                      imageProvider: NetworkImage(
+                        snapshot.data,
+                      ),
+                      minScale: PhotoViewComputedScale.contained * 1.2,
+                      maxScale: PhotoViewComputedScale.covered * 2,
+                      enableRotation: false,
+                      
+                    ));
+              }
+              if (snapshot.connectionState == ConnectionState.waiting ||
+                  !snapshot.hasData) {
+                return CircularProgressIndicator();
+              }
+              return Container();
+            },
+          )
         ]),
-        
       ),
     );
   }

@@ -55,6 +55,7 @@ class _BavurularPageState extends State<BavurularPage> {
                             snaphot.data.docs[index] ?? '';
                         String postValue = "${mypost['Basvuru Icerik']}";
                         String postValue2 = "${mypost['Başvuru Adi']}";
+                        String imageValue2 ="${mypost['Image']}";
                         Future<void> _showChoiseDialog(BuildContext context) {}
 
                         return Padding(
@@ -88,7 +89,7 @@ class _BavurularPageState extends State<BavurularPage> {
                                                       takenvalue:
                                                           index.toString(),
                                                       postValue: postValue,
-                                                      postValue2: postValue2)),
+                                                      postValue2: postValue2,imageValue: imageValue2,)),
                                         ),
                                         child: Text(
                                           "${mypost['Başvuru Adi']}",

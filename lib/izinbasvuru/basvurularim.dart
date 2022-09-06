@@ -15,8 +15,9 @@ class BasvurularimPage extends StatefulWidget {
   final String takenvalue;
   final String postValue;
   final String postValue2;
+  final String imageValue;
   const BasvurularimPage(
-      {Key key, this.takenvalue, this.postValue, this.postValue2})
+      {Key key, this.takenvalue, this.postValue, this.postValue2,this.imageValue})
       : super(key: key);
 
   @override
@@ -164,7 +165,7 @@ class _BasvurularimPageState extends State<BasvurularimPage> {
                 color: Colors.black,
                 borderRadius: BorderRadius.circular(15),
                 image: DecorationImage(
-                  image: AssetImage('assets/test.png'),
+                  image: NetworkImage(widget.imageValue),
                   fit: BoxFit.fill,
                 ),
               ),

@@ -9,6 +9,7 @@ import 'package:flutter_application_3/Options/backgroundimage.dart';
 import 'package:flutter_application_3/Options/baslikContainer.dart';
 import 'package:flutter_application_3/Options/status_service.dart';
 import 'package:flutter_application_3/profil/profilgiris.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 class IzinIslemleriPage extends StatefulWidget {
   const IzinIslemleriPage({Key key}) : super(key: key);
@@ -96,8 +97,69 @@ class _IzinIslemleriPageState extends State<IzinIslemleriPage> {
                               FirebaseAuth.instance.currentUser.uid;
                           print(name);
                           print(FirebaseAuth.instance.currentUser.uid);
-                          Future<void> _showChoiseDialog(
-                              BuildContext context) {}
+                          Future<void> _showChoiseDialog(BuildContext context) {
+                            return showDialog(
+                                context: context,
+                                builder: (BuildContext context) {
+                                  return AlertDialog(
+                                      title: Text(
+                                        "Silmek istediğinize emin misiniz?",
+                                        textAlign: TextAlign.center,
+                                      ),
+                                      shape: RoundedRectangleBorder(
+                                          borderRadius: BorderRadius.all(
+                                              Radius.circular(8.0))),
+                                      content: Container(
+                                          height: 30,
+                                          decoration: BoxDecoration(
+                                            color: Colors.white,
+                                          ),
+                                          child: Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.spaceBetween,
+                                            children: <Widget>[
+                                              GestureDetector(
+                                                onTap: () {
+                                                  _statusServiceIzinler
+                                                      .removeStatus(mypost.id);
+                                                  Navigator.pop(context);
+                                                  Fluttertoast.showToast(
+                                                      msg: "İzin Silindi",
+                                                      toastLength:
+                                                          Toast.LENGTH_SHORT,
+                                                      gravity:
+                                                          ToastGravity.BOTTOM,
+                                                      timeInSecForIosWeb: 5,
+                                                      backgroundColor:
+                                                          Colors.amber,
+                                                      textColor: Colors.white,
+                                                      fontSize: 15);
+                                                },
+                                                child: Text(
+                                                  "Evet",
+                                                  style: TextStyle(
+                                                      color: Colors.blue,
+                                                      fontWeight:
+                                                          FontWeight.bold),
+                                                ),
+                                              ),
+                                              GestureDetector(
+                                                onTap: () {
+                                                  Navigator.pop(context);
+                                                },
+                                                child: Text(
+                                                  "Vazgeç",
+                                                  style: TextStyle(
+                                                      color: Colors.blue,
+                                                      fontWeight:
+                                                          FontWeight.bold),
+                                                ),
+                                              ),
+                                            ],
+                                          )));
+                                });
+                          }
+
                           if (emailesit || isimesit || uidesit || telefonesit) {
                             return Padding(
                               padding: const EdgeInsets.all(8.0),
@@ -162,10 +224,12 @@ class _IzinIslemleriPageState extends State<IzinIslemleriPage> {
                                 ),
                               ),
                             );
-                          }
-                          else{
+                          } else {
                             emailesit || isimesit || uidesit || telefonesit;
-                            return Text("");
+                            return Text(
+                              "",
+                              style: TextStyle(fontSize: 1),
+                            );
                           }
                         });
               },

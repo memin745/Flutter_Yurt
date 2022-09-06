@@ -87,6 +87,7 @@ class _IzinAlmaPageState extends State<IzinAlmaPage> {
       firstDate: DateTime(1950),
       useRootNavigator: true,
       lastDate: DateTime(2050),
+      helpText: "İzin Seçin",
       cancelText: "",
       fieldLabelText: "Tarih Seçin",
       confirmText: "Onayla",
@@ -252,6 +253,7 @@ class _IzinAlmaPageState extends State<IzinAlmaPage> {
                 width: size.width * 0.30,
                 height: size.height * 0.05,
                 child: TextField(
+                  textCapitalization: TextCapitalization.words,
                   controller: izinSehirController,
                   decoration: InputDecoration(
                     border: InputBorder.none,

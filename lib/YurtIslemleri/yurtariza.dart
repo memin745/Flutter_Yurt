@@ -78,6 +78,7 @@ class _YurtArizaPageState extends State<YurtArizaPage> {
                   width: size.width * 0.65,
                   height: size.height * 0.25,
                   child: TextField(
+                    textCapitalization: TextCapitalization.words,
                     controller: sorunController,
                     decoration: InputDecoration(
                       border: InputBorder.none,
