@@ -6,10 +6,12 @@ import 'package:flutter_application_3/Options/appbarContainer.dart';
 import 'package:flutter_application_3/Options/backIconButton.dart';
 import 'package:flutter_application_3/Options/backgroundimage.dart';
 import 'package:flutter_application_3/Options/baslikContainer.dart';
+import 'package:flutter_application_3/Options/storage_servis.dart';
 import 'package:flutter_application_3/homepage.dart';
 import 'package:flutter_application_3/izinbasvuru/basvurular.dart';
 import 'package:flutter_application_3/main.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:photo_view/photo_view.dart';
 
 class BasvurularimPage extends StatefulWidget {
   final String takenvalue;
@@ -66,6 +68,7 @@ class _BasvurularimPageState extends State<BasvurularimPage> {
 
   @override
   Widget build(BuildContext context) {
+    StorageDuyuru storageDuyuru = StorageDuyuru();
     Future<void> _showChoiseDialog(BuildContext context) {
       return showDialog(
           context: context,
@@ -162,15 +165,38 @@ class _BasvurularimPageState extends State<BasvurularimPage> {
             Container(
               margin: EdgeInsets.only(top: size.height * 0.02),
               decoration: BoxDecoration(
-                color: Colors.black,
+              
                 borderRadius: BorderRadius.circular(15),
-                image: DecorationImage(
-                  image: NetworkImage(widget.imageValue),
-                  fit: BoxFit.fill,
-                ),
+               
               ),
-              width: size.width * 0.60,
-              height: size.height * 0.30,
+              
+              child:  FutureBuilder(
+            future: storageDuyuru.downloadURL("${widget.imageValue}"),
+            builder: (BuildContext context, AsyncSnapshot<String> snapshot) {
+              if (snapshot.connectionState == ConnectionState.done &&
+                  snapshot.hasData) {
+                return Container(
+                      width: size.width * 0.3,
+                      height: size.height * 0.3,
+                      child: PhotoView(
+                        imageProvider: NetworkImage(
+                         snapshot.data,
+                        ),
+                        minScale: PhotoViewComputedScale.contained * 1.2,
+                        maxScale: PhotoViewComputedScale.covered * 2,
+                        enableRotation: false,
+                        
+                      )
+                );
+              }
+              if (snapshot.connectionState == ConnectionState.waiting ||
+                  !snapshot.hasData) {
+                return CircularProgressIndicator();
+              }
+              return Container();
+            },
+          ),
+              
             ),
             Container(
               margin: EdgeInsets.only(top: 15),
@@ -181,7 +207,7 @@ class _BasvurularimPageState extends State<BasvurularimPage> {
               child: ListView(scrollDirection: Axis.vertical, children: [
                 Container(
                   child: Text(
-                    widget.postValue,
+                    widget.imageValue,
                     textAlign: TextAlign.center,
                     style: TextStyle(
                         fontSize: 20,

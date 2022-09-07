@@ -50,3 +50,32 @@ class Storage{
     return downloadURL;
   }
 }
+class StorageDuyuru{
+  final firebase_storage.FirebaseStorage storage =
+  firebase_storage.FirebaseStorage.instance;
+
+  Future<void> uploadFile(
+    String filePath,
+    String fileName,
+  )async{
+    File file = File(filePath);
+    try {
+      await storage.ref('duyuru/$fileName').putFile(file);
+    } on firebase_core.FirebaseException catch(e){
+      print(e);
+    }
+  }
+  Future<firebase_storage.ListResult> listFiles()async{
+    firebase_storage.ListResult results =await storage.ref('duyuru').listAll();
+
+    results.items.forEach((firebase_storage.Reference ref) {
+      print('Bulunamadı:$ref');
+     });
+     return results;
+  }
+
+  Future<String> downloadURL(String imageName) async{
+    String downloadURL = await storage.ref('duyuru/$imageName').getDownloadURL();
+    return downloadURL;
+  }
+}
