@@ -1,79 +1,77 @@
-import 'dart:io';
-
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_core/firebase_core.dart';
-import 'package:firebase_storage/firebase_storage.dart';
+import 'package:carousel_slider/carousel_slider.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_application_3/Options/appbarContainer.dart';
-import 'package:flutter_application_3/Options/backIconButton.dart';
-import 'package:flutter_application_3/Options/backgroundimage.dart';
-import 'package:flutter_application_3/Options/baslikContainer.dart';
-import 'package:flutter_application_3/kantin/kantin.dart';
-import 'package:image_picker/image_picker.dart';
-import 'package:photo_view/photo_view.dart';
 
-class BakiyeYuklePage extends StatefulWidget {
-  const BakiyeYuklePage({Key key}) : super(key: key);
-
+class BannerSlider extends StatefulWidget {
   @override
-  State<BakiyeYuklePage> createState() => _BakiyeYuklePageState();
+  _BannerSliderState createState() => _BannerSliderState();
 }
 
-class _BakiyeYuklePageState extends State<BakiyeYuklePage> {
+class _BannerSliderState extends State<BannerSlider> {
+  int _index = 0;
+  int _dataLength = 1;
+
   @override
-  Widget build(BuildContext context) {
-    background _background = background();
-    Size size = MediaQuery.of(context).size;
-    int _currentIndex = 0;
-    return Scaffold(
-      appBar: AppBar(
-        flexibleSpace: appbarContainer(),
-        title: baslikTitle(),
-        automaticallyImplyLeading: false,
-        leading: backIconButton(
-          page: KantinPage(),
-        ),
-      ),
-      body: ProfilTasarimiPage(),
-    );
+  void initState() {
+    getSliderImageFromDb();
+    super.initState();
   }
-}
 
-class ProfilTasarimiPage extends StatefulWidget {
-  const ProfilTasarimiPage({Key key}) : super(key: key);
-
-  @override
-  State<ProfilTasarimiPage> createState() => _ProfilTasarimiPageState();
-}
-
-class _ProfilTasarimiPageState extends State<ProfilTasarimiPage> {
-  File yuklenecekDosya;
-  FirebaseAuth auth = FirebaseAuth.instance;
-  String indermeBaglantisi;
-
-  kameradanYukle() async {
-    var alinanDosya = await ImagePicker().getImage(source: ImageSource.camera);
-    setState(() {
-      yuklenecekDosya = File(alinanDosya.path);
-    });
-    Reference referansYol = FirebaseStorage.instance
-        .ref()
-        .child("profilresimleri")
-        .child("profilResmi.png");
-    // ignore: unused_local_variable
-    UploadTask yuklemeGorevi = referansYol.putFile(yuklenecekDosya);
-    String url = await (await yuklemeGorevi).ref.getDownloadURL();
-    setState(() {
-      indermeBaglantisi = url;
-    });
+  Future getSliderImageFromDb() async {
+    var _fireStore = FirebaseFirestore.instance;
+    QuerySnapshot snapshot = await _fireStore.collection('Banner').get();
+    if (mounted) {
+      setState(() {
+        _dataLength = snapshot.docs.length;
+      });
+    }
+    return snapshot.docs;
   }
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: TextButton(
-        onPressed: () => kameradanYukle(),
-        child: Text("YÜKLE"),
+      color: Colors.white,
+      child: Column(
+        children: [
+          if (_dataLength != 0)
+            FutureBuilder(
+              future: getSliderImageFromDb(),
+              builder: (_, snapShot) {
+                return snapShot.data == null
+                    ? Center(
+                        child: CircularProgressIndicator(),
+                      )
+                    : Padding(
+                        padding: const EdgeInsets.only(top: 4),
+                        child: CarouselSlider.builder(
+                            itemCount: snapShot.data.length,
+                            itemBuilder: (BuildContext context, index, int) {
+                              DocumentSnapshot sliderImage =
+                                  snapShot.data[index];
+                              Map getImage = sliderImage.data();
+                              return SizedBox(
+                                  width: MediaQuery.of(context).size.width,
+                                  child: Image.network(
+                                    getImage['image'],
+                                    fit: BoxFit.fill,
+                                  ));
+                            },
+                            options: CarouselOptions(
+                                viewportFraction: 1,
+                                initialPage: 0,
+                                autoPlay: true,
+                                height: 150,
+                                onPageChanged:
+                                    (int i, carouselPageChangedReason) {
+                                  setState(() {
+                                    _index = i;
+                                  });
+                                })),
+                      );
+              },
+            ),
+        ],
       ),
     );
   }

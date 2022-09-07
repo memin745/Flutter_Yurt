@@ -36,6 +36,16 @@ class StatusServiceUsers{
     return ref;
   }
 }
+class StatusServiceresim{
+  final FirebaseFirestore _firestore = FirebaseFirestore.instance;
+
+
+
+  Stream<QuerySnapshot>getStatus(){
+    var ref = _firestore.collection("Banner").snapshots();
+    return ref;
+  }
+}
 class StatusServiceIzinler{
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
 

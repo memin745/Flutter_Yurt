@@ -134,7 +134,7 @@ class bodyContainer extends StatelessWidget {
               onPressed: () => Navigator.pushReplacement(
                 //Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => BakiyeYuklePage()),
+                MaterialPageRoute(builder: (context) => BannerSlider()),
               ),
               child: Text("Bakiye Yükle",
                   style: TextStyle(fontSize: 20, color: Colors.black)),
