@@ -11,9 +11,22 @@ import 'package:flutter_application_3/homepage.dart';
 import 'package:flutter_application_3/izinbasvuru/izinvebasvuru.dart';
 import 'package:flutter_application_3/profil/profilgiris.dart';
 import 'package:page_transition/page_transition.dart';
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 
+final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin = FlutterLocalNotificationsPlugin();
 void main() async {
-  
+  var initializationSettingsAndroid = AndroidInitializationSettings('codex_logo');
+  var initializationSettingsIOS = IOSInitializationSettings(
+      requestAlertPermission: true,
+      requestBadgePermission: true,
+      requestSoundPermission: true,
+      onDidReceiveLocalNotification: (int id, String title, String body, String payload) async {});
+  var initializationSettings = InitializationSettings(android: initializationSettingsAndroid, iOS: initializationSettingsIOS);
+  await flutterLocalNotificationsPlugin.initialize(initializationSettings, onSelectNotification: (String payload) async {
+    if (payload != null) {
+      debugPrint('notification payload: ' + payload);
+    }
+  });
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,

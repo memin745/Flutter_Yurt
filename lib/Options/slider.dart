@@ -38,37 +38,44 @@ class slider extends StatelessWidget {
 
                               Future<void> _showChoiseDialog(
                                   BuildContext context) {}
-                              return FutureBuilder(
-                                future:
-                                    storageDuyuru.downloadURL(mypost['image']),
-                                builder: (BuildContext context,
-                                    AsyncSnapshot<String> snapshot) {
-                                  if (snapshot.connectionState ==
-                                          ConnectionState.done &&
-                                      snapshot.hasData) {
-                                    return Container(
-                                        width: size.width * 0.7,
-                                        height: size.height * 0.3,
-                                        child: PhotoView(
-                                          imageProvider: NetworkImage(
-                                            snapshot.data,
-                                          ),
-                                          minScale:
-                                              PhotoViewComputedScale.contained *
-                                                  1.2,
-                                          maxScale:
-                                              PhotoViewComputedScale.covered *
-                                                  2,
-                                          enableRotation: false,
-                                        ));
-                                  }
-                                  if (snapshot.connectionState ==
-                                          ConnectionState.waiting ||
-                                      !snapshot.hasData) {
-                                    return CircularProgressIndicator();
-                                  }
-                                  return Container();
-                                },
+                              return Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Container(
+                                  width: size.width * 0.7,
+                                            height: size.height * 0.3,
+                                  child: FutureBuilder(
+                                    future:
+                                        storageDuyuru.downloadURL(mypost['image']),
+                                    builder: (BuildContext context,
+                                        AsyncSnapshot<String> snapshot) {
+                                      if (snapshot.connectionState ==
+                                              ConnectionState.done &&
+                                          snapshot.hasData) {
+                                        return Container(
+                                            width: size.width * 0.7,
+                                            height: size.height * 0.3,
+                                            child: PhotoView(
+                                              imageProvider: NetworkImage(
+                                                snapshot.data,
+                                              ),
+                                              minScale:
+                                                  PhotoViewComputedScale.contained *
+                                                      1.2,
+                                              maxScale:
+                                                  PhotoViewComputedScale.covered *
+                                                      2,
+                                              enableRotation: false,
+                                            ));
+                                      }
+                                      if (snapshot.connectionState ==
+                                              ConnectionState.waiting ||
+                                          !snapshot.hasData) {
+                                        return CircularProgressIndicator();
+                                      }
+                                      return Container();
+                                    },
+                                  ),
+                                ),
                               );
                             });
                   }),

@@ -55,19 +55,7 @@ class _DuyuruMetniPageState extends State<DuyuruMetniPage> {
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
               baslikContainer(title: "Duyuru",size: 25,),
-              Container(
-                margin: EdgeInsets.only(top: size.height * 0.02),
-                decoration: BoxDecoration(
-                  color: Colors.black,
-                  borderRadius: BorderRadius.circular(15),
-                  image: DecorationImage(
-                    image: AssetImage('assets/test.png'),
-                    fit: BoxFit.fill,
-                  ),
-                ),
-                width: size.width * 0.60,
-                height: size.height * 0.30,
-              ),
+             
               Container(
                 margin: EdgeInsets.only(top: 15),
                 decoration: BoxDecoration(
