@@ -36,7 +36,7 @@ class baslikTitle extends StatelessWidget {
     @override
     Widget build(BuildContext context) {
       
-      return Text(FirebaseAuth.instance.currentUser.email);
+      return Text("YURDUM");
     }
   }
   
