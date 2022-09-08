@@ -10,7 +10,6 @@ import 'package:flutter_application_3/Options/storage_servis.dart';
 import 'package:flutter_application_3/homepage.dart';
 import 'package:flutter_application_3/izinbasvuru/basvurular.dart';
 import 'package:flutter_application_3/main.dart';
-import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:photo_view/photo_view.dart';
 
@@ -20,11 +19,7 @@ class BasvurularimPage extends StatefulWidget {
   final String postValue2;
   final String imageValue;
   const BasvurularimPage(
-      {Key key,
-      this.takenvalue,
-      this.postValue,
-      this.postValue2,
-      this.imageValue})
+      {Key key, this.takenvalue, this.postValue, this.postValue2,this.imageValue})
       : super(key: key);
 
   @override
@@ -96,25 +91,24 @@ class _BasvurularimPageState extends State<BasvurularimPage> {
                         GestureDetector(
                           onTap: () async {
                             Map<String, String> movieData = {};
-                            FirebaseAuth.instance;
-                            await _firestore
-                                .collection("AlinanBasvurular")
-                                .doc(widget.postValue2)
-                                .set({
-                              "ogrenci": FieldValue.arrayUnion([name]),
-                              "Duyuru Adi": widget.postValue2,
-                              "Email": FieldValue.arrayUnion([email]),
-                              "Telefon": FieldValue.arrayUnion([Telefon]),
-                              'Email': FirebaseAuth.instance.currentUser.email,
-                            }, SetOptions(merge: true));
-                            Fluttertoast.showToast(
-                                msg: "Başvuru Yapıldı",
-                                toastLength: Toast.LENGTH_SHORT,
-                                gravity: ToastGravity.BOTTOM,
-                                timeInSecForIosWeb: 5,
-                                backgroundColor: Colors.amber,
-                                textColor: Colors.white,
-                                fontSize: 15);
+                  FirebaseAuth.instance;
+                  await _firestore.collection("AlinanBasvurular").doc(widget.postValue2).set({
+                    "ogrenci": FieldValue.arrayUnion([name]),
+                    "Duyuru Adi": widget.postValue2,
+                    "Email": FieldValue.arrayUnion([email]),
+                    "Telefon": FieldValue.arrayUnion([Telefon]),
+                    'Email': FirebaseAuth.instance.currentUser.email,
+                    
+                    
+                  }, SetOptions(merge: true));
+                  Fluttertoast.showToast(
+                    msg: "Başvuru Yapıldı",
+                    toastLength: Toast.LENGTH_SHORT,
+                    gravity: ToastGravity.BOTTOM,
+                    timeInSecForIosWeb: 5,
+                    backgroundColor: Colors.amber,
+                    textColor: Colors.white,
+                    fontSize: 15);
                             Navigator.pushReplacement(
                               //Navigator.push(
                               context,
@@ -144,7 +138,6 @@ class _BasvurularimPageState extends State<BasvurularimPage> {
                     )));
           });
     }
-
     background _background = background();
     Size size = MediaQuery.of(context).size;
     int _currentIndex = 0;
@@ -172,33 +165,38 @@ class _BasvurularimPageState extends State<BasvurularimPage> {
             Container(
               margin: EdgeInsets.only(top: size.height * 0.02),
               decoration: BoxDecoration(
+              
                 borderRadius: BorderRadius.circular(15),
+               
               ),
-              child: FutureBuilder(
-                future: storageDuyuru.downloadURL("${widget.imageValue}"),
-                builder:
-                    (BuildContext context, AsyncSnapshot<String> snapshot) {
-                  if (snapshot.connectionState == ConnectionState.done &&
-                      snapshot.hasData) {
-                    return Container(
-                        width: size.width * 0.3,
-                        height: size.height * 0.3,
-                        child: PhotoView(
-                          imageProvider: NetworkImage(
-                            snapshot.data,
-                          ),
-                          minScale: PhotoViewComputedScale.contained * 1.2,
-                          maxScale: PhotoViewComputedScale.covered * 2,
-                          enableRotation: false,
-                        ));
-                  }
-                  if (snapshot.connectionState == ConnectionState.waiting ||
-                      !snapshot.hasData) {
-                    return CircularProgressIndicator();
-                  }
-                  return Container();
-                },
-              ),
+              
+              child:  FutureBuilder(
+            future: storageDuyuru.downloadURL("${widget.imageValue}"),
+            builder: (BuildContext context, AsyncSnapshot<String> snapshot) {
+              if (snapshot.connectionState == ConnectionState.done &&
+                  snapshot.hasData) {
+                return Container(
+                      width: size.width * 0.3,
+                      height: size.height * 0.3,
+                      child: PhotoView(
+                        imageProvider: NetworkImage(
+                         snapshot.data,
+                        ),
+                        minScale: PhotoViewComputedScale.contained * 1.2,
+                        maxScale: PhotoViewComputedScale.covered * 2,
+                        enableRotation: false,
+                        
+                      )
+                );
+              }
+              if (snapshot.connectionState == ConnectionState.waiting ||
+                  !snapshot.hasData) {
+                return CircularProgressIndicator();
+              }
+              return Container();
+            },
+          ),
+              
             ),
             Container(
               margin: EdgeInsets.only(top: 15),
@@ -238,7 +236,7 @@ class _BasvurularimPageState extends State<BasvurularimPage> {
                   ]),
               child: TextButton(
                 onPressed: () async {
-                  scheduleAlarm();
+                  _showChoiseDialog(context);
                 },
                 child: Text(
                   "Başvur",
@@ -253,31 +251,5 @@ class _BasvurularimPageState extends State<BasvurularimPage> {
         ),
       ),
     );
-  }
-
-  void scheduleAlarm() async {
-    var scheduledNotificationDateTime =
-        DateTime.now().add(Duration(seconds: 10));
-    var androidPlatformChannelSpecifics = AndroidNotificationDetails(
-      'alarm_notif',
-      'alarm_notif',
-      channelDescription: 'Channel for Alarm notification',
-      icon: 'codex_logo',
-      sound: RawResourceAndroidNotificationSound('a_long_cold_sting'),
-      largeIcon: DrawableResourceAndroidBitmap('codex_logo'),
-    );
-
-    var iOSPlatformChannelSpecifics = IOSNotificationDetails(
-      sound: 'a_long_cold_sting.wav',
-      presentAlert: true,
-      presentBadge: true,
-      presentSound: true,
-    );
-    var platformChannelSpecifics = NotificationDetails(
-      android: androidPlatformChannelSpecifics,
-      iOS: iOSPlatformChannelSpecifics,
-    );
-    await flutterLocalNotificationsPlugin.schedule(0, "Günaydın", "Naber",
-        scheduledNotificationDateTime, platformChannelSpecifics);
   }
 }
