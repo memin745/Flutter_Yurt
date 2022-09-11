@@ -39,7 +39,7 @@ class _IzinveBasvuruPageState extends State<IzinveBasvuruPage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            buttons(size: size/1.1, page: BavurularPage(), title: "Başvurular"),
+            buttons(size: size/1.1, page: BavurularPage(), title: "Etkinlikler"),
             buttons(size: size/1.1, page: IzinAlmaPage(), title: "İzin İşlemleri")
           ],
         ),
